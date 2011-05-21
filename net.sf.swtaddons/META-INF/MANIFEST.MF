@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SWT Add-ons Plug-in
+Bundle-SymbolicName: net.sf.swtaddons
+Bundle-Version: 0.1.1
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Eclipse-LazyStart: true
+Export-Package: net.sf.swtaddons.autocomplete,
+ net.sf.swtaddons.autocomplete.combo,
+ net.sf.swtaddons.autocomplete.text
