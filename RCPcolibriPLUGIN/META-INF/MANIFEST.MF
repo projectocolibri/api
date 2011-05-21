@@ -3,16 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: RCPcolibriPLUGIN
 Bundle-SymbolicName: RCPcolibriPLUGIN;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-ClassPath: .,
- libraries/asm-3.1.jar,
- libraries/empresas.jar,
- libraries/h2-1.2.147.jar,
- libraries/icu4j-3.4.4.jar,
- libraries/licencas.jar,
- libraries/mysql-connector-java-5.1.11-bin.jar,
- libraries/postgresql-9.0-801.jdbc4.jar,
- libraries/saftpt_1_01a.jar,
- libraries/xbean.jar
 Export-Package: rcpcolibri.ui.workbench.helpers,
  rcpcolibri.ui.workbench.views.actions,
  rcpcolibri.vars.rcp
@@ -50,3 +40,13 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.6.0",
  net.sf.swtaddons;bundle-version="0.1.1",
  org.dma.utils;bundle-version="1.1.2"
 Bundle-Activator: rcpcolibri.Activator
+Bundle-ClassPath: /.,
+ libraries/asm-3.1.jar,
+ libraries/empresas.jar,
+ libraries/h2-1.2.147.jar,
+ libraries/icu4j-3.4.4.jar,
+ libraries/licencas.jar,
+ libraries/mysql-connector-java-5.1.11-bin.jar,
+ libraries/postgresql-9.0-801.jdbc4.jar,
+ libraries/saftpt_1_01a.jar,
+ libraries/xbean.jar
