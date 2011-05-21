@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.jolbox.bonecp
+Bundle-SymbolicName: com.jolbox.bonecp;singleton:=true
+Bundle-Version: 0.7.0
+Fragment-Host: RCPcolibriPLUGIN;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ libraries/bonecp-0.7.0.jar,
+ libraries/guava-r08.jar,
+ libraries/slf4j-api-1.6.1.jar,
+ libraries/slf4j-log4j12-1.6.1.jar
+Export-Package: com.jolbox.bonecp
