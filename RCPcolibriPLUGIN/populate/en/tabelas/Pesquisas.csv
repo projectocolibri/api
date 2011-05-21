@@ -1,0 +1,28 @@
+101; General Search
+111; Articles below minimum stock
+112; Articles with negative stock
+113; Articles with zero stock
+201; General Search
+211; Pending Documents
+221; Today's Documents
+222; Week's Documents
+223; Fortnight's Documents
+231; Month's Documents
+232; Quarter's Documents
+233; Semester's Documents
+241; Year's Documents
+301; General Search
+501; General Search
+511; Entities with due balance
+512; Entities with a credit balance
+513; Entities with zero balance
+601; General Search
+611; Overdue invoices
+621; Today's Documents
+622; Week's Documents
+623; Fortnight's Documents
+631; Month's Documents
+632; Quarter's Documents
+633; Semester's Documents
+641; Year's Documents
+701; General Search
