@@ -1,0 +1,28 @@
+101;Pesquisa geral
+111;Artigos abaixo do stock mínimo
+112;Artigos com stock negativo
+113;Artigos com stock a zero
+201;Pesquisa geral
+211;Documentos pendentes
+221;Documentos do dia
+222;Documentos da semana
+223;Documentos da quinzena
+231;Documentos do mês
+232;Documentos do trimestre
+233;Documentos do semestre
+241;Documentos do ano
+301;Pesquisa geral
+501;Pesquisa geral
+511;Entidades com saldo devedor
+512;Entidades com saldo credor
+513;Entidades com saldo a zero
+601;Pesquisa geral
+611;Facturas vencidas
+621;Documentos do dia
+622;Documentos da semana
+623;Documentos da quinzena
+631;Documentos do mês
+632;Documentos do trimestre
+633;Documentos do semestre
+641;Documentos do ano
+701;Pesquisa geral
