@@ -11,13 +11,17 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import rcpcolibri.RCPcolibri;
 import rcpcolibri.core.LoginAction;
+import rcpcolibri.core.errors.ExceptionHandler;
 import rcpcolibri.dao.model.classes.Entidadesdocumentos;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import rcpcolibri.ui.workbench.views.actions.OpenViewAction;
+import rcpcolibri.vars.database.DatanucleusVARS;
 import rcpcolibri.vars.rcp.CommandVARS;
 import rcpcolibri.vars.rcp.FileVARS;
 import rcpcolibri.vars.rcp.ViewVARS;
 import rcpcolibri.vars.security.UserVARS;
+import rcpcolibri.xml.empresas.DbcolibriDocument.Dbcolibri;
+import rcpcolibri.xml.empresas.EmpresaDocument.Empresa;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
@@ -54,7 +58,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0");
 
 			LoginAction login=new LoginAction(
-				RCPcolibri.getEmpresasXml().getArray()[0],
+				createEmpresa(),
 				UserVARS.USER_ADMIN,
 				UserVARS.USER_ADMIN_PASSWORD,
 				WorkbenchHelper.getShell());
@@ -76,6 +80,30 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+
+	public Empresa createEmpresa(){
+		try {
+			Empresa empresa = Empresa.Factory.newInstance();
+			empresa.setNome("Colibri");
+
+			Dbcolibri dbcolibri = Dbcolibri.Factory.newInstance();
+			dbcolibri.setDriver(DatanucleusVARS.DRIVER_H2);
+			dbcolibri.setHost("");
+			dbcolibri.setDatabase("/colibri/rcp6");
+			dbcolibri.setUtilizador("sa");
+			dbcolibri.setPassword("");
+			empresa.setDbcolibri(dbcolibri);
+
+			return empresa;
+
+		} catch (Exception e) {
+			ExceptionHandler.error(e);
+		}
+
+		return null;
+
 	}
 
 
