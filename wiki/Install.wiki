@@ -6,9 +6,7 @@ Detailed information on how to install the API.
 
 = Details =
 
-1) Install *ECLIPSE for RCP and RAP Developers*;
-Download from http://www.eclipse.org/downloads/;
-Unpack to /eclipse
+1) Install *ECLIPSE for RCP and RAP Developers*  Download from http://www.eclipse.org/downloads/  Unpack to /eclipse
 
 2) Install *DataNucleus 2.1.0-Release* Plugins
 Download from http://sourceforge.net/projects/datanucleus/files/datanucleus-accessplatform/
