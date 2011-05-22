@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: rcp.colibri.api.example
+Bundle-SymbolicName: colibri.rcp.api.example;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: example.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.dma.utils;bundle-version="2.0.0",
+ colibri.rcp;bundle-version="6.3.8"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
