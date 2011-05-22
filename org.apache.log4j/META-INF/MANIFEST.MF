@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.apache.log4j
 Bundle-SymbolicName: org.apache.log4j;singleton:=true
 Bundle-Version: 1.2.16
-Fragment-Host: RCPcolibriPLUGIN;bundle-version="1.0.0"
+Fragment-Host: colibri.rcp.plugin;bundle-version="6.3.8.beta"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
  libraries/log4j-1.2.16.jar
