@@ -15,6 +15,7 @@ import rcpcolibri.dao.model.classes.Entidadesdocumentos;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import rcpcolibri.ui.workbench.views.actions.OpenViewAction;
 import rcpcolibri.vars.rcp.CommandVARS;
+import rcpcolibri.vars.rcp.FileVARS;
 import rcpcolibri.vars.rcp.ViewVARS;
 import rcpcolibri.vars.security.UserVARS;
 
@@ -49,7 +50,8 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		try{
 			RCPcolibri.getGUI().start();
 
-			RCPcolibri.getLicenceManager().loadLicence("0");
+			RCPcolibri.getLicenceManager().loadLicence(
+				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0");
 
 			LoginAction login=new LoginAction(
 				RCPcolibri.getEmpresasXml().getArray()[0],
