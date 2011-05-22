@@ -26,4 +26,10 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.datanucleus.ide.eclipse.projectnature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>ROOT_FOLDER</name>
+			<value>file:/C:/</value>
+		</variable>
+	</variableList>
 </projectDescription>
