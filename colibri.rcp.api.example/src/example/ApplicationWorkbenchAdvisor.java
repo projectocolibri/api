@@ -1,6 +1,6 @@
 /*******************************************************************************
  * 2008-2011 Projecto Colibri
- * Marco Lopes (marcolopes@netc.pt)
+ * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package example;
 
@@ -9,10 +9,13 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-import rcpcolibri.RCPcolibri;
+import rcpcolibri.core.ExceptionHandler;
 import rcpcolibri.core.LoginAction;
-import rcpcolibri.core.errors.ExceptionHandler;
+import rcpcolibri.core.security.LicenceManager;
+import rcpcolibri.dao.database.DatabaseManager;
 import rcpcolibri.dao.model.classes.Entidadesdocumentos;
+import rcpcolibri.ui.workbench.ColibriGUI;
+import rcpcolibri.ui.workbench.commands.OpenPreferencePageAction;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import rcpcolibri.ui.workbench.views.actions.OpenViewAction;
 import rcpcolibri.vars.database.DatanucleusVARS;
@@ -52,9 +55,9 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	public void postStartup() {
 		try{
-			RCPcolibri.getGUI().start();
+			ColibriGUI.start();
 
-			RCPcolibri.getLicenceManager().loadLicence(
+			LicenceManager.loadLicence(
 				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0");
 
 			LoginAction login=new LoginAction(
@@ -65,15 +68,15 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 			if (login.process()){
 
+				/*
 				new OpenViewAction(ViewVARS.ArtigosFicheiroView).run();
+				*/
 
 				new OpenViewAction(ViewVARS.EntidadesEmissaoView,
-					new Entidadesdocumentos(RCPcolibri.getDBManager().loadDocumentostipos("CFA")),
+					new Entidadesdocumentos(DatabaseManager.loadDocumentostipos("CFA")),
 					CommandVARS.NOVO).run();
 
-				/*
 				new OpenPreferencePageAction(WorkbenchHelper.getWorkbenchWindow()).run();
-				*/
 
 			}
 
@@ -109,7 +112,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	public final boolean preShutdown() {
 		try{
-			RCPcolibri.getGUI().stop();
+			ColibriGUI.stop();
 
 		}catch(Exception e){
 			e.printStackTrace();

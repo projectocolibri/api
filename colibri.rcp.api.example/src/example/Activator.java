@@ -1,6 +1,6 @@
 /*******************************************************************************
  * 2008-2011 Projecto Colibri
- * Marco Lopes (marcolopes@netc.pt)
+ * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package example;
 
