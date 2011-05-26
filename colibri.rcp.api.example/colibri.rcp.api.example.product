@@ -11,11 +11,12 @@
    </launcherArgs>
 
    <plugins>
+      <plugin id="colibri.rcp"/>
       <plugin id="colibri.rcp.api.example"/>
-      <plugin id="colibri.rcp.plugin"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.jolbox.bonecp" fragment="true"/>
       <plugin id="com.lowagie.text"/>
+      <plugin id="com.mchange.c3p0" fragment="true"/>
       <plugin id="javax.jdo"/>
       <plugin id="javax.xml"/>
       <plugin id="net.sf.swtaddons"/>
@@ -31,6 +32,7 @@
       <plugin id="org.apache.batik.util"/>
       <plugin id="org.apache.batik.util.gui"/>
       <plugin id="org.apache.batik.xml"/>
+      <plugin id="org.apache.commons" fragment="true"/>
       <plugin id="org.apache.commons.codec"/>
       <plugin id="org.apache.log4j" fragment="true"/>
       <plugin id="org.apache.xerces"/>

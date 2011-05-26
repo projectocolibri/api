@@ -1,15 +1,15 @@
 /*******************************************************************************
  * 2008-2011 Projecto Colibri
- * Marco Lopes (marcolopes@netc.pt)
+ * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package example;
 
-import org.dma.utils.eclipse.core.Debug;
+import org.dma.utils.eclipse.Debug;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
-import rcpcolibri.RCPcolibri;
+import rcpcolibri.ui.workbench.ColibriGUI;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
@@ -29,7 +29,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	protected void fillStatusLine(IStatusLineManager statusline) {
 		Debug.info();
-		RCPcolibri.getGUI().initStatusbar(statusline);
+		ColibriGUI.initStatusbar(statusline);
 	}
 
 
