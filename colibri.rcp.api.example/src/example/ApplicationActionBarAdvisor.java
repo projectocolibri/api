@@ -4,7 +4,6 @@
  *******************************************************************************/
 package example;
 
-import org.dma.utils.eclipse.Debug;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
@@ -28,7 +27,6 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 
 	protected void fillStatusLine(IStatusLineManager statusline) {
-		Debug.info();
 		ColibriGUI.initStatusbar(statusline);
 	}
 
