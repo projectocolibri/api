@@ -11,6 +11,7 @@ Detailed information on how to install the API.
   # Install *SVN-Subclipse Plugin*; HELP - Install New Software; http://subclipse.tigris.org/update_1.6.x
   # Install *BIRT Plugin*; HELP - Install New Software; Business Intelligence, Reporting and Charting
   # Checkout all the projects on this repository; http://code.google.com/p/projectocolibri/
-  # Copy ALL the JAR files from the PLUGINS project to your Eclipse DROPINS folder (\eclipse\dropins); *UNPACK the colibri.rcp.? JAR* into a folder with the SAME NAME. Delete the colibri.rcp.? JAR.
+  # Copy ALL the JAR files from the PLUGINS project to your Eclipse DROPINS folder (\eclipse\dropins)
+  # Inside the DROPINS folder, *UNPACK the colibri.rcp.? JAR* into a folder with the SAME NAME. Delete the colibri.rcp.? JAR.
   # Restart Eclipse; You should have NO errors
   # Run colibri.rcp.api.example PRODUCT; This is an RCP project that uses the Colibri Plugin API
