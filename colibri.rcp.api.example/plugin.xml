@@ -30,7 +30,7 @@
       <perspective
             name="Perspective"
             class="example.Perspective"
-            id="example.perspective">
+            id="Perspective">
       </perspective>
    </extension>
    

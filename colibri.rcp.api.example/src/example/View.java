@@ -23,7 +23,7 @@ public class View extends ViewPart {
 	 * view. It can wrap existing objects in adapters or simply return objects
 	 * as-is. These objects may be sensitive to the current input of the view,
 	 * or ignore it and always show the same content (like Task List, for
-	 * example).
+	 * Example).
 	 */
 	class ViewContentProvider implements IStructuredContentProvider {
 		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
