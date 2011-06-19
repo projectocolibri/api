@@ -62,7 +62,7 @@ public class LoginExample {
 			Dbcolibri dbcolibri = Dbcolibri.Factory.newInstance();
 			dbcolibri.setDriver(DatanucleusVARS.DRIVER_H2);
 			dbcolibri.setHost("");
-			dbcolibri.setDatabase("/example.api/rcp6");
+			dbcolibri.setDatabase("/colibri/rcp6");
 			dbcolibri.setUtilizador("sa");
 			dbcolibri.setPassword("");
 			empresa.setDbcolibri(dbcolibri);
