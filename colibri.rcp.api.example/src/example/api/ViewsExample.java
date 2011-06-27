@@ -26,6 +26,7 @@ public class ViewsExample {
 		try{
 
 			OpenViewAction action=new OpenViewAction(ViewVARS.ArtigosFicheiroView);
+
 			action.run();
 
 			return action.getView();
@@ -46,6 +47,7 @@ public class ViewsExample {
 
 			OpenViewAction action=new OpenViewAction(ViewVARS.EntidadesEmissaoView,
 				new Entidadesdocumentos(DatabaseManager.loadDocumentostipos("CFA")), CommandVARS.NOVO);
+
 			action.run();
 
 			return action.getView();

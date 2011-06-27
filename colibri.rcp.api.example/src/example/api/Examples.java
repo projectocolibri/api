@@ -15,10 +15,23 @@ public class Examples {
 		//processou o login?
 		if (LoginExample.processLogin()){
 
-			openViews();
-			backgroungPrint();
+			storeDocumento();
+			//openViews();
+			//backgroungPrint();
 			//normalPrint();
 
+		}
+
+	}
+
+
+	public void storeDocumento() {
+		try{
+			DatabaseExample databaseExample=new DatabaseExample();
+			databaseExample.storeDocumento();
+
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 
 	}
@@ -40,7 +53,7 @@ public class Examples {
 	public void backgroungPrint() {
 		try{
 			PrintExample printExample=new PrintExample();
-			printExample.backgroundProcess(view);
+			printExample.backgroundProcess(view,1);
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -52,7 +65,7 @@ public class Examples {
 	public void normalPrint() {
 		try{
 			PrintExample printExample=new PrintExample();
-			printExample.normalProcess(view);
+			printExample.normalProcess(view,1);
 
 		}catch(Exception e){
 			e.printStackTrace();

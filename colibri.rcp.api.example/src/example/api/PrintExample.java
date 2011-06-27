@@ -5,8 +5,8 @@
 package example.api;
 
 import org.dma.utils.eclipse.jobs.CustomJob;
-import org.dma.utils.eclipse.jobs.JobAction;
-import org.dma.utils.eclipse.jobs.JobTask;
+import org.dma.utils.eclipse.jobs.tasks.JobAction;
+import org.dma.utils.eclipse.jobs.tasks.JobTask;
 import org.eclipse.core.runtime.jobs.Job;
 
 import rcpcolibri.core.birt.report.BIRTReport;
@@ -26,10 +26,10 @@ public class PrintExample {
 	/**
 	 * Processa e imprime
 	 */
-	public void normalProcess(IView view) {
+	public void normalProcess(IView view, int numerodocumento) {
 		try{
 
-			BIRTReport report=initReport();
+			BIRTReport report=initReport(numerodocumento);
 			report.process();
 			report.postProcess(view);
 
@@ -42,10 +42,10 @@ public class PrintExample {
 	/**
 	 * Processa em background e imprime
 	 */
-	public void backgroundProcess(final IView view) {
+	public void backgroundProcess(final IView view, int numerodocumento) {
 		try{
 
-			final BIRTReport report=initReport();
+			final BIRTReport report=initReport(numerodocumento);
 
 			CustomJob job=new CustomJob(LabelVARS.operacao_imprimirrelatorio[0],Job.LONG);
 			job.addTask(new JobTask("Processamento", new JobAction() {
@@ -68,13 +68,13 @@ public class PrintExample {
 	/**
 	 * Inicializa o report
 	 */
-	public BIRTReport initReport() {
+	public BIRTReport initReport(int numerodocumento) {
 		try{
 
 			return new BIRTReport("701", new FilterMap(TableVARS.entidadesdocumentos).
 				addFieldRule(TableVARS.entidadesdocumentos_key,	FilterMap.OPERATORS.MATH.EQUALS_TO.symbol,
-					new FilterOperandMap(Entidadesdocumentos.generateKey("CFA","2011",1), FilterOperandMap.TYPE_VALUE)),
-				BIRTReport.ACTION_PRINT);
+					new FilterOperandMap(Entidadesdocumentos.generateKey("CFA","2011",numerodocumento),
+						FilterOperandMap.TYPE_VALUE)), BIRTReport.ACTION_PRINT);
 
 		}catch(Exception e){
 			e.printStackTrace();
