@@ -9,7 +9,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-import rcpcolibri.ui.workbench.ColibriGUI;
+import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import example.api.Examples;
 

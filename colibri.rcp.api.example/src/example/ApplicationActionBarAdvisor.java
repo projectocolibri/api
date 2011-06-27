@@ -8,7 +8,7 @@ import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
-import rcpcolibri.ui.workbench.ColibriGUI;
+import rcpcolibri.ui.ColibriGUI;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
