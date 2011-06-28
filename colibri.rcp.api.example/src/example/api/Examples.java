@@ -16,7 +16,7 @@ public class Examples {
 		if (LoginExample.processLogin()){
 
 			storeDocumento();
-			//openViews();
+			openViews();
 			//backgroungPrint();
 			//normalPrint();
 

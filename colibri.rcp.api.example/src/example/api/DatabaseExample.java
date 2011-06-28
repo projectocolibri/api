@@ -29,10 +29,9 @@ public class DatabaseExample {
 		try{
 
 			Entidadesdocumentos documento=createDocumento();
-			documento.setKey();
 			/*
 			documento.setSeriedocumento(DatabaseManager.loadDocumentosseries(
-					Documentosseries.generateKey(documento.getTipodocumento().getCodigo(), "AAAA")));
+					Documentosseries.generateKey(documento.getTipodocumento().getCodigo(), "0000")));
 			*/
 
 			return !DatabaseManager.storeEntidadesdocumentos(documento,
@@ -68,7 +67,7 @@ public class DatabaseExample {
 			documento.addLinhasdocumento(linha);
 
 			EntidadesdocumentosProcess.process(documento, documento.getLinhasdocumento());
-			EntidadesdocumentosProcess.postProcess(documento, documento.getLinhasdocumento());
+			EntidadesdocumentosProcess.postProcess(documento, documento.getLinhasdocumento(), false);
 
 			return documento;
 
