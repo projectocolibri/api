@@ -17,7 +17,7 @@ public class Examples {
 
 			storeDocumento();
 			openViews();
-			//backgroungPrint();
+			backgroungPrint();
 			//normalPrint();
 
 		}
