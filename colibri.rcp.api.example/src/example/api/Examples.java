@@ -5,76 +5,38 @@
 package example.api;
 
 import rcpcolibri.ui.workbench.views.IView;
+import example.api.database.ArtigosExample;
 import example.api.database.DocumentosExample;
 
 public class Examples {
 
 	private IView view;
 
+	private final ArtigosExample artigosExample=new ArtigosExample();
+	private final DocumentosExample documentosExample=new DocumentosExample();
+	private final ViewsExample viewsExample=new ViewsExample();
+	private final PrintExample printExample=new PrintExample();
+
 	public Examples() {
 
 		//processou o login?
 		if (LoginExample.processLogin()){
 
-			storeDocumento();
-			openViews();
-			backgroungPrint();
-			//normalPrint();
+			artigosExample.iterateArtigo();
 
-		}
-
-	}
-
-
-	public void storeDocumento() {
-		try{
-			DocumentosExample documentosExample=new DocumentosExample();
+			/*
 			documentosExample.storeDocumento();
 
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-	}
-
-
-	public void openViews() {
-		try{
-			ViewsExample viewsExample=new ViewsExample();
 			viewsExample.openArtigos();
 			view=viewsExample.openDocumentos();
 
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-	}
-
-
-	public void backgroungPrint() {
-		try{
-			PrintExample printExample=new PrintExample();
 			printExample.backgroundProcess(view,1);
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-	}
-
-
-	public void normalPrint() {
-		try{
-			PrintExample printExample=new PrintExample();
 			printExample.normalProcess(view,1);
+			*/
 
-		}catch(Exception e){
-			e.printStackTrace();
 		}
 
 	}
-
-
 
 
 }
