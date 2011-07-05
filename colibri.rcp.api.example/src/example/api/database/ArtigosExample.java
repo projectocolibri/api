@@ -23,23 +23,28 @@ public class ArtigosExample {
 	public void iterateArtigo() {
 		try{
 
+			/*
+			 * Carrega todos os artigos da base de dados
+			 * Apenas o campo CODIGO e' devolvido por defeito na coleccao
+			 * E' necessario carregar o artigo para aceder aos outros campos
+			 */
 			Collection<Artigos> artigos=DatabaseManager.getArtigosCollection();
 
+			//itera a coleccao de artigos
 			Iterator<Artigos> iterator=artigos.iterator();
 			while(iterator.hasNext()){
 
-				/*
-				 * Apenas o campo CHAVE e' devolvido por defeito na coleccao
-				 * E' necessario carregar o artigo para aceder aos outros campos
-				 */
+				//carrega o artigo da base de dados
 				Artigos artigo=DatabaseManager.loadArtigos(iterator.next().getCodigo());
 
+				//saca os campos do artigo
 				System.out.println(artigo.getCodigo());
 				System.out.println(artigo.getDescricao());
 				System.out.println(artigo.getFamilia());
-				//primeiro elemento
+
+				//saca a primeira unidade de medida
 				System.out.println(artigo.getUnidades().iterator().next().getUnidademedida());
-				//primeiro elemento
+				//saca o primeiro preco
 				System.out.println(artigo.getPrecos().iterator().next().getPrecopvp());
 
 			}
@@ -59,6 +64,7 @@ public class ArtigosExample {
 
 			Artigos artigo=createArtigo("1");
 
+			//grava o artigo na base de dados
 			return !DatabaseManager.storeArtigos(artigo,
 				artigo.getUnidades(),
 				artigo.getPrecos(),
@@ -81,9 +87,12 @@ public class ArtigosExample {
 	public Artigos createArtigo(String codigo) {
 		try{
 
+			//cria objecto artigo
 			Artigos artigo=new Artigos();
+			//inicializa o objecto
 			artigo.init(codigo);
 
+			//adiciona uma unidade de medida
 			artigo.addUnidades(createUnidademedida(artigo, "PK"));
 
 			return artigo;
@@ -103,9 +112,13 @@ public class ArtigosExample {
 	public Artigosunidades createUnidademedida(Artigos artigo, String codigo) {
 		try{
 
+			//cria objecto unidade
 			Artigosunidades unidades=new Artigosunidades();
-			//linha comeca em 1
+
+			//inicializa o numero da linha (comeca em 1)
 			unidades.setNumerolinha(artigo.getUnidades().size()+1);
+
+			//inicializa a unidade de medida
 			unidades.setUnidademedida(DatabaseManager.loadUnidadesmedida(codigo));
 
 			return unidades;

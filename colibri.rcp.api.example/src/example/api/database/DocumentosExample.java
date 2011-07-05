@@ -29,11 +29,14 @@ public class DocumentosExample {
 		try{
 
 			Entidadesdocumentos documento=createDocumento();
+
 			/*
+			//altera a serie do documento
 			documento.setSeriedocumento(DatabaseManager.loadDocumentosseries(
 					Documentosseries.generateKey(documento.getTipodocumento().getCodigo(), "0000")));
 			*/
 
+			//grava o documento na base de dados
 			return !DatabaseManager.storeEntidadesdocumentos(documento,
 				documento.getLinhasdocumento(),
 				documento.getTabelaiva(),
@@ -55,20 +58,20 @@ public class DocumentosExample {
 	public Entidadesdocumentos createDocumento() {
 		try{
 
+			//cria objecto documento
 			Entidadesdocumentos documento=new Entidadesdocumentos(DatabaseManager.loadDocumentostipos("CFA"));
+
+			//carrega uma entidade do tipo CLIENTE
 			Entidades entidade=DatabaseManager.loadEntidades(Entidades.generateKey("CL", 1));
+			//inicializa a entidade do documento
 			documento.setEntidade(entidade);
 
-			Entidadesdocumentoslinhas linha=createLinha(1, entidade, DatabaseManager.loadArtigos("1"));
-			//actualiza a quantidade
-			linha.setQuantidade(BigDecimal.valueOf(5));
-			EntidadesdocumentoslinhasProcess.process(documento, linha, TableVARS.entidadesdocumentoslinhas_quantidade);
-			//actualiza o preco
-			linha.setPreco(BigDecimal.valueOf(100));
-			EntidadesdocumentoslinhasProcess.process(documento, linha, TableVARS.entidadesdocumentoslinhas_preco);
-			documento.addLinhasdocumento(linha);
+			//cria as linhas do documento
+			createLinhasdocumento(documento, entidade);
 
+			//processa totais e tabela de iva
 			EntidadesdocumentosProcess.process(documento, documento.getLinhasdocumento());
+			//efectua processamentos adicionais
 			EntidadesdocumentosProcess.postProcess(documento, documento.getLinhasdocumento(), false);
 
 			return documento;
@@ -83,14 +86,45 @@ public class DocumentosExample {
 
 
 	/**
-	 * Cria uma nova linha
+	 * Cria as linhas do documento
 	 */
-	public Entidadesdocumentoslinhas createLinha(int numerolinha, Entidades entidade, Artigos artigo) {
+	public void createLinhasdocumento(Entidadesdocumentos documento, Entidades entidade) {
 		try{
 
-			Entidadesdocumentoslinhas linha=new Entidadesdocumentoslinhas(entidade, entidade.getDescontofactura());
-			linha.setNumerolinha(numerolinha);
+			//cria uma nova linha
+			Entidadesdocumentoslinhas linha=createLinha(documento, entidade, DatabaseManager.loadArtigos("1"));
 
+			//actualiza a quantidade
+			linha.setQuantidade(BigDecimal.valueOf(5));
+			EntidadesdocumentoslinhasProcess.process(documento, linha, TableVARS.entidadesdocumentoslinhas_quantidade);
+
+			//actualiza o preco
+			linha.setPreco(BigDecimal.valueOf(100));
+			EntidadesdocumentoslinhasProcess.process(documento, linha, TableVARS.entidadesdocumentoslinhas_preco);
+
+			//adiciona a linha ao documento
+			documento.addLinhasdocumento(linha);
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+	}
+
+
+	/**
+	 * Cria uma nova linha
+	 */
+	public Entidadesdocumentoslinhas createLinha(Entidadesdocumentos documento, Entidades entidade, Artigos artigo) {
+		try{
+
+			//cria objecto linha
+			Entidadesdocumentoslinhas linha=new Entidadesdocumentoslinhas(entidade, entidade.getDescontofactura());
+
+			//inicializa o numero da linha (comeca em 1)
+			linha.setNumerolinha(documento.getLinhasdocumento().size()+1);
+
+			//inicializa elementos dependentes da entidade
 			EntidadesdocumentoslinhasRules.linha(linha, artigo, entidade);
 
 			return linha;
