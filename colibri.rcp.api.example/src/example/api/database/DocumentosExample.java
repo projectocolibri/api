@@ -2,85 +2,23 @@
  * 2008-2011 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
-package example.api;
+package example.api.database;
 
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.Iterator;
 
 import rcpcolibri.business.process.EntidadesdocumentosProcess;
 import rcpcolibri.business.process.EntidadesdocumentoslinhasProcess;
 import rcpcolibri.business.rules.EntidadesdocumentoslinhasRules;
 import rcpcolibri.dao.database.DatabaseManager;
 import rcpcolibri.dao.model.classes.Artigos;
-import rcpcolibri.dao.model.classes.Artigosunidades;
 import rcpcolibri.dao.model.classes.Entidades;
 import rcpcolibri.dao.model.classes.Entidadesdocumentos;
 import rcpcolibri.dao.model.classes.Entidadesdocumentoslinhas;
 import rcpcolibri.vars.model.TableVARS;
 
-import com.google.code.magja.model.product.Product;
+public class DocumentosExample {
 
-public class DatabaseExample {
-
-	public DatabaseExample(){
-	}
-
-
-	/**
-	 * Grava um novo artigo
-	 */
-	public boolean storeArtigo() {
-		try{
-			Collection<Artigos> artigos=DatabaseManager.getArtigosCollection();
-			Iterator<Artigos> iterator=artigos.iterator();
-			while(iterator.hasNext()){
-
-				Artigos artigo=iterator.next();
-
-				Product product=new Product();
-				product.setDescription(artigo.getDescricao());
-
-			}
-
-			Artigos artigo=createArtigo("1");
-
-			return !DatabaseManager.storeArtigos(artigo,
-				artigo.getUnidades(), artigo.getPrecos(), artigo.getComposicao(),
-				artigo.getExistencias(), false).hasErrors();
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-		return false;
-
-	}
-
-
-	/**
-	 * Cria um novo artigo
-	 */
-	public Artigos createArtigo(String codigo) {
-		try{
-
-			Artigos artigo=new Artigos();
-			artigo.init(codigo);
-
-			Artigosunidades unidades=new Artigosunidades();
-			unidades.setNumerolinha(1);
-			unidades.setUnidademedida(DatabaseManager.loadUnidadesmedida("PK"));
-			unidades.setCodigobarras("900");
-			artigo.addUnidades(unidades);
-
-			return artigo;
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-		return null;
-
+	public DocumentosExample(){
 	}
 
 
@@ -122,8 +60,10 @@ public class DatabaseExample {
 			documento.setEntidade(entidade);
 
 			Entidadesdocumentoslinhas linha=createLinha(1, entidade, DatabaseManager.loadArtigos("1"));
+			//actualiza a quantidade
 			linha.setQuantidade(BigDecimal.valueOf(5));
 			EntidadesdocumentoslinhasProcess.process(documento, linha, TableVARS.entidadesdocumentoslinhas_quantidade);
+			//actualiza o preco
 			linha.setPreco(BigDecimal.valueOf(100));
 			EntidadesdocumentoslinhasProcess.process(documento, linha, TableVARS.entidadesdocumentoslinhas_preco);
 			documento.addLinhasdocumento(linha);

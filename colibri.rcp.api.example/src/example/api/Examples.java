@@ -5,6 +5,7 @@
 package example.api;
 
 import rcpcolibri.ui.workbench.views.IView;
+import example.api.database.DocumentosExample;
 
 public class Examples {
 
@@ -27,8 +28,8 @@ public class Examples {
 
 	public void storeDocumento() {
 		try{
-			DatabaseExample databaseExample=new DatabaseExample();
-			databaseExample.storeDocumento();
+			DocumentosExample documentosExample=new DocumentosExample();
+			documentosExample.storeDocumento();
 
 		}catch(Exception e){
 			e.printStackTrace();
