@@ -88,9 +88,7 @@ public class ArtigosExample {
 		try{
 
 			//cria objecto artigo
-			Artigos artigo=new Artigos();
-			//inicializa o objecto
-			artigo.init(codigo);
+			Artigos artigo=new Artigos(codigo);
 
 			//adiciona uma unidade de medida
 			artigo.addUnidades(createUnidademedida(artigo, "PK"));
