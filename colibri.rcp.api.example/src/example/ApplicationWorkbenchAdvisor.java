@@ -9,6 +9,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
+import rcpcolibri.RCPcolibri;
 import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import example.api.Examples;
@@ -44,7 +45,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	public void postStartup() {
 		try{
 			//verificacao interna - PODE SER REMOVIDA
-			//if (RCPcolibri.checkPlugin())
+			if (RCPcolibri.checkPlugin())
 
 			//inicializa o UI
 			if (ColibriGUI.start()){
