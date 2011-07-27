@@ -19,20 +19,15 @@ public class Examples {
 
 	public Examples() {
 
-		//processou o login?
-		//if (LoginExample.processLogin()){
+		//artigosExample.iterateArtigo();
 
-			//artigosExample.iterateArtigo();
+		//documentosExample.storeDocumento();
 
-			//documentosExample.storeDocumento();
+		viewsExample.openArtigos();
+		//view=viewsExample.openDocumentos();
 
-			viewsExample.openArtigos();
-			//view=viewsExample.openDocumentos();
-
-			//printExample.backgroundProcess(view,1);
-			//printExample.normalProcess(view,1);
-
-		//}
+		//printExample.backgroundProcess(view,1);
+		//printExample.normalProcess(view,1);
 
 	}
 
