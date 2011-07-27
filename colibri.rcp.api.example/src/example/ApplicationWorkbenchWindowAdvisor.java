@@ -22,11 +22,8 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 
 	public void preWindowOpen() {
-		getWindowConfigurer().setTitle("RCP Application");
-		getWindowConfigurer().setShowPerspectiveBar(true);
+		getWindowConfigurer().setTitle("Colibri RCP Plugin");
 		getWindowConfigurer().setInitialSize(new Point(800, 600));
-		getWindowConfigurer().setShowCoolBar(true);
-		getWindowConfigurer().setShowStatusLine(true);
 	}
 
 	public void postWindowCreate() {
