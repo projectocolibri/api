@@ -4,6 +4,9 @@
  *******************************************************************************/
 package example;
 
+import org.dma.utils.java.Debug;
+import org.eclipse.jface.action.ICoolBarManager;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
@@ -26,7 +29,20 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	}
 
 
+	protected void fillMenuBar(IMenuManager menuBar) {
+		Debug.info();
+		ColibriGUI.initMenubar(getActionBarConfigurer());
+	}
+
+
+	protected void fillCoolBar(ICoolBarManager coolbar) {
+		Debug.info();
+		//ColibriGUI.initCoolbar(getActionBarConfigurer());
+	}
+
+
 	protected void fillStatusLine(IStatusLineManager statusline) {
+		Debug.info();
 		ColibriGUI.initStatusbar(statusline);
 	}
 
