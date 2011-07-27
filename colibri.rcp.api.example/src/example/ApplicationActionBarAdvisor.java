@@ -37,7 +37,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	protected void fillCoolBar(ICoolBarManager coolbar) {
 		Debug.info();
-		//ColibriGUI.initCoolbar(getActionBarConfigurer());
+		ColibriGUI.initCoolbar(getActionBarConfigurer());
 	}
 
 

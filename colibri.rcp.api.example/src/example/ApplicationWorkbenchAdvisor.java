@@ -12,6 +12,7 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import example.api.Examples;
+import example.api.LoginExample;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
@@ -38,6 +39,10 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public void preStartup() {
+		//processou o login?
+		if (LoginExample.processLogin()){
+		}
+
 	}
 
 

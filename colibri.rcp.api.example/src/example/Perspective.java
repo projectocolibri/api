@@ -9,7 +9,7 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 public class Perspective implements IPerspectiveFactory {
 
-	public static final String ID = "Perspective";
+	public static final String ID = "ColibriPerspective";
 
 	public void createInitialLayout(IPageLayout layout) {
 		layout.setEditorAreaVisible(false);

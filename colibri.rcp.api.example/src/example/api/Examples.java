@@ -20,7 +20,7 @@ public class Examples {
 	public Examples() {
 
 		//processou o login?
-		if (LoginExample.processLogin()){
+		//if (LoginExample.processLogin()){
 
 			//artigosExample.iterateArtigo();
 
@@ -32,7 +32,7 @@ public class Examples {
 			//printExample.backgroundProcess(view,1);
 			//printExample.normalProcess(view,1);
 
-		}
+		//}
 
 	}
 
