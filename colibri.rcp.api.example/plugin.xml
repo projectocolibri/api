@@ -25,4 +25,12 @@
       </product>
    </extension>
    
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+				name="Example"
+				class="example.ExamplePerspective"
+				id="ExamplePerspective">
+		</perspective>
+	</extension>
+
 </plugin>
