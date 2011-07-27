@@ -29,7 +29,7 @@ public class Application implements IApplication {
 
 		Display display = PlatformUI.createDisplay();
 
-		try{
+		try {
 			//verificacao interna - PODE SER REMOVIDA
 			if (RCPcolibri.checkPlugin()){
 
