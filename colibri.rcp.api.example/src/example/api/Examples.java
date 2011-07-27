@@ -22,17 +22,15 @@ public class Examples {
 		//processou o login?
 		if (LoginExample.processLogin()){
 
-			artigosExample.iterateArtigo();
+			//artigosExample.iterateArtigo();
 
-			/*
-			documentosExample.storeDocumento();
+			//documentosExample.storeDocumento();
 
 			viewsExample.openArtigos();
-			view=viewsExample.openDocumentos();
+			//view=viewsExample.openDocumentos();
 
-			printExample.backgroundProcess(view,1);
-			printExample.normalProcess(view,1);
-			*/
+			//printExample.backgroundProcess(view,1);
+			//printExample.normalProcess(view,1);
 
 		}
 
