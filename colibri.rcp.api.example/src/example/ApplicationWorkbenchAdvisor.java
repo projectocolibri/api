@@ -9,6 +9,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
+import rcpcolibri.core.language.Language;
 import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import rcpcolibri.ui.workbench.perspectives.ColibriPerspective;
@@ -30,12 +31,12 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	public void initialize(IWorkbenchConfigurer configurer) {
 		super.initialize(configurer);
 
-		//configura o save & restore do workbench
+		//configura o save & restore
 		configurer.setSaveAndRestore(false);
-
-		//activa keyboard bindings
-		WorkbenchHelper.activateKeyBindings();
-
+		//configura o workbench
+		WorkbenchHelper.configureWorkbench();
+		//inicializa locale
+		Language.applyLocale();
 	}
 
 
@@ -43,39 +44,26 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		//processou o login?
 		if (LoginExample.processLogin()){
 		}
-
 	}
 
 
 	public void postStartup() {
-		try{
-			//verificacao interna - PODE SER REMOVIDA
-			//if (RCPcolibri.checkPlugin())
+		//verificacao interna - PODE SER REMOVIDA
+		//if (RCPcolibri.checkPlugin())
 
-			//inicializa o UI
-			if (ColibriGUI.start()){
+		//inicializa o UI
+		if (ColibriGUI.start()){
 
-				new Examples();
+			new Examples();
 
-			}
-
-		}catch(Exception e){
-			e.printStackTrace();
 		}
 	}
 
 
 	public final boolean preShutdown() {
-		try{
-			//termina o UI
-			ColibriGUI.stop();
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-		return true;
-
+		//termina o UI
+		return ColibriGUI.stop();
 	}
+
 
 }
