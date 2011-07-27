@@ -9,7 +9,6 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-import rcpcolibri.core.language.Language;
 import rcpcolibri.ui.ColibriGUI;
 import example.api.Examples;
 
@@ -31,12 +30,8 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public void initialize(IWorkbenchConfigurer configurer) {
-		//configura o save & restore
-		configurer.setSaveAndRestore(true);
 		//configura o workbench
-		ColibriGUI.configureWorkbench();
-		//inicializa locale
-		Language.applyLocale();
+		ColibriGUI.configureWorkbench(configurer);
 	}
 
 
