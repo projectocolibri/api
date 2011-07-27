@@ -24,14 +24,5 @@
          </property>
       </product>
    </extension>
-
-   <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            name="Perspective"
-            class="example.Perspective"
-            id="ColibriPerspective">
-      </perspective>
-   </extension>
    
 </plugin>

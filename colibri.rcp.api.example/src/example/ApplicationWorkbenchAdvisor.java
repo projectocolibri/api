@@ -11,6 +11,7 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
+import rcpcolibri.ui.workbench.perspectives.ColibriPerspective;
 import example.api.Examples;
 import example.api.LoginExample;
 
@@ -22,7 +23,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
 
 	public String getInitialWindowPerspectiveId() {
-		return Perspective.ID;
+		return ColibriPerspective.ID;
 	}
 
 
