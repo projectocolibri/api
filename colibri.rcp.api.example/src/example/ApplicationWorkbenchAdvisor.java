@@ -4,6 +4,7 @@
  *******************************************************************************/
 package example;
 
+import org.dma.utils.java.Debug;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
@@ -16,12 +17,17 @@ import rcpcolibri.ui.workbench.perspectives.ColibriPerspective;
 import example.api.Examples;
 import example.api.LoginExample;
 
+/**
+ * An action bar advisor is responsible for creating, adding, and disposing of
+ * the actions added to a workbench window. Each window will be populated with
+ * new actions.
+ */
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
-			IWorkbenchWindowConfigurer configurer) {
+	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 		return new ApplicationWorkbenchWindowAdvisor(configurer);
 	}
+
 
 	public String getInitialWindowPerspectiveId() {
 		return ColibriPerspective.ID;
@@ -41,19 +47,15 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	public void preStartup() {
 		//processou o login?
 		if (LoginExample.processLogin()){
+			Debug.info("### LOGGED IN ###");
 		}
 	}
 
 
 	public void postStartup() {
-		//verificacao interna - PODE SER REMOVIDA
-		//if (RCPcolibri.checkPlugin())
-
 		//inicializa o UI
 		if (ColibriGUI.start()){
-
 			new Examples();
-
 		}
 	}
 

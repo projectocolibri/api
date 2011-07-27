@@ -10,6 +10,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
+import rcpcolibri.ApplicationWorkbenchAdvisor;
+import rcpcolibri.RCPcolibri;
+
 /**
  * This class controls all aspects of the application's execution
  */
@@ -21,16 +24,31 @@ public class Application implements IApplication {
 	public Object start(IApplicationContext context) {
 
 		System.out.println(Activator.PLUGIN_ID+" APPLICATION <start>");
+
+		Integer exitCode = IApplication.EXIT_OK;
+
 		Display display = PlatformUI.createDisplay();
-		try {
-			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
-			if (returnCode == PlatformUI.RETURN_RESTART) {
-				return IApplication.EXIT_RESTART;
+
+		try{
+			//verificacao interna - PODE SER REMOVIDA
+			if (RCPcolibri.checkPlugin()){
+
+				//cria workbench atraves de ApplicationWorkbenchAdvisor
+				if (PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor()) == PlatformUI.RETURN_RESTART)
+					exitCode = IApplication.EXIT_RESTART;
+
 			}
-			return IApplication.EXIT_OK;
+
+		}catch(Exception e){
+			e.printStackTrace();
 		} finally {
 			display.dispose();
 		}
+
+		System.out.println(Activator.PLUGIN_ID+" APPLICATION <exit>: "+exitCode);
+
+		return exitCode;
+
 	}
 
 	/* (non-Javadoc)
