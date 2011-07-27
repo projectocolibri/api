@@ -4,14 +4,14 @@
  *******************************************************************************/
 package example;
 
+import org.dma.utils.java.Debug;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-import rcpcolibri.ApplicationWorkbenchAdvisor;
-import rcpcolibri.RCPcolibri;
+import example.api.LoginExample;
 
 /**
  * This class controls all aspects of the application's execution
@@ -31,7 +31,10 @@ public class Application implements IApplication {
 
 		try {
 			//verificacao interna - PODE SER REMOVIDA
-			if (RCPcolibri.checkPlugin()){
+			//if (RCPcolibri.checkPlugin())
+			//processou o login?
+			if (LoginExample.processLogin()){
+				Debug.info("### LOGGED IN ###");
 
 				//cria workbench atraves de ApplicationWorkbenchAdvisor
 				if (PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor()) == PlatformUI.RETURN_RESTART)

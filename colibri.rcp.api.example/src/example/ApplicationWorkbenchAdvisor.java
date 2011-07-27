@@ -4,7 +4,6 @@
  *******************************************************************************/
 package example;
 
-import org.dma.utils.java.Debug;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
@@ -15,7 +14,6 @@ import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
 import rcpcolibri.ui.workbench.perspectives.ColibriPerspective;
 import example.api.Examples;
-import example.api.LoginExample;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
@@ -45,10 +43,6 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public void preStartup() {
-		//processou o login?
-		if (LoginExample.processLogin()){
-			Debug.info("### LOGGED IN ###");
-		}
 	}
 
 
