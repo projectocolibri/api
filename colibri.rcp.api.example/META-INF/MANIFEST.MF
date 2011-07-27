@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RCP Colibri API Example
 Bundle-SymbolicName: colibri.rcp.api.example;singleton:=true
-Bundle-Version: 1.2.0
+Bundle-Version: 1.2.1
 Bundle-Activator: example.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,

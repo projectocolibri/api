@@ -29,8 +29,6 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public void initialize(IWorkbenchConfigurer configurer) {
-		super.initialize(configurer);
-
 		//configura o save & restore
 		configurer.setSaveAndRestore(false);
 		//configura o workbench
