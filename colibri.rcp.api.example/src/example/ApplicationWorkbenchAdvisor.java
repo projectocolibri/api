@@ -27,7 +27,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public String getInitialWindowPerspectiveId() {
-		return ExamplePerspective.ID;
+		return null;
 	}
 
 
