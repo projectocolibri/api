@@ -12,7 +12,6 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import rcpcolibri.core.language.Language;
 import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHelper;
-import rcpcolibri.ui.workbench.perspectives.ColibriPerspective;
 import example.api.Examples;
 
 /**
@@ -28,13 +27,13 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public String getInitialWindowPerspectiveId() {
-		return ColibriPerspective.ID;
+		return ExamplePerspective.ID;
 	}
 
 
 	public void initialize(IWorkbenchConfigurer configurer) {
 		//configura o save & restore
-		configurer.setSaveAndRestore(false);
+		configurer.setSaveAndRestore(true);
 		//configura o workbench
 		WorkbenchHelper.configureWorkbench();
 		//inicializa locale
