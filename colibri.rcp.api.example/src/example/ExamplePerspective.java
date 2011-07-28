@@ -13,7 +13,7 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 import rcpcolibri.core.ExceptionHandler;
 import rcpcolibri.ui.ColibriGUI;
-import rcpcolibri.ui.workbench.helpers.PerspectiveHelper;
+import rcpcolibri.ui.workbench.helpers.WorkbenchHack;
 
 public class ExamplePerspective implements IPerspectiveFactory {
 
@@ -24,12 +24,11 @@ public class ExamplePerspective implements IPerspectiveFactory {
 		try {
 			Debug.info(ID);
 
-			String editorArea = layout.getEditorArea();
 			layout.setEditorAreaVisible(false);
 			layout.setFixed(true);
 
 			layout.addPerspectiveShortcut(ID);
-			PerspectiveHelper.addAllPerspectiveShortcuts(layout);
+			WorkbenchHack.addAllPerspectiveShortcuts(layout);
 
 			ColibriGUI.getCoolbar().put(ID, new ToolBarContributionItem[]{});
 			ColibriGUI.getMenubar().put(ID, new LinkedHashMap());
