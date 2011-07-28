@@ -22,7 +22,6 @@ import rcpcolibri.ui.workbench.ColibriCoolbar;
 import rcpcolibri.ui.workbench.ColibriMenubar;
 import rcpcolibri.ui.workbench.commands.OpenPreferencePageAction;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHack;
-import rcpcolibri.vars.gui.IconVARS;
 import rcpcolibri.vars.gui.LabelVARS;
 
 public class ExamplePerspective implements IPerspectiveFactory {
@@ -60,15 +59,9 @@ public class ExamplePerspective implements IPerspectiveFactory {
 		try {
 			ColibriCoolbar coolbar=ColibriGUI.getCoolbar();
 
-			//Preferencias
-			OpenPreferencePageAction preferencePageAction=new OpenPreferencePageAction(coolbar.getWindow());
-			preferencePageAction.setToolTipText(LabelVARS.toolbar_preferencias);
-			preferencePageAction.setImageDescriptor(ColibriGUI.getImageDescriptor(IconVARS.COOLBAR_PARAMETROS));
-			coolbar.getConfigurer().registerGlobalAction(preferencePageAction);
-
 			//Toolbar
 			IToolBarManager toolbar=new ToolBarManager(SWT.FLAT);
-			toolbar.add(preferencePageAction);
+			toolbar.add(coolbar.preferencePageAction());
 
 			coolbar.put(ID, new ToolBarContributionItem[]{
 				new ToolBarContributionItem(toolbar,ID)});
