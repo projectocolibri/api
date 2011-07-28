@@ -4,8 +4,8 @@
  *******************************************************************************/
 package example;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.dma.utils.java.Debug;
 import org.eclipse.jface.action.IAction;
@@ -19,6 +19,7 @@ import org.eclipse.ui.IPerspectiveFactory;
 import rcpcolibri.core.ExceptionHandler;
 import rcpcolibri.ui.ColibriGUI;
 import rcpcolibri.ui.workbench.ColibriCoolbar;
+import rcpcolibri.ui.workbench.ColibriMenuItem;
 import rcpcolibri.ui.workbench.ColibriMenubar;
 import rcpcolibri.ui.workbench.commands.OpenPreferencePageAction;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHack;
@@ -56,37 +57,28 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 	public void buildCoolbar() {
 
-		try {
-			ColibriCoolbar coolbar=ColibriGUI.getCoolbar();
+		ColibriCoolbar coolbar=ColibriGUI.getCoolbar();
 
-			//Toolbar
-			IToolBarManager toolbar=new ToolBarManager(SWT.FLAT);
-			toolbar.add(coolbar.preferencePageAction());
+		//Toolbar
+		IToolBarManager toolbar=new ToolBarManager(SWT.FLAT);
+		toolbar.add(coolbar.preferencePageAction());
 
-			coolbar.put(ID, new ToolBarContributionItem[]{
-				new ToolBarContributionItem(toolbar,ID)});
-
-		} catch (Exception e) {
-			ExceptionHandler.error(e);
-		}
+		coolbar.put(ID, new ToolBarContributionItem[]{
+			new ToolBarContributionItem(toolbar,ID)});
 
 	}
 
 
 	public void buildMenubar() {
 
-		try {
-			ColibriMenubar menubar=ColibriGUI.getMenubar();
+		ColibriMenubar menubar=ColibriGUI.getMenubar();
 
-			Map<String, IAction[]> actions=new LinkedHashMap();
-			actions.put(LabelVARS.menubar_ficheiro,	new IAction[]{
-				new OpenPreferencePageAction(menubar.getWindow())});
+		List<ColibriMenuItem> items=new ArrayList();
 
-			menubar.put(ID, actions);
+		items.add(new ColibriMenuItem(LabelVARS.menubar_ficheiro, new IAction[]{
+			new OpenPreferencePageAction(menubar.getWindow())}));
 
-		} catch (Exception e) {
-			ExceptionHandler.error(e);
-		}
+		menubar.put(ID, items);
 
 	}
 
