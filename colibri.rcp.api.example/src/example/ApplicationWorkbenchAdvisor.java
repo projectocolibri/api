@@ -25,13 +25,13 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public String getInitialWindowPerspectiveId() {
-		return null;
+		return ExamplePerspective.ID;
 	}
 
 
 	public void initialize(IWorkbenchConfigurer configurer) {
 		//configura o workbench
-		ColibriGUI.configureWorkbench(configurer);
+		ColibriGUI.configureWorkbench(configurer, getInitialWindowPerspectiveId());
 	}
 
 
