@@ -30,6 +30,12 @@ public class ExamplePerspective implements IPerspectiveFactory {
 			layout.addPerspectiveShortcut(ID);
 			WorkbenchHack.addAllPerspectiveShortcuts(layout);
 
+			/*
+			 * A perspectiva e' responsavel pela criacao das TOOLBAR e MENUBAR
+			 * Uma vez que a contribuicao tem de ser efectuada em TEMPO REAL
+			 * na criacao da perspectiva, nao existe a possibilidade de efectuar
+			 * o SAVE & RESTORE da mesma
+			 */
 			ColibriGUI.getCoolbar().put(ID, new ToolBarContributionItem[]{});
 			ColibriGUI.getMenubar().put(ID, new LinkedHashMap());
 
