@@ -4,9 +4,9 @@
  *******************************************************************************/
 package example.api;
 
-import org.dma.utils.eclipse.jobs.CustomJob;
-import org.dma.utils.eclipse.jobs.tasks.JobAction;
-import org.dma.utils.eclipse.jobs.tasks.JobTask;
+import org.dma.utils.eclipse.core.jobs.CustomJob;
+import org.dma.utils.eclipse.core.jobs.tasks.JobAction;
+import org.dma.utils.eclipse.core.jobs.tasks.JobTask;
 import org.eclipse.core.runtime.jobs.Job;
 
 import rcpcolibri.core.BIRT.report.BIRTReport;
