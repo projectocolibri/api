@@ -9,7 +9,7 @@ import org.dma.utils.eclipse.jobs.tasks.JobAction;
 import org.dma.utils.eclipse.jobs.tasks.JobTask;
 import org.eclipse.core.runtime.jobs.Job;
 
-import rcpcolibri.core._BIRT.report.BIRTReport;
+import rcpcolibri.core.BIRT.report.BIRTReport;
 import rcpcolibri.core.mappers.filters.FilterMap;
 import rcpcolibri.core.mappers.filters.FilterOperandMap;
 import rcpcolibri.dao.model.classes.Entidadesdocumentos;
