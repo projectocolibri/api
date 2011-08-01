@@ -13,7 +13,7 @@ import rcpcolibri.core.BIRT.report.BIRTReport;
 import rcpcolibri.core.mappers.filters.FilterMap;
 import rcpcolibri.core.mappers.filters.FilterOperandMap;
 import rcpcolibri.dao.model.classes.Entidadesdocumentos;
-import rcpcolibri.ui.workbench.views.IView;
+import rcpcolibri.ui.workbench.views.IBrowserView;
 import rcpcolibri.vars.gui.LabelVARS;
 import rcpcolibri.vars.model.TableVARS;
 
@@ -26,7 +26,7 @@ public class PrintExample {
 	/**
 	 * Processa e imprime
 	 */
-	public void normalProcess(IView view, int numerodocumento) {
+	public void normalProcess(IBrowserView view, int numerodocumento) {
 		try{
 
 			BIRTReport report=initReport(numerodocumento);
@@ -42,7 +42,7 @@ public class PrintExample {
 	/**
 	 * Processa em background e imprime
 	 */
-	public void backgroundProcess(final IView view, int numerodocumento) {
+	public void backgroundProcess(final IBrowserView view, int numerodocumento) {
 		try{
 
 			final BIRTReport report=initReport(numerodocumento);
