@@ -11,7 +11,7 @@ import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
-import rcpcolibri.ui.ColibriGUI;
+import rcpcolibri.ui.ColibriUI;
 
 /**
  * An action bar advisor is responsible for creating, adding, and disposing of
@@ -31,19 +31,19 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		Debug.info();
-		ColibriGUI.initMenubar(getActionBarConfigurer());
+		ColibriUI.initMenubar(getActionBarConfigurer());
 	}
 
 
 	protected void fillCoolBar(ICoolBarManager coolbar) {
 		Debug.info();
-		ColibriGUI.initCoolbar(getActionBarConfigurer());
+		ColibriUI.initCoolbar(getActionBarConfigurer());
 	}
 
 
 	protected void fillStatusLine(IStatusLineManager statusline) {
 		Debug.info();
-		ColibriGUI.initStatusbar(statusline);
+		ColibriUI.initStatusbar(statusline);
 	}
 
 

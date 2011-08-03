@@ -17,7 +17,7 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
 import rcpcolibri.core.ExceptionHandler;
-import rcpcolibri.ui.ColibriGUI;
+import rcpcolibri.ui.ColibriUI;
 import rcpcolibri.ui.workbench.ColibriCoolbar;
 import rcpcolibri.ui.workbench.ColibriMenuItem;
 import rcpcolibri.ui.workbench.ColibriMenubar;
@@ -57,7 +57,7 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 	public void buildCoolbar() {
 
-		ColibriCoolbar coolbar=ColibriGUI.getCoolbar();
+		ColibriCoolbar coolbar=ColibriUI.getCoolbar();
 
 		//Toolbar
 		IToolBarManager toolbar=new ToolBarManager(SWT.FLAT);
@@ -71,7 +71,7 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 	public void buildMenubar() {
 
-		ColibriMenubar menubar=ColibriGUI.getMenubar();
+		ColibriMenubar menubar=ColibriUI.getMenubar();
 
 		List<ColibriMenuItem> items=new ArrayList();
 
