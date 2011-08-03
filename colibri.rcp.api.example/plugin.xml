@@ -27,9 +27,10 @@
    
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective
-				name="Example"
-				class="example.ExamplePerspective"
-				id="ExamplePerspective">
+        class="example.ExamplePerspective"
+        icon="icons/plug.png"
+        id="ExamplePerspective"
+        name="Example">
 		</perspective>
 	</extension>
 
