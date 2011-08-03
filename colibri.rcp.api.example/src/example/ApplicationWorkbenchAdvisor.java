@@ -10,7 +10,7 @@ import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import rcpcolibri.Application;
-import rcpcolibri.ui.ColibriGUI;
+import rcpcolibri.ui.ColibriUI;
 import example.api.Examples;
 
 /**
@@ -42,7 +42,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	public void postStartup() {
 		//inicializa o UI
-		if (ColibriGUI.start()){
+		if (ColibriUI.start()){
 			new Examples();
 		}
 	}
@@ -50,7 +50,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	public final boolean preShutdown() {
 		//termina o UI
-		return ColibriGUI.stop();
+		return ColibriUI.stop();
 	}
 
 
