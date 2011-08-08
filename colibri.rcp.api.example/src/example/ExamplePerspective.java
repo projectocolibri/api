@@ -55,6 +55,7 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 	}
 
+
 	public void buildCoolbar() {
 
 		ColibriCoolbar coolbar=ColibriUI.getCoolbar();
