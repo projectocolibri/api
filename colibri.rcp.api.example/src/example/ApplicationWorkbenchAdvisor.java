@@ -9,7 +9,6 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-import rcpcolibri.Application;
 import rcpcolibri.ui.ColibriUI;
 import example.api.Examples;
 
@@ -33,7 +32,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	public void initialize(IWorkbenchConfigurer configurer) {
 		//configura o workbench
-		Application.configure(configurer, getInitialWindowPerspectiveId());
+		rcpcolibri.Application.configure(configurer, getInitialWindowPerspectiveId());
 	}
 
 
