@@ -76,9 +76,8 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 		List<ColibriMenuItem> items=new ArrayList();
 
-		items.add(new ColibriMenuItem(
-			LabelVARS.menubar_ficheiro, new IAction[]{
-				new OpenPreferencePageAction(menubar.getWindow())}));
+		items.add(new ColibriMenuItem(LabelVARS.menubar_ficheiro, new IAction[]{
+			new OpenPreferencePageAction(menubar.getWindow())}));
 
 		menubar.put(ID, items);
 
