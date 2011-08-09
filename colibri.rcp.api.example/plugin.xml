@@ -34,4 +34,13 @@
 		</perspective>
 	</extension>
 
+	<extension point="org.eclipse.ui.views">
+		<view
+				allowMultiple="false"
+				class="example.ExampleView"
+				id="ExampleView"
+				name="ExampleView">
+		</view>
+	</extension>
+
 </plugin>

@@ -38,8 +38,8 @@ public class ExamplePerspective implements IColibriPerspective {
 			layout.setFixed(true);
 
 			//vista
-			layout.addView(ViewVARS.ColibriView, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
-			layout.getViewLayout(ViewVARS.ColibriView).setCloseable(false);
+			layout.addView(ExampleView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
+			layout.getViewLayout(ExampleView.ID).setCloseable(false);
 
 			layout.addPerspectiveShortcut(ID);
 			WorkbenchHack.addAllPerspectiveShortcuts(layout);
