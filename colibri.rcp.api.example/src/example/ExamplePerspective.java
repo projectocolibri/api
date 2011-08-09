@@ -60,7 +60,6 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 		ColibriCoolbar coolbar=ColibriUI.getCoolbar();
 
-		//Toolbar
 		IToolBarManager toolbar=new ToolBarManager(SWT.FLAT);
 		toolbar.add(coolbar.preferencePageAction());
 
