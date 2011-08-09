@@ -4,22 +4,14 @@
  *******************************************************************************/
 package example;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dma.utils.java.Debug;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.ToolBarContributionItem;
-import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.swt.SWT;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
 import rcpcolibri.core.ExceptionHandler;
 import rcpcolibri.ui.ColibriUI;
 import rcpcolibri.ui.workbench.ColibriCoolbar;
-import rcpcolibri.ui.workbench.ColibriMenuItem;
 import rcpcolibri.ui.workbench.ColibriMenubar;
 import rcpcolibri.ui.workbench.commands.OpenPreferencePageAction;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHack;
@@ -60,11 +52,9 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 		ColibriCoolbar coolbar=ColibriUI.getCoolbar();
 
-		IToolBarManager toolbar=new ToolBarManager(SWT.FLAT);
-		toolbar.add(coolbar.preferencePageAction());
-
-		coolbar.put(ID, new ToolBarContributionItem[]{
-			new ToolBarContributionItem(toolbar,ID)});
+		coolbar.add(ID, "Colibri",
+			new IAction[]{
+			coolbar.preferencePageAction()});
 
 	}
 
@@ -73,12 +63,8 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 		ColibriMenubar menubar=ColibriUI.getMenubar();
 
-		List<ColibriMenuItem> items=new ArrayList();
-
-		items.add(new ColibriMenuItem(LabelVARS.menubar_ficheiro, new IAction[]{
-			new OpenPreferencePageAction(menubar.getWindow())}));
-
-		menubar.put(ID, items);
+		menubar.add(ID,	LabelVARS.menubar_ficheiro,
+			new IAction[]{new OpenPreferencePageAction(menubar.getWindow())});
 
 	}
 
