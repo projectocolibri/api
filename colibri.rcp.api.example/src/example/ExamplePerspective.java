@@ -67,20 +67,20 @@ public class ExamplePerspective implements IColibriPerspective {
 
 	public List<ColibriMenubarItem> createMenubar(IWorkbenchWindow window) {
 
-		List<ColibriMenubarItem> menuItems=new ArrayList();
+		List<ColibriMenubarItem> items=new ArrayList();
 
 		OpenViewAction openViewAction=new OpenViewAction(ViewVARS.ArtigosFicheiroView);
 		openViewAction.setText(LabelVARS.menu_artigos_ficheiro);
 		openViewAction.setImageDescriptor(ColibriUI.getImageDescriptor(IconVARS.COOLBAR_ARTIGOS_FICHEIRO));
 
-		menuItems.add(new ColibriMenubarItem(
+		items.add(new ColibriMenubarItem(
 			LabelVARS.menubar_ficheiro,
 			new IAction[]{
 			new OpenPreferencePageAction(window),
 			new ResetPerspectiveAction(window),
 			openViewAction}));
 
-		return menuItems;
+		return items;
 
 	}
 
