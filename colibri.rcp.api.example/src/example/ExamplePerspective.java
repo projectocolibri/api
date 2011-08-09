@@ -54,7 +54,7 @@ public class ExamplePerspective implements IPerspectiveFactory {
 
 		coolbar.add(ID, "Colibri",
 			new IAction[]{
-			coolbar.preferencePageAction()});
+			new OpenPreferencePageAction(coolbar.getWindow())});
 
 	}
 
