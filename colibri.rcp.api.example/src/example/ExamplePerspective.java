@@ -4,14 +4,18 @@
  *******************************************************************************/
 package example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.dma.utils.java.Debug;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IWorkbenchWindow;
 
 import rcpcolibri.core.ExceptionHandler;
 import rcpcolibri.ui.ColibriUI;
-import rcpcolibri.ui.workbench.ColibriCoolbar;
-import rcpcolibri.ui.workbench.ColibriMenubar;
+import rcpcolibri.ui.workbench.bars.coolbar.ColibriCoolbarItem;
+import rcpcolibri.ui.workbench.bars.menubar.ColibriMenubarItem;
 import rcpcolibri.ui.workbench.commands.OpenPreferencePageAction;
 import rcpcolibri.ui.workbench.commands.ResetPerspectiveAction;
 import rcpcolibri.ui.workbench.helpers.WorkbenchHack;
@@ -47,31 +51,42 @@ public class ExamplePerspective implements IColibriPerspective {
 	}
 
 
-	public void buildCoolbar() {
 
-		ColibriCoolbar coolbar=ColibriUI.getCoolbar();
+	//IColibriPerspective
+	public List<ColibriCoolbarItem> createCoolbar(IWorkbenchWindow window){
 
-		coolbar.add(ID, "Colibri",
-			new IAction[]{
-			new OpenPreferencePageAction(coolbar.getWindow())});
+		List<ColibriCoolbarItem> items=new ArrayList();
+
+		items.add(new ColibriCoolbarItem("Colibri", new IAction[]{
+			new OpenPreferencePageAction(window)}));
+
+		return items;
 
 	}
 
 
-	public void buildMenubar() {
+	public List<ColibriMenubarItem> createMenubar(IWorkbenchWindow window) {
 
-		ColibriMenubar menubar=ColibriUI.getMenubar();
+		List<ColibriMenubarItem> menuItems=new ArrayList();
 
 		OpenViewAction openViewAction=new OpenViewAction(ViewVARS.ArtigosFicheiroView);
 		openViewAction.setText(LabelVARS.menu_artigos_ficheiro);
 		openViewAction.setImageDescriptor(ColibriUI.getImageDescriptor(IconVARS.COOLBAR_ARTIGOS_FICHEIRO));
 
-		menubar.add(ID,	LabelVARS.menubar_ficheiro,
+		menuItems.add(new ColibriMenubarItem(
+			LabelVARS.menubar_ficheiro,
 			new IAction[]{
-			new OpenPreferencePageAction(menubar.getWindow()),
-			new ResetPerspectiveAction(menubar.getWindow()),
-			openViewAction});
+			new OpenPreferencePageAction(window),
+			new ResetPerspectiveAction(window),
+			openViewAction}));
 
+		return menuItems;
+
+	}
+
+
+	public String getId() {
+		return ID;
 	}
 
 
