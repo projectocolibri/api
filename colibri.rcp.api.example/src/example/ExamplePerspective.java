@@ -41,7 +41,7 @@ public class ExamplePerspective implements IColibriPerspective {
 			layout.addView(ExampleView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
 			layout.getViewLayout(ExampleView.ID).setCloseable(false);
 
-			layout.addPerspectiveShortcut(ID);
+			//layout.addPerspectiveShortcut(ID);
 			WorkbenchHack.addAllPerspectiveShortcuts(layout);
 
 		} catch (Exception e) {
