@@ -62,7 +62,6 @@ public class ViewsExample {
 
 	/**
 	 * Abre pagina de preferencias
-	 * NAO DISPONIVEL!
 	 */
 	public void openPreferences() {
 		try{
