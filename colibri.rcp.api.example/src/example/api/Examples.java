@@ -10,7 +10,7 @@ import example.api.database.DocumentosExample;
 
 public class Examples {
 
-	private IView view;
+	private final IView view;
 
 	private final ArtigosExample artigosExample=new ArtigosExample();
 	private final DocumentosExample documentosExample=new DocumentosExample();
@@ -28,7 +28,7 @@ public class Examples {
 		/*
 		 * Exemplos de interface
 		 */
-		viewsExample.openArtigos();
+		view=viewsExample.openArtigos();
 		//view=viewsExample.openDocumentos();
 
 		/*
