@@ -19,13 +19,21 @@ public class Examples {
 
 	public Examples() {
 
+		/*
+		 * Exemplos de base de dados
+		 */
 		//artigosExample.iterateArtigo();
-
 		//documentosExample.storeDocumento();
 
+		/*
+		 * Exemplos de interface
+		 */
 		viewsExample.openArtigos();
 		//view=viewsExample.openDocumentos();
 
+		/*
+		 * Exemplos de processos
+		 */
 		//printExample.backgroundProcess(view,1);
 		//printExample.normalProcess(view,1);
 
