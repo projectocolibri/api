@@ -85,6 +85,11 @@ public class ExamplePerspective implements IColibriPerspective {
 	}
 
 
+	public boolean saveOnClose() {
+		return true;
+	}
+
+
 	public String getId() {
 		return ID;
 	}
