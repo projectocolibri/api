@@ -33,7 +33,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		//configura o workbench
 		rcpcolibri.Application.configure(configurer);
 		//regista perspectivas
-		ColibriUI.register(new ExamplePerspective());
+		ColibriUI.registerPerspective(new ExamplePerspective());
 	}
 
 
