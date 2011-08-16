@@ -17,10 +17,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="colibri.rcp.example.application"
-            name="RCP Colibri Magento">
+            name="RCP Colibri API Example">
          <property
                name="appName"
-               value="RCP Colibri Magento">
+               value="RCP Colibri API Example">
          </property>
       </product>
    </extension>
