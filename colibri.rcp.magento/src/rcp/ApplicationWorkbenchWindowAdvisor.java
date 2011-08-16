@@ -25,7 +25,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
 
 	public void preWindowOpen() {
-		getWindowConfigurer().setTitle("Colibri "+RCPcolibri.VERSAO_PROJECTO+" - Magento");
+		getWindowConfigurer().setTitle("Colibri "+RCPcolibri.VERSAO_PROJECTO);
 		getWindowConfigurer().setInitialSize(new Point(800, 600));
 		getWindowConfigurer().setShowPerspectiveBar(true);
 	}
