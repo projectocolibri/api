@@ -38,8 +38,8 @@ public class MagentoPerspective implements IColibriPerspective {
 			layout.setFixed(true);
 
 			//vista
-			layout.addView(MagentoView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
-			layout.getViewLayout(MagentoView.ID).setCloseable(false);
+			layout.addView(BrowserView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
+			layout.getViewLayout(BrowserView.ID).setCloseable(false);
 
 			//layout.addPerspectiveShortcut(ID);
 			WorkbenchHack.addOtherPerspectiveShortcuts(ID,layout);

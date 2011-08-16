@@ -18,16 +18,16 @@ import rcpcolibri.ui.ColibriUI;
 import rcpcolibri.ui.workbench.views.IStateSupportView;
 import rcpcolibri.vars.gui.IconVARS;
 
-public class MagentoView extends ViewPart implements IStateSupportView {
+public class BrowserView extends ViewPart implements IStateSupportView {
 
-	public static final String ID = "MagentoView";
+	public static final String ID = "BrowserView";
 
 	private Composite container;
 	private Browser browser;
 
 	public void createPartControl(Composite parent) {
 		try {
-			setPartName("Example");
+			setPartName("Browser");
 			setTitleImage(ColibriUI.getImage(IconVARS.COOLBAR_AJUDA));
 
 			container=new Composite(parent, SWT.NONE);
