@@ -24,7 +24,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public String getInitialWindowPerspectiveId() {
-		return ExamplePerspective.ID;
+		return MagentoPerspective.ID;
 	}
 
 
@@ -32,7 +32,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		//configura o workbench
 		rcpcolibri.Application.configure(configurer);
 		//regista perspectivas
-		ColibriUI.registerPerspective(new ExamplePerspective());
+		ColibriUI.registerPerspective(new MagentoPerspective());
 	}
 
 

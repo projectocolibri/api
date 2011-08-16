@@ -18,9 +18,9 @@ import rcpcolibri.ui.ColibriUI;
 import rcpcolibri.ui.workbench.views.IStateSupportView;
 import rcpcolibri.vars.gui.IconVARS;
 
-public class ExampleView extends ViewPart implements IStateSupportView {
+public class MagentoView extends ViewPart implements IStateSupportView {
 
-	public static final String ID = "ExampleView";
+	public static final String ID = "MagentoView";
 
 	private Composite container;
 	private Browser browser;
