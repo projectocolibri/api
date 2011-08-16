@@ -29,8 +29,8 @@
 		<perspective
         class="rcp.MagentoPerspective"
         icon="icons/plug.png"
-        id="ExamplePerspective"
-        name="Example">
+        id="MagentoPerspective"
+        name="Magento">
 		</perspective>
 	</extension>
 
@@ -38,8 +38,8 @@
 		<view
 				allowMultiple="false"
 				class="rcp.MagentoView"
-				id="ExampleView"
-				name="ExampleView">
+				id="MagentoView"
+				name="MagentoView">
 		</view>
 	</extension>
 
