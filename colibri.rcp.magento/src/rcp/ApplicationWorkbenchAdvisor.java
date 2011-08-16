@@ -32,7 +32,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		//configura o workbench
 		rcpcolibri.Application.configure(configurer);
 		//regista perspectivas
-		ColibriUI.registerPerspective(new MagentoPerspective());
+		ColibriUI.register(new MagentoPerspective());
 	}
 
 
