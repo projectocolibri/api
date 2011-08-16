@@ -16,18 +16,18 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="colibri.rcp.example.application"
-            name="RCP Colibri API Example">
+            application="colibri.rcp.magento.application"
+            name="RCP Colibri Magento">
          <property
                name="appName"
-               value="RCP Colibri API Example">
+               value="RCP Colibri Magento">
          </property>
       </product>
    </extension>
    
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective
-        class="rcp.ExamplePerspective"
+        class="rcp.MagentoPerspective"
         icon="icons/plug.png"
         id="ExamplePerspective"
         name="Example">
@@ -37,7 +37,7 @@
 	<extension point="org.eclipse.ui.views">
 		<view
 				allowMultiple="false"
-				class="rcp.ExampleView"
+				class="rcp.MagentoView"
 				id="ExampleView"
 				name="ExampleView">
 		</view>

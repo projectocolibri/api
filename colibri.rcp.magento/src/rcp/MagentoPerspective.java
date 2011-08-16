@@ -25,9 +25,9 @@ import rcpcolibri.vars.gui.IconVARS;
 import rcpcolibri.vars.gui.LabelVARS;
 import rcpcolibri.vars.rcp.ViewVARS;
 
-public class ExamplePerspective implements IColibriPerspective {
+public class MagentoPerspective implements IColibriPerspective {
 
-	public static final String ID = "ExamplePerspective";
+	public static final String ID = "MagentoPerspective";
 
 	public void createInitialLayout(IPageLayout layout) {
 
@@ -38,8 +38,8 @@ public class ExamplePerspective implements IColibriPerspective {
 			layout.setFixed(true);
 
 			//vista
-			layout.addView(ExampleView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
-			layout.getViewLayout(ExampleView.ID).setCloseable(false);
+			layout.addView(MagentoView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
+			layout.getViewLayout(MagentoView.ID).setCloseable(false);
 
 			//layout.addPerspectiveShortcut(ID);
 			WorkbenchHack.addOtherPerspectiveShortcuts(ID,layout);

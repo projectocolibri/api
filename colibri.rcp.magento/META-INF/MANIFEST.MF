@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: RCP Colibri API Example
-Bundle-SymbolicName: colibri.rcp.example;singleton:=true
+Bundle-Name: RCP Colibri Magento
+Bundle-SymbolicName: colibri.rcp.magento;singleton:=true
 Bundle-Version: 1.2.2
 Bundle-Activator: rcp.Activator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
