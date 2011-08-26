@@ -13,6 +13,5 @@ Detailed information on how to install the API.
   # Checkout all the projects on this repository; http://projectocolibri.googlecode.com/svn/
   # Download all the files from the DOWNLOADS page; http://code.google.com/p/projectocolibri/downloads/list
   # Unpack the PLUGINS.RAR file to your Eclipse DROPINS folder (\eclipse\dropins)
-  # Inside the DROPINS folder, *UNPACK the colibri.rcp.? JAR* into a folder with the SAME NAME. Delete the colibri.rcp.? JAR.
   # Restart Eclipse; You should have NO errors
-  # Run colibri.rcp.api.example PRODUCT; This is an RCP project that uses the Colibri Plugin API
+  # Run colibri.rcp.example PRODUCT; This is an RCP project that uses the Colibri Plugin API
