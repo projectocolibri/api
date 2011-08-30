@@ -10,7 +10,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import rcp.colibri.core.vars.gui.IconVARS;
-import rcp.magento.RCPMagento;
+import rcp.magento.dao.MagentoDatabase;
 
 public class MagentoListAction extends Action implements IWorkbenchAction {
 
@@ -24,7 +24,15 @@ public class MagentoListAction extends Action implements IWorkbenchAction {
 
 		Debug.info(getText());
 
-		RCPMagento.listTest();
+		try{
+			// Pendente - http://code.google.com/p/magja/issues/detail?id=40
+			//MagentoDatabase.getCategoryManager().listCategories();
+			MagentoDatabase.getProductManager().listProducts();
+			MagentoDatabase.getCustomerManager().listCustomers();
+
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 
 	}
 
