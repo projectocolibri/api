@@ -8,7 +8,6 @@ import org.dma.utils.java.Debug;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.example.ArtigosExample;
 import rcp.example.DocumentosExample;
 
@@ -35,7 +34,7 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 			documentosExample.createDocumento("CFA",null);
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 	}
 

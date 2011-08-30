@@ -12,7 +12,6 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 import rcp.colibri.RCPcolibri;
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.login.ColibriLogin;
 import rcp.colibri.core.security.LicenceManager;
 import rcp.colibri.core.vars.database.DatanucleusVARS;
@@ -136,7 +135,7 @@ public class Application implements IApplication {
 			return shell.getExitAction();
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 
 		return LoginShell.ACTION_EXIT;
