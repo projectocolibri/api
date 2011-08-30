@@ -33,8 +33,11 @@ public class MagentoLoginAction extends Action implements IWorkbenchAction {
 				return;
 			}
 			/*
-			 * Create a ROLE and USER with full access under
-			 * Magento -> System -> Web Services
+			 * The SOAP parameters must be created in Magento
+			 * 1) Create an "admin" ROLE under System -> Web Services -> Roles
+			 * and grant access to all the resources
+			 * 2) Create an API USER under System -> Web Services -> Users
+			 * and assign the created role to the new user
 			 */
 			if (MagentoDatabase.initialize(new SoapConfig("colibri7","colibri7",
 					RCPMagento.MAGENTO_API_URL))){
