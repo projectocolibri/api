@@ -113,7 +113,7 @@ public class ReportExample {
 				new FilterMap(TableVARS.entidadesdocumentos).
 					addFieldRule(TableVARS.entidadesdocumentos_key,	FilterMap.OPERATORS.MATH.EQUALS_TO.symbol,
 					new FilterOperandMap(Entidadesdocumentos.generateKey("CFA","2011",numerodocumento),	FilterOperandMap.TYPE_VALUE)),
-				new BIRTEmailParameters(new EmailAddress[]{new EmailAddress("marcolopes@netc.pt", "Marco Lopes")},
+				new BIRTEmailParameters(new EmailAddress[]{new EmailAddress("marcolopes@projectocolibri.com", "Marco Lopes")},
 					"Envio de documento "+numerodocumento));
 
 			return report;
