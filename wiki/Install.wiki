@@ -17,4 +17,4 @@ Detailed information on how to install the API.
   # Expand the colibri.rcp.example Project; Open colibri.rcp.example.product and click on the "Launch an Eclipse Application" link
 
   NOTES:
-  # All projects are configured to use the Eclipse delta-pack target platform. This enables the EXPORT to be made to multiple platforms at once. If you want to use this feature, please look for for it in another wiki topic.
+  # All projects are configured to use the Eclipse delta-pack target platform. This enables the EXPORT to be made to multiple platforms at once. If you want to use this feature, there is info in another topic.
