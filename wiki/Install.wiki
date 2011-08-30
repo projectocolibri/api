@@ -12,6 +12,6 @@ Detailed information on how to install the API.
   # Install *BIRT Plugin*; HELP - Install New Software; Business Intelligence, Reporting and Charting
   # Checkout all the projects on this repository; http://projectocolibri.googlecode.com/svn/
   # Download all the files from the DOWNLOADS page; http://code.google.com/p/projectocolibri/downloads/list
-  # Unpack the PLUGINS.RAR file to your Eclipse DROPINS folder (\eclipse\dropins)
+  # Unpack the DROPINS.RAR file to your Eclipse DROPINS folder (\eclipse\dropins)
   # Restart Eclipse; You should have NO errors
   # Run colibri.rcp.example PRODUCT; This is an RCP project that uses the Colibri Plugin API
