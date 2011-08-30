@@ -6,8 +6,8 @@ Detailed information on how to configure the Projects.
 
 = Example project =
 
-  # Among others, there is an EXAMPLE project included that should be used as base project for developing any Colibri RCP API project.
-  # This project includes all the base features and examples, along with code comments, that should be useful for any developer.
+  # There is an include EXAMPLE project that should be used as a base project for developing any Colibri RCP API product.
+  # This project includes all the base features and examples, along with code comments, that should be useful to any developer.
   # To test this project, you need to expand it and OPEN the  colibri.rcp.example.product file; in the Overview tab, click on the "Launch an Eclipse Application" link; the project should run
 
 = Export a project =
