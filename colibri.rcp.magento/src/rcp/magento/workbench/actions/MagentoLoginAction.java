@@ -11,6 +11,9 @@ import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import rcp.colibri.core.vars.gui.IconVARS;
 import rcp.magento.RCPMagento;
+import rcp.magento.dao.MagentoDatabase;
+
+import com.google.code.magja.soap.SoapConfig;
 
 public class MagentoLoginAction extends Action implements IWorkbenchAction {
 
@@ -24,7 +27,26 @@ public class MagentoLoginAction extends Action implements IWorkbenchAction {
 
 		Debug.info(getText());
 
-		RCPMagento.login();
+		try{
+			if (MagentoDatabase.getMagentoSoapClient()!=null){
+				Debug.info("### MAGENTO LOGIN ###", "ALREADY LOGGED");
+				return;
+			}
+			/*
+			 * Create a ROLE and USER with full access under
+			 * Magento -> System -> Web Services
+			 */
+			if (MagentoDatabase.initialize(new SoapConfig("colibri7","colibri7",
+					RCPMagento.MAGENTO_API_URL))){
+				Debug.info("### MAGENTO LOGIN ###", "OK!");
+				return;
+			}
+
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
+		Debug.info("### MAGENTO LOGIN ###", "FAILED");
 
 	}
 

@@ -12,7 +12,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchWindow;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.vars.gui.LabelVARS;
 import rcp.colibri.workbench.perspectives.IColibriPerspective;
 import rcp.colibri.workbench.support.actions.ClosePerspectiveAction;
@@ -46,7 +45,7 @@ public class MagentoPerspective implements IColibriPerspective {
 			WorkbenchHack.addOtherPerspectiveShortcuts(ID,layout);
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 
 	}

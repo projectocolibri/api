@@ -11,7 +11,6 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.vars.gui.IconVARS;
 import rcp.colibri.core.vars.gui.LabelVARS;
 import rcp.magento.RCPMagento;
@@ -32,7 +31,7 @@ public class PerspectiveView extends ViewPart {
 			browser.setUrl(RCPMagento.MAGENTO_ADMIN_URL);
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 	}
 
