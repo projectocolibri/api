@@ -16,7 +16,7 @@ import com.google.code.magja.service.category.CategoryRemoteService;
 
 public class CategoryManager {
 
-	private final CategoryRemoteService remoteService=new RemoteServiceFactory().getCategoryRemoteService();
+	private final CategoryRemoteService remoteService=RemoteServiceFactory.getCategoryRemoteService();
 
 	public void saveCategory(Category category) {
 

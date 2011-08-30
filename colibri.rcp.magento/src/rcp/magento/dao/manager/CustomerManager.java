@@ -15,7 +15,7 @@ import com.google.code.magja.service.customer.CustomerRemoteService;
 
 public class CustomerManager {
 
-	private final CustomerRemoteService remoteService=new RemoteServiceFactory().getCustomerRemoteService();
+	private final CustomerRemoteService remoteService=RemoteServiceFactory.getCustomerRemoteService();
 
 	public void saveCustomer(Customer customer) {
 

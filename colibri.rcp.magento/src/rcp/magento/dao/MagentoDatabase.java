@@ -26,7 +26,7 @@ public class MagentoDatabase {
 		Debug.info();
 
 		try{
-			magentoSoapClient=new MagentoSoapClient(soapConfig);
+			magentoSoapClient=MagentoSoapClient.getInstance(soapConfig);
 			categoryManager=new CategoryManager();
 			productManager=new ProductManager();
 			customerManager=new CustomerManager();

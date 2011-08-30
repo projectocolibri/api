@@ -17,7 +17,7 @@ import com.google.code.magja.service.product.ProductRemoteService;
 
 public class ProductManager {
 
-	private final ProductRemoteService remoteService=new RemoteServiceFactory().getProductRemoteService();
+	private final ProductRemoteService remoteService=RemoteServiceFactory.getProductRemoteService();
 
 	public boolean existsProduct(String sku) {
 
