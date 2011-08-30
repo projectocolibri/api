@@ -10,7 +10,6 @@ import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import rcp.Application;
 import rcp.colibri.core.BIRT.report.BIRTReport;
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.example.ReportExample;
 
 public class ReportExampleAction extends Action implements IWorkbenchAction {
@@ -44,7 +43,7 @@ public class ReportExampleAction extends Action implements IWorkbenchAction {
 			}
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 	}
 

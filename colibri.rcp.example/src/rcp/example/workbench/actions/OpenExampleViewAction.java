@@ -9,7 +9,6 @@ import org.dma.utils.java.Debug;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.vars.gui.IconVARS;
 import rcp.colibri.workbench.support.views.actions.OpenViewAction;
 import rcp.example.workbench.ExampleView;
@@ -30,7 +29,7 @@ public class OpenExampleViewAction extends Action implements IWorkbenchAction {
 			new OpenViewAction(ExampleView.ID).run();
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 	}
 

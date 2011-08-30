@@ -11,7 +11,6 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.vars.gui.IconVARS;
 import rcp.colibri.core.vars.gui.LabelVARS;
 import rcp.colibri.core.vars.rcp.FileVARS;
@@ -36,7 +35,7 @@ public class PerspectiveView extends ViewPart {
 			browser.setUrl(FileVARS.BROWSER_BASE_URL);
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 	}
 

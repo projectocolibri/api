@@ -11,7 +11,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.part.ViewPart;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.vars.gui.IconVARS;
 /*
  * Informacao sobre SWT (Standard Widget Toolkit)
@@ -33,7 +32,7 @@ public class ExampleView extends ViewPart {
 			label.setText("Hello World!!!");
 
 		} catch (Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 	}
 
