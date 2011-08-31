@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
  javax.jdo;bundle-version="3.0.0",
  org.dma.utils;bundle-version="2.5.1",
  colibri.rcp;bundle-version="7.0.0",
- com.google.code.magja;bundle-version="0.0.3"
+ com.google.code.magja;bundle-version="0.0.4"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: suporte@projectocolibri.com
