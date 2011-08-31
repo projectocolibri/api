@@ -7,10 +7,11 @@ Detailed information on how to install the API.
 = Details =
 
   # Install *ECLIPSE INDIGO for RCP and RAP Developers*; Download from http://www.eclipse.org/downloads/; Unpack to /eclipse
+  # Download all the files from the DOWNLOADS page http://code.google.com/p/projectocolibri/downloads/list
+  # Unpack the DROPINS.RAR file to your Eclipse DROPINS folder (\eclipse\dropins)
   # RUN Eclipse and *create Workspace*; Suggestion: Colibri
   # Install *SVN-Subclipse Plugin*; HELP - Install New Software; http://subclipse.tigris.org/update_1.6.x
   # Install *BIRT Plugin*; HELP - Install New Software; Business Intelligence, Reporting and Charting
-  # Checkout all the projects on this repository; http://projectocolibri.googlecode.com/svn/
-  # Download all the files from the DOWNLOADS page; http://code.google.com/p/projectocolibri/downloads/list
-  # Unpack the DROPINS.RAR file to your Eclipse DROPINS folder (\eclipse\dropins)
+  # Open "SVN Repository" Perspective; add New "Repository Location" http://projectocolibri.googlecode.com/svn/
+  # Expand repository tree and checkout the projects 
   # Restart Eclipse; You should have NO errors
