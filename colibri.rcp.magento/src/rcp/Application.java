@@ -4,6 +4,7 @@
  *******************************************************************************/
 package rcp;
 
+import org.dma.utils.eclipse.swt.ErrorHandler;
 import org.dma.utils.java.Debug;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -122,7 +123,7 @@ public class Application implements IApplication {
 			e.printStackTrace();
 		}
 
-		login.showErrors();
+		ErrorHandler.show(login);
 
 		return false;
 
