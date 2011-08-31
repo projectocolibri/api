@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="RCP Colibri Example" uid="colibri.rcp.example.product" id="colibri.rcp.example.product" application="colibri.rcp.example.application" version="0.3.0" useFeatures="false" includeLaunchers="true">
+<product name="RCP Colibri Example" uid="colibri.rcp.example.product" id="colibri.rcp.example.product" application="colibri.rcp.example.application" version="0.3.1" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
