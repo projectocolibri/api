@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="RCP Colibri Magento" uid="colibri.rcp.magento.product" id="colibri.rcp.magento.product" application="colibri.rcp.magento.application" version="0.1.0" useFeatures="false" includeLaunchers="true">
+<product name="RCP Colibri Magento" uid="colibri.rcp.magento.product" id="colibri.rcp.magento.product" application="colibri.rcp.magento.application" version="0.1.1" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
