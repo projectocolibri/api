@@ -6,7 +6,7 @@ Detailed information on how to configure the Projects.
 
 = Example project =
 
-  # There is an include EXAMPLE project that should be used as a base project for developing any Colibri RCP API product.
+  # There is an included EXAMPLE project that should be used as a base project for developing any Colibri RCP API product.
   # This project includes all the base features and examples, along with code comments, that should be useful to any developer.
   # To test this project, look at "RUN Project" section
 
