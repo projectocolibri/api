@@ -8,19 +8,25 @@ Detailed information on how to configure the Projects.
 
   # There is an include EXAMPLE project that should be used as a base project for developing any Colibri RCP API product.
   # This project includes all the base features and examples, along with code comments, that should be useful to any developer.
-  # To test this project, you need to expand it and OPEN the  colibri.rcp.example.product file; in the Overview tab, click on the "Launch an Eclipse Application" link; the project should run
+  # To test this project, look at "RUN Project" section
+
+= RUN Project =
+
+  # Open "Package Explorer", expand the project tree and OPEN the "product" file
+  # Select the "Overview" TAB and click "Launch an Eclipse Application"
+  # If you encounter any errors, look at "Configure project" section
 
 = Configure project =
 
   # Open the "RUN -> Run configurations" MENU option
-  # Under "Eclipse Application" delete the project "product" file
-  # Open "Package Explorer", expand the project tree and OPEN the "product" file
+  # Under "Eclipse Application" delete the "colibri.rcp.example.product" file
+  # Open "Package Explorer", expand the project tree and OPEN "colibri.rcp.example.product" file
   # Select the "Dependencies" TAB and click "Remove All"
-  # Click "Add" and select the MAIN plugin (ex: colibri.rcp.example)
+  # Click "Add" and select the MAIN plugin "colibri.rcp.example"
   # Click "Add Required Plugins" and SAVE
   # Open the "Overview" TAB and click "Launch an Eclipse Application"
 
-= Export a project =
+= Export project =
 
   # To export a project, you need to expand it and OPEN the  colibri.rcp.example.product file; in the Overview tab, click on the "Eclipse Product Export Wizard" link; Choose a "Root directory" (usually the name of the project) and a "Destination directory" on disk; click Next
   # All projects are configured to use the Eclipse delta-pack target platform. This enables the EXPORT to be made to multiple platforms at once. To do this you must install the Delta-pack for Eclipse and configure it. More info soon.
