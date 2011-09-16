@@ -10,6 +10,16 @@ Detailed information on how to configure the Projects.
   # This project includes all the base features and examples, along with code comments, that should be useful to any developer.
   # To test this project, you need to expand it and OPEN the  colibri.rcp.example.product file; in the Overview tab, click on the "Launch an Eclipse Application" link; the project should run
 
+= Configure project =
+
+  # Open the "RUN -> Run configurations" MENU option
+  # Under "Eclipse Application" delete the project "product" file
+  # Open "Package Explorer", expand the project tree and OPEN the "product" file
+  # Select the "Dependencies" TAB and click "Remove All"
+  # Click "Add" and select the MAIN plugin (ex: colibri.rcp.example)
+  # Click "Add Required Plugins" and SAVE
+  # Open the "Overview" TAB and click "Launch an Eclipse Application"
+
 = Export a project =
 
   # To export a project, you need to expand it and OPEN the  colibri.rcp.example.product file; in the Overview tab, click on the "Eclipse Product Export Wizard" link; Choose a "Root directory" (usually the name of the project) and a "Destination directory" on disk; click Next
