@@ -1,16 +1,16 @@
-#summary Installation
+# Resumo da Instalação
 
-= Introduction =
+= Introdução =
 
-Detailed information on how to install the API.
+Informações detalhadas sobre como instalar o API.
 
-= Details =
+= Detalhes =
 
-  # *Install Eclipse Indigo* for RCP and RAP Developers; Download from http://www.eclipse.org/indigo/; Unpack to /eclipse
-  # *Download DROPINS.RAR* from the project downloads page http://code.google.com/p/projectocolibri/downloads/list; Unpack file to your Eclipse DROPINS folder (\eclipse\dropins)
-  # *Run Eclipse* and create Workspace (Suggestion: colibri)
-  # *Install SVN-Subclipse Plugin*; HELP - Install New Software; http://subclipse.tigris.org/update_1.6.x
-  # *Install BIRT Plugin*; HELP - Install New Software; Business Intelligence, Reporting and Charting
-  # *Open SVN Repository* Perspective; add New Repository Location http://projectocolibri.googlecode.com/svn/
-  # *Expand repository tree* and checkout the projects 
-  # *Restart Eclipse*; You should have NO errors!
+   # *Instalar* Eclipse Indigo for RCP and RAP Developers; download de http://www.eclipse.org/indigo/; Descompactar em /eclipse
+   # *Descarregar* DROPINS.RAR de http://code.google.com/p/projectocolibri/downloads/list; Descompactar para a pasta dropins do Eclipse (/eclipse/dropins)
+   # *Executar* Eclipse; Criar Workspace (Sugestão: colibri)
+   # *Instalar* SVN Subclipse; MENU HELP - Install New Software; http://subclipse.tigris.org/update_1.6.x
+   # *Instalar* BIRT Plugin; MENU HELP - Install New Software; Business Intelligence, Reporting and Charting
+   # *Abrir* perspectiva "SVN Repository"; Add New Repository Location http://projectocolibri.googlecode.com/svn/
+   # *Expandir* árvore de repositório; Efectuar check-out dos projetos
+   # *Reiniciar* o Eclipse; Não devem existir erros!
