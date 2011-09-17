@@ -12,23 +12,24 @@ Informação detalhada de como configurar os projectos.
 
 = Correr um projecto =
 
-  # Abrir "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro "product"
+  # Abrir o "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro "product" (ex: colibri.rcp.example.product")
   # Seleccionar a TAB "Overview"; Executar "Launch an Eclipse Application"
   # Se existirem erros, consultar a secção seguinte
 
 = Configurar um projecto =
 
-  # MENU "RUN"; Opção "Run configurations"
-  # Na secção "Eclipse Application" apagar a entrada do "product" (ex: colibri.rcp.example.product")
-  # Abrir o "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro do "product" (ex: colibri.rcp.example.product")
-  # TAB "Dependencies"; Botão "Remove All"
-  # Botão "Add"; Seleccionar o Plugin principal (ex: colibri.rcp.example")
-  # Botão "Add Required Plugins"; Gravar
-  # TAB "Overview"; Executar "Launch an Eclipse Application"
+  # Abrir o menu "Run"; Selecionar a opção "Run configurations"
+  # Expandir a secção "Eclipse Application"; Apagar a entrada relativa ao "product" do projecto (ex: colibri.rcp.example.product")
+  # Abrir o "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro "product" (ex: colibri.rcp.example.product")
+  # Seleccionar a TAB "Dependencies"; Premir o botão "Remove All"
+  # Premir o Botão "Add"; Seleccionar o Plugin principal (ex: colibri.rcp.example")
+  # Premir o botão "Add Required Plugins"; Gravar
+  # Seleccionar a TAB "Overview"; Executar "Launch an Eclipse Application"
 
 = Exportar um projecto =
 
   # Abrir o "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro do "product" (ex: colibri.rcp.example.product")
-  # TAB "Overview"; Executar "Eclipse Product Export Wizard"
-  # Escolher um "Root directory" (geralmente o nome do projecto) e um "Destination directory"; Next
-  # NOTAS: Todos os projectos estão configurados para usarem o "Eclipse delta-pack" target platform. Esta configuração permite exportar o projecto para diversas plataformas de uma vez. Para que tal seja possível, é necessário instalar e configurar o "Delta-pack" para o Eclipse. Mais informação brevemente.
+  # Seleccionar a TAB "Overview"; Executar "Eclipse Product Export Wizard"
+  # Escolher a pasta "Root directory" (sugestao: nome do projecto) e "Destination directory"; Premir o botão "Next"
+  # O export será efectuado para a pasta "Destination directory"
+  # NOTAS: Todos os projectos estão configurados para usarem o "Eclipse delta-pack target platform". Esta configuração permite exportar o projecto para diversas plataformas de uma vez. Para que tal seja possível, é necessário instalar e configurar o "Delta-pack" para o Eclipse. Mais informação brevemente.
