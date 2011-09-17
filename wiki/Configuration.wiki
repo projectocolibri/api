@@ -1,32 +1,34 @@
-#summary Configuration
+#Resumo de Configuração
 
-= Introduction =
+= Introdução =
 
-Detailed information on how to configure the Projects.
+Informação detalhada de como configurar os projectos.
 
-= Example project =
+= Projecto de Exemplo =
 
-  # There is an included EXAMPLE project that should be used as a base project for developing any Colibri RCP API product.
-  # This project includes all the base features and examples, along with code comments, that should be useful to any developer.
-  # To test this project, look at "RUN Project" section
+  # Existe um projecto de EXEMPLO incluido que deve ser usado como base para desenvolver qualquer produto sobre a API
+  # Este projeto inclui código relativo ás funcionalidades básicas da API, e está mínimamente comentado
+  # Para testar o projecto, consultar a secção seguinte
 
-= RUN Project =
+= Correr um projecto =
 
-  # Open "Package Explorer", expand the project tree and OPEN the "product" file
-  # Select the "Overview" TAB and click "Launch an Eclipse Application"
-  # If you encounter any errors, look at "Configure project" section
+  # Abrir "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro "product"
+  # Seleccionar a TAB "Overview"; Executar "Launch an Eclipse Application"
+  # Se existirem erros, consultar a secção seguinte
 
-= Configure project =
+= Configurar um projecto =
 
-  # Open the "RUN -> Run configurations" MENU option
-  # Under "Eclipse Application" delete the "colibri.rcp.example.product" file
-  # Open "Package Explorer", expand the project tree and OPEN "colibri.rcp.example.product" file
-  # Select the "Dependencies" TAB and click "Remove All"
-  # Click "Add" and select the MAIN plugin "colibri.rcp.example"
-  # Click "Add Required Plugins" and SAVE
-  # Open the "Overview" TAB and click "Launch an Eclipse Application"
+  # MENU "RUN"; Opção "Run configurations"
+  # Na secção "Eclipse Application" apagar a entrada do "product" (ex: colibri.rcp.example.product")
+  # Abrir o "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro do "product" (ex: colibri.rcp.example.product")
+  # TAB "Dependencies"; Botão "Remove All"
+  # Botão "Add"; Seleccionar o Plugin principal (ex: colibri.rcp.example")
+  # Botão "Add Required Plugins"; Gravar
+  # TAB "Overview"; Executar "Launch an Eclipse Application"
 
-= Export project =
+= Exportar um projecto =
 
-  # To export a project, you need to expand it and OPEN the  colibri.rcp.example.product file; in the Overview tab, click on the "Eclipse Product Export Wizard" link; Choose a "Root directory" (usually the name of the project) and a "Destination directory" on disk; click Next
-  # All projects are configured to use the Eclipse delta-pack target platform. This enables the EXPORT to be made to multiple platforms at once. To do this you must install the Delta-pack for Eclipse and configure it. More info soon.
+  # Abrir o "Package Explorer"; Expandir a árvore do projecto; Abrir o ficheiro do "product" (ex: colibri.rcp.example.product")
+  # TAB "Overview"; Executar "Eclipse Product Export Wizard"
+  # Escolher um "Root directory" (geralmente o nome do projecto) e um "Destination directory"; Next
+  # NOTAS: Todos os projectos estão configurados para usarem o "Eclipse delta-pack" target platform. Esta configuração permite exportar o projecto para diversas plataformas de uma vez. Para que tal seja possível, é necessário instalar e configurar o "Delta-pack" para o Eclipse. Mais informação brevemente.
