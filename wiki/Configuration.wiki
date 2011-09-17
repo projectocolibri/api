@@ -1,5 +1,3 @@
-# Resumo de Configuração
-
 = Introdução =
 
 Informação detalhada de como configurar os projectos.
