@@ -44,6 +44,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	public final boolean preShutdown() {
 		Debug.info(Activator.PLUGIN_ID);
+		JobManager.debug();
 		return JobManager.getQueuedJobs()==0 && ColibriUI.stop();
 	}
 
