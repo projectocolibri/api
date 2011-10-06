@@ -29,7 +29,7 @@ public class ReportExampleAction extends Action implements IWorkbenchAction {
 				 */
 				reportExample.backgroundProcess(1, BIRTReport.ACTION_PREVIEW);
 				reportExample.backgroundProcess(1, BIRTReport.ACTION_PRINT);
-				//reportExample.backgroundProcess(1, BIRTReport.ACTION_EMAIL);
+				reportExample.backgroundProcess(1, BIRTReport.ACTION_EMAIL);
 
 			}else{
 				/*
