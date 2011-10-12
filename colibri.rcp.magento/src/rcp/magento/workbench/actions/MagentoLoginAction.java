@@ -24,26 +24,21 @@ public class MagentoLoginAction extends Action implements IWorkbenchAction {
 
 	public final void run(){
 
-		try{
-			if (MagentoDatabase.getMagentoSoapClient()!=null){
-				System.out.println("MAGENTO ALREADY LOGGED");
-				return;
-			}
-			/*
-			 * The SOAP parameters must be created in Magento
-			 * 1) Create an "admin" ROLE under System -> Web Services -> Roles
-			 * and grant access to all the resources
-			 * 2) Create an API USER under System -> Web Services -> Users
-			 * and assign the created role to the new user
-			 */
-			if (MagentoDatabase.initialize(new SoapConfig(
-				"colibri7","colibri7",RCPMagento.MAGENTO_API_URL))){
-				System.out.println("MAGENTO LOGIN OK!");
-				return;
-			}
-
-		} catch (Exception e){
-			e.printStackTrace();
+		if (MagentoDatabase.getMagentoSoapClient()!=null){
+			System.out.println("MAGENTO ALREADY LOGGED");
+			return;
+		}
+		/*
+		 * The SOAP parameters must be created in Magento
+		 * 1) Create an "admin" ROLE under System -> Web Services -> Roles
+		 * and grant access to all the resources
+		 * 2) Create an API USER under System -> Web Services -> Users
+		 * and assign the created role to the new user
+		 */
+		if (MagentoDatabase.initialize(new SoapConfig(
+			"colibri7","colibri7",RCPMagento.MAGENTO_API_URL))){
+			System.out.println("MAGENTO LOGIN OK!");
+			return;
 		}
 
 		System.out.println("MAGENTO LOGIN FAILED");
