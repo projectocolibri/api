@@ -22,12 +22,7 @@ public class OpenExampleViewAction extends Action implements IWorkbenchAction {
 
 	public final void run(){
 
-		try{
-			new OpenViewAction(ExampleView.ID).run();
-
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		new OpenViewAction(ExampleView.ID).run();
 
 	}
 

@@ -26,19 +26,14 @@ public class PerspectiveView extends ViewPart implements IStateSupportView {
 
 	public void createPartControl(Composite parent) {
 
-		try{
-			setPartName(LabelVARS.desktop_browser);
-			setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_BROWSER));
+		setPartName(LabelVARS.desktop_browser);
+		setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_BROWSER));
 
-			Composite container=new Composite(parent, SWT.NONE);
-			container.setLayout(new FillLayout());
+		Composite container=new Composite(parent, SWT.NONE);
+		container.setLayout(new FillLayout());
 
-			Browser browser=new Browser(container, SWT.NONE);
-			browser.setUrl(FileVARS.BROWSER_BASE_URL);
-
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		Browser browser=new Browser(container, SWT.NONE);
+		browser.setUrl(FileVARS.BROWSER_BASE_URL);
 
 	}
 

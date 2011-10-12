@@ -21,19 +21,16 @@ public class ExampleView extends ViewPart {
 	public static final String ID = "ExampleView";
 
 	public void createPartControl(Composite parent) {
-		try{
-			setPartName("#view");
-			setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_AJUDA));
 
-			Composite container=new Composite(parent, SWT.NONE);
-			container.setLayout(new FillLayout());
+		setPartName("#view");
+		setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_AJUDA));
 
-			Label label=new Label(parent, SWT.NONE);
-			label.setText("Hello World!!!");
+		Composite container=new Composite(parent, SWT.NONE);
+		container.setLayout(new FillLayout());
 
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		Label label=new Label(parent, SWT.NONE);
+		label.setText("Hello World!!!");
+
 	}
 
 

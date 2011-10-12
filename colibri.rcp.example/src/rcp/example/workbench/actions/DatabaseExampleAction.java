@@ -21,21 +21,16 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 
 	public final void run(){
 
-		try{
-			/*
-			 * Exemplos que PODEM correr COM e SEM workbench
-			 */
-			ArtigosExample artigosExample=new ArtigosExample();
-			DocumentosExample documentosExample=new DocumentosExample();
+		/*
+		 * Exemplos que PODEM correr COM e SEM workbench
+		 */
+		ArtigosExample artigosExample=new ArtigosExample();
+		DocumentosExample documentosExample=new DocumentosExample();
 
-			artigosExample.createArtigo(StringUtils.random(SizeVARS.artigos_codigo[0]),
-					StringUtils.random(SizeVARS.artigos_descricao[0]/2));
-			artigosExample.showArtigos();
-			documentosExample.createDocumento("CFA",null);
-
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		artigosExample.createArtigo(StringUtils.random(SizeVARS.artigos_codigo[0]),
+				StringUtils.random(SizeVARS.artigos_descricao[0]/2));
+		artigosExample.showArtigos();
+		documentosExample.createDocumento("CFA",null);
 
 	}
 
