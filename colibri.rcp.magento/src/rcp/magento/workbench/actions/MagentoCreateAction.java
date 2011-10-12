@@ -23,19 +23,14 @@ public class MagentoCreateAction extends Action implements IWorkbenchAction {
 
 	public final void run(){
 
-		try{
-			/*
-			 * Pendente
-			 * http://code.google.com/p/magja/issues/detail?id=40
-			 */
-			//MagentoDatabase.getCategoryManager().createCategory(StringUtils.random(10));
-			MagentoDatabase.getProductManager().createProduct("SKU_"+IntegerUtils.random(3));
-			MagentoDatabase.getCustomerManager().createCustomer(
-				StringUtils.random(10)+"@"+StringUtils.random(5)+".com");
-
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		/*
+		 * Pendente
+		 * http://code.google.com/p/magja/issues/detail?id=40
+		 */
+		//MagentoDatabase.getCategoryManager().createCategory(StringUtils.random(10));
+		MagentoDatabase.getProductManager().createProduct("SKU_"+IntegerUtils.random(3));
+		MagentoDatabase.getCustomerManager().createCustomer(
+			StringUtils.random(10)+"@"+StringUtils.random(5)+".com");
 
 	}
 

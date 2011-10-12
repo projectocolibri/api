@@ -21,18 +21,13 @@ public class MagentoListAction extends Action implements IWorkbenchAction {
 
 	public final void run(){
 
-		try{
-			/*
-			 * Pendente
-			 * http://code.google.com/p/magja/issues/detail?id=40
-			 */
-			//MagentoDatabase.getCategoryManager().listCategories();
-			MagentoDatabase.getProductManager().listProducts();
-			MagentoDatabase.getCustomerManager().listCustomers();
-
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		/*
+		 * Pendente
+		 * http://code.google.com/p/magja/issues/detail?id=40
+		 */
+		//MagentoDatabase.getCategoryManager().listCategories();
+		MagentoDatabase.getProductManager().listProducts();
+		MagentoDatabase.getCustomerManager().listCustomers();
 
 	}
 
