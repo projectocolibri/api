@@ -20,27 +20,22 @@ public class ReportExampleAction extends Action implements IWorkbenchAction {
 
 	public final void run(){
 
-		try{
-			ReportExample reportExample=new ReportExample();
+		ReportExample reportExample=new ReportExample();
 
-			if (Application.CREATE_WORKBENCH){
-				/*
-				 * Exemplos que NAO podem correr SEM workbench
-				 */
-				reportExample.backgroundProcess(1, BIRTReport.ACTION_PREVIEW);
-				reportExample.backgroundProcess(1, BIRTReport.ACTION_PRINT);
-				reportExample.backgroundProcess(1, BIRTReport.ACTION_EMAIL);
+		if (Application.CREATE_WORKBENCH){
+			/*
+			 * Exemplos que NAO podem correr SEM workbench
+			 */
+			reportExample.backgroundProcess(1, BIRTReport.ACTION_PREVIEW);
+			reportExample.backgroundProcess(1, BIRTReport.ACTION_PRINT);
+			reportExample.backgroundProcess(1, BIRTReport.ACTION_EMAIL);
 
-			}else{
-				/*
-				 * Exemplos que podem correr SEM workbench
-				 */
-				reportExample.process(1, BIRTReport.ACTION_EMAIL);
+		}else{
+			/*
+			 * Exemplos que podem correr SEM workbench
+			 */
+			reportExample.process(1, BIRTReport.ACTION_EMAIL);
 
-			}
-
-		} catch (Exception e){
-			e.printStackTrace();
 		}
 
 	}

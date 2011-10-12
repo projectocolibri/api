@@ -15,7 +15,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import rcp.colibri.core.vars.gui.LabelVARS;
 import rcp.colibri.workbench.perspectives.IColibriPerspective;
 import rcp.colibri.workbench.support.actions.ClosePerspectiveAction;
-import rcp.colibri.workbench.support.actions.OpenPreferencePageAction;
+import rcp.colibri.workbench.support.actions.OpenPreferencesAction;
 import rcp.colibri.workbench.support.actions.ResetPerspectiveAction;
 import rcp.colibri.workbench.support.bars.coolbar.ColibriCoolbarItem;
 import rcp.colibri.workbench.support.bars.menubar.ColibriMenubarItem;
@@ -29,20 +29,15 @@ public class ExamplePerspective implements IColibriPerspective {
 
 	public void createInitialLayout(IPageLayout layout) {
 
-		try{
-			layout.setEditorAreaVisible(false);
-			//layout.setFixed(true);
+		layout.setEditorAreaVisible(false);
+		//layout.setFixed(true);
 
-			//vista fixa
-			layout.addView(PerspectiveView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
-			layout.getViewLayout(PerspectiveView.ID).setCloseable(false);
+		//vista fixa
+		layout.addView(PerspectiveView.ID, IPageLayout.RIGHT, 0.75f, layout.getEditorArea());
+		layout.getViewLayout(PerspectiveView.ID).setCloseable(false);
 
-			//layout.addPerspectiveShortcut(ID);
-			WorkbenchHelper.addOtherPerspectiveShortcuts(ID,layout);
-
-		} catch (Exception e){
-			e.printStackTrace();
-		}
+		//layout.addPerspectiveShortcut(ID);
+		WorkbenchHelper.addOtherPerspectiveShortcuts(ID,layout);
 
 	}
 
@@ -54,7 +49,7 @@ public class ExamplePerspective implements IColibriPerspective {
 		List<ColibriCoolbarItem> items=new ArrayList();
 
 		items.add(new ColibriCoolbarItem("Colibri", new IAction[]{
-			new OpenPreferencePageAction(window)}));
+			new OpenPreferencesAction(window)}));
 
 		return items;
 
@@ -66,7 +61,7 @@ public class ExamplePerspective implements IColibriPerspective {
 		List<ColibriMenubarItem> items=new ArrayList();
 
 		items.add(new ColibriMenubarItem(LabelVARS.menubar_ficheiro, new IAction[]{
-				new OpenPreferencePageAction(window),
+				new OpenPreferencesAction(window),
 				new ResetPerspectiveAction(),
 				new ClosePerspectiveAction(ExamplePerspective.ID)}));
 
