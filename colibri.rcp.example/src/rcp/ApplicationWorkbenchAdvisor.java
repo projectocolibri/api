@@ -61,6 +61,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#postStartup()
 	 */
 	public void postStartup() {
+		Debug.info(Activator.PLUGIN_ID);
 		/*
 		 * Inicializa o UI
 		 * Devem ser passadas as perspectivas implementadas
@@ -84,6 +85,12 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		 * a correr em background e o User Interface nao conseguir terminar
 		 */
 		return JobManager.getQueuedJobs()==0 && ColibriUI.stop();
+	}
+
+
+	public final void postShutdown() {
+		Debug.info(Activator.PLUGIN_ID);
+		ColibriUI.dispose();
 	}
 
 
