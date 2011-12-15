@@ -36,6 +36,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public void postStartup() {
+		Debug.info(Activator.PLUGIN_ID);
 		if (!ColibriUI.start(new IColibriPerspective[]{new MagentoPerspective()})){
 			PlatformUI.getWorkbench().close();
 		}
@@ -46,6 +47,12 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		Debug.info(Activator.PLUGIN_ID);
 		JobManager.debug();
 		return JobManager.getQueuedJobs()==0 && ColibriUI.stop();
+	}
+
+
+	public final void postShutdown() {
+		Debug.info(Activator.PLUGIN_ID);
+		ColibriUI.dispose();
 	}
 
 
