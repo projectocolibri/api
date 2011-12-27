@@ -14,6 +14,7 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import rcp.colibri.workbench.ColibriUI;
 import rcp.colibri.workbench.perspectives.IColibriPerspective;
+import rcp.importador.ui.ImportadorPerspective;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
@@ -63,7 +64,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		 * Inicializa o UI
 		 * Devem ser passadas as perspectivas implementadas
 		 */
-		if (!ColibriUI.start(new IColibriPerspective[]{})){
+		if (!ColibriUI.start(new IColibriPerspective[]{new ImportadorPerspective()})){
 			PlatformUI.getWorkbench().close();
 		}
 	}
