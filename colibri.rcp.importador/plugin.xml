@@ -53,6 +53,7 @@
 		</view>
 	</extension>
 
+	<!--
 	<extension
          point="org.eclipse.ui.perspectiveExtensions">
 		<perspectiveExtension
@@ -65,6 +66,7 @@
                id="ImportadorView">
 			</view>
 		</perspectiveExtension>
-	</extension>   
+	</extension>
+	-->   
 
 </plugin>
