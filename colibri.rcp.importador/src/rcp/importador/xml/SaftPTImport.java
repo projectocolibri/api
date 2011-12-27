@@ -1,6 +1,7 @@
 /*******************************************************************************
  * 2011 Projecto Colibri
  * Sergio Gomes (sergiogomes@projectocolibri.com)
+ * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.importador.xml;
 
@@ -44,7 +45,7 @@ public class SaftPTImport {
 	private AuditFile auditFile;
 	private MasterFiles masterFiles;
 
-	Label labelConsole;
+	private Label labelConsole;
 
 	public SaftPTImport(boolean importHeader, boolean importCustomers,
 			boolean importArticles, boolean importTaxes, String tipoentidade) {
@@ -181,7 +182,7 @@ public class SaftPTImport {
 			entidade.setUrl(filter(customer[i].getWebsite()));
 
 			ColibriDatabase.storeEntidades(entidade);
-			labelConsole.setText("Costumer: " + entidade.getNome().toUpperCase() + " stored.");
+			labelConsole.setText("Cliente: " + entidade.getNome().toUpperCase() + " gravado.");
 		}
 	}
 
@@ -214,9 +215,8 @@ public class SaftPTImport {
 						filter(product[i].getProductNumberCode()));
 
 				ColibriDatabase.storeArtigos(artigo);
-				labelConsole.setText("Article: " + artigo.getDescricao().toUpperCase() + " stored.");
+				labelConsole.setText("Artigo: " + artigo.getDescricao().toUpperCase() + " gravado.");
 			}
-
 		}
 	}
 
@@ -274,6 +274,7 @@ public class SaftPTImport {
 		return espacofiscal;
 	}
 
+
 	private String filter(String string){
 
 		if(string==null)
@@ -284,8 +285,9 @@ public class SaftPTImport {
 		return string;
 	}
 
+
 	public void setLabelConsole(Label labelConsole){
-		this.labelConsole =labelConsole;
+		this.labelConsole=labelConsole;
 	}
 
 

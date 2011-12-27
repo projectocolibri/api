@@ -139,7 +139,6 @@ public class ImportadorView extends ViewPart {
 	}
 
 
-
 	private void addButtonsListeners() {
 		final SelectionListener selectionListener = new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
@@ -175,6 +174,7 @@ public class ImportadorView extends ViewPart {
 
 		} catch (Exception e) {}
 	}
+
 
 	//actions choose File
 	private void actionChooseFile(){
