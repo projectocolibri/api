@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!-- sergiogomes@projectocolibri.com -->
+
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="rcp.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="rcp.Perspective"
+            id="colibri.rcp.importsaft.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Import SAFT"
+            class="rcp.importador.ui.MainView"
+            id="colibri.rcp.importsaft2.view">
+      </view>
+      <view
+            class="rcp.importador.ui.MainView"
+            id="colibri.rcp.importsaft.ui.teste"
+            name="New ViewPart">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               standalone="true"
+               minimized="false"
+               relative="org.eclipse.ui.editorss"
+               relationship="left"
+               id="colibri.rcp.importsaft2.view">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="colibri.rcp.application"
+            name="colibri.rcp.importador">
+         <property
+               name="appName"
+               value="colibri.rcp.importador">
+         </property>
+      </product>
+   </extension>
+   
+
+</plugin>
