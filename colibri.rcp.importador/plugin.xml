@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
-
-<!-- sergiogomes@projectocolibri.com -->
-
+<!--
+/*******************************************************************************
+ * 2011 Projecto Colibri
+ * Sergio Gomes (sergiogomes@projectocolibri.com)
+ * Marco Lopes (marcolopes@projectocolibri.com)
+ *******************************************************************************/
+-->
 <plugin>
 
 	<extension
@@ -34,18 +38,9 @@
  				id="ImportadorPerspective"
 				name="Importador"
 				class="rcp.colibri.workbench.perspectives.ColibriPerspective">
+				<!--class="rcp.importador.ImportadorPerspective">-->
       </perspective>
    </extension>
-	<!--
-   <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
- 				id="ImportadorPerspective"
-				name="Importador"
-				class="rcp.importador.ImportadorPerspective">
-      </perspective>
-   </extension>
-   -->
 
 	<extension
          point="org.eclipse.ui.views">
