@@ -49,7 +49,7 @@
 				name="Importador SAFT"
 				class="rcp.importador.ui.ImportadorView"
 				allowMultiple="false"
-				restorable="false">
+				restorable="true">
 		</view>
 	</extension>
 
