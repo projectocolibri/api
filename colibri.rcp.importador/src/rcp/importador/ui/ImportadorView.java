@@ -7,6 +7,7 @@ package rcp.importador.ui;
 import java.io.File;
 
 import org.dma.utils.eclipse.swt.file.FileImport;
+import org.dma.utils.eclipse.swt.image.ImageUtils;
 import org.dma.utils.java.Debug;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -22,7 +23,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 import rcp.importador.xml.SaftPTImport;
 
@@ -133,7 +133,7 @@ public class ImportadorView extends ViewPart {
 		groupLogInfo.setText("Log Info");
 
 		labelConsole = new Label(groupLogInfo, SWT.NONE);
-		labelConsole.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		labelConsole.setBackground(ImageUtils.getColor(SWT.COLOR_WHITE));
 		labelConsole.setText("Waiting for XML file.");
 
 	}
