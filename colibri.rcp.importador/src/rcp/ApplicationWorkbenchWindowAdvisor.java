@@ -20,8 +20,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
 	public void preWindowOpen() {
 		ColibriUI.configure(getWindowConfigurer());
-		//override default configurations
-		getWindowConfigurer().setShowPerspectiveBar(false);
 		getWindowConfigurer().setTitle("RCP Colibri - Importador SAFT");
 	}
 

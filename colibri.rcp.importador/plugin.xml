@@ -37,8 +37,8 @@
       <perspective
  				id="ImportadorPerspective"
 				name="Importador"
-				class="rcp.colibri.workbench.perspectives.ColibriPerspective">
-				<!--class="rcp.importador.ImportadorPerspective">-->
+				class="rcp.importador.ui.ImportadorPerspective">
+				<!--class="rcp.colibri.workbench.perspectives.ColibriPerspective">-->
       </perspective>
    </extension>
 
