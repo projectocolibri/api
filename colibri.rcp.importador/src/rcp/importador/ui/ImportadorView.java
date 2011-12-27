@@ -1,8 +1,9 @@
-package rcp.importador.ui;
 /*******************************************************************************
  * 2011 Projecto Colibri
  * Sergio Gomes (sergiogomes@projectocolibri.com)
  *******************************************************************************/
+package rcp.importador.ui;
+
 import java.io.File;
 
 import org.dma.utils.eclipse.swt.file.FileImport;
@@ -25,15 +26,13 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import rcp.importador.xml.SaftPTImport;
 
+public class ImportadorView extends ViewPart {
 
-public class MainView extends ViewPart {
-
-	public static final String ID = "rcp.importador.ui.MainView"; 
+	public static final String ID = "ImportadorView";
 
 	private Group groupChooseXml;
 	private Group groupItemsToImport;
 	private Group groupLogInfo;
-
 
 	private Label labelFile;
 	private Label labelConsole;
@@ -46,14 +45,13 @@ public class MainView extends ViewPart {
 	private Button buttonStart;
 
 	//XML Document
-	File file;
-	
-	public MainView() {
+	private File file;
+
+	public ImportadorView() {
 	}
 
 
 	public void createPartControl(Composite parent) {
-
 		createContainer(parent);
 		createActions();
 		initializeToolBar();
@@ -62,7 +60,6 @@ public class MainView extends ViewPart {
 	}
 
 	private void createActions() {
-		
 	}
 
 
@@ -77,7 +74,6 @@ public class MainView extends ViewPart {
 
 
 	public void setFocus() {
-
 	}
 
 	public void createContainer(Composite parent){
@@ -105,6 +101,7 @@ public class MainView extends ViewPart {
 			buttonFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 			buttonFile.setText("[...]");
 		}
+
 		new Label(container, SWT.NONE);
 
 		//Group 2
@@ -155,7 +152,6 @@ public class MainView extends ViewPart {
 		};
 		buttonStart.addSelectionListener(selectionListener);
 		buttonFile.addSelectionListener(selectionListener);
-		
 
 	}
 
@@ -164,7 +160,7 @@ public class MainView extends ViewPart {
 	private void actionStart(){
 		try {
 			if(checkCustomer.getSelection() || checkArticles.getSelection() || checkTax.getSelection()){
-								
+
 				buttonStart.setEnabled(false);
 				SaftPTImport saftImport = new SaftPTImport(false, checkCustomer.getSelection(), checkArticles.getSelection(), checkTax.getSelection(), "CL");
 				saftImport.loadFile(file);
@@ -173,16 +169,11 @@ public class MainView extends ViewPart {
 					labelConsole.setText("Finished.");
 				else
 					labelConsole.setText("Error, please see log details.");
-				
+
 				buttonStart.setEnabled(true);
 			}
-				
-				
 
-
-		} catch (Exception e) {
-
-		}
+		} catch (Exception e) {}
 	}
 
 	//actions choose File
@@ -194,8 +185,6 @@ public class MainView extends ViewPart {
 			file=new FileImport("*.xml").filePicker(Display.getCurrent().getActiveShell());
 			labelConsole.setText("File loaded. Choose the items to Import and press Start.");
 			textFile.setText(file.getAbsolutePath());
-			
-			
 
 		} catch (Exception e){}
 

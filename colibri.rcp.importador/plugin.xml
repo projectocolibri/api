@@ -14,6 +14,7 @@
          </run>
       </application>
    </extension>
+   
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
@@ -22,19 +23,18 @@
             id="colibri.rcp.importsaft.perspective">
       </perspective>
    </extension>
+   
    <extension
          point="org.eclipse.ui.views">
       <view
-            name="Import SAFT"
-            class="rcp.importador.ui.MainView"
-            id="colibri.rcp.importsaft2.view">
-      </view>
-      <view
-            class="rcp.importador.ui.MainView"
-            id="colibri.rcp.importsaft.ui.teste"
-            name="New ViewPart">
+				id="ImportadorView"
+				name="Importador SAFT"
+				class="rcp.importador.ui.ImportadorView"
+				allowMultiple="false"
+				restorable="false">
       </view>
    </extension>
+   
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
@@ -44,10 +44,11 @@
                minimized="false"
                relative="org.eclipse.ui.editorss"
                relationship="left"
-               id="colibri.rcp.importsaft2.view">
+               id="ImportadorView">
          </view>
       </perspectiveExtension>
    </extension>
+   
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">
