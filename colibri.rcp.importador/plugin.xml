@@ -14,13 +14,26 @@
          </run>
       </application>
    </extension>
-   
+      
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="colibri.rcp.importador.application"
+            name="Importador SAFT">
+         <property
+               name="appName"
+               value="Importador SAFT">
+         </property>
+      </product>
+   </extension>
+
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="Perspective"
-            class="rcp.Perspective"
-            id="colibri.rcp.importsaft.perspective">
+ 				id="ImportadorPerspective"
+				name="Importador"
+				class="rcp.importador.ImportadorPerspective">
       </perspective>
    </extension>
    
@@ -47,20 +60,6 @@
                id="ImportadorView">
          </view>
       </perspectiveExtension>
-   </extension>
-   
-   <extension
-         id="product"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="colibri.rcp.application"
-            name="colibri.rcp.importador">
-         <property
-               name="appName"
-               value="colibri.rcp.importador">
-         </property>
-      </product>
-   </extension>
-   
+   </extension>   
 
 </plugin>

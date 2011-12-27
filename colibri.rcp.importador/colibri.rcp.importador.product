@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="colibri.rcp.importador" uid="colibri.rcp.importsaft" id="colibri.rcp.importador.product" application="colibri.rcp.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
+<product name="colibri.rcp.importador" uid="colibri.rcp.importsaft" id="colibri.rcp.importador.product" application="colibri.rcp.importador.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
