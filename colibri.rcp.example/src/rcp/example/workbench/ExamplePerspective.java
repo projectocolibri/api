@@ -63,7 +63,7 @@ public class ExamplePerspective implements IColibriPerspective {
 		items.add(new ColibriMenubarItem(LabelVARS.menubar_ficheiro, new IAction[]{
 				new OpenPreferencesAction(window),
 				new ResetPerspectiveAction(),
-				new ClosePerspectiveAction(ExamplePerspective.ID)}));
+				new ClosePerspectiveAction(ID)}));
 
 		items.add(new ColibriMenubarItem("#exemplos", new IAction[]{
 				new OpenExampleViewAction(),
