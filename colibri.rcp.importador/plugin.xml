@@ -5,29 +5,38 @@
 
 <plugin>
 
-   <extension
+	<extension
          id="application"
          point="org.eclipse.core.runtime.applications">
-      <application>
-         <run
+		<application>
+			<run
                class="rcp.Application">
-         </run>
-      </application>
-   </extension>
-      
-   <extension
+			</run>
+		</application>
+	</extension>
+
+	<extension
          id="product"
          point="org.eclipse.core.runtime.products">
-      <product
+		<product
             application="colibri.rcp.importador.application"
             name="Importador SAFT">
-         <property
+			<property
                name="appName"
                value="Importador SAFT">
-         </property>
-      </product>
-   </extension>
+			</property>
+		</product>
+	</extension>
 
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+ 				id="ImportadorPerspective"
+				name="Importador"
+				class="rcp.colibri.workbench.perspectives.ColibriPerspective">
+      </perspective>
+   </extension>
+	<!--
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
@@ -36,30 +45,31 @@
 				class="rcp.importador.ImportadorPerspective">
       </perspective>
    </extension>
-   
-   <extension
+   -->
+
+	<extension
          point="org.eclipse.ui.views">
-      <view
+		<view
 				id="ImportadorView"
 				name="Importador SAFT"
 				class="rcp.importador.ui.ImportadorView"
 				allowMultiple="false"
 				restorable="false">
-      </view>
-   </extension>
-   
-   <extension
+		</view>
+	</extension>
+
+	<extension
          point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
+		<perspectiveExtension
             targetID="*">
-         <view
+			<view
                standalone="true"
                minimized="false"
                relative="org.eclipse.ui.editorss"
                relationship="left"
                id="ImportadorView">
-         </view>
-      </perspectiveExtension>
-   </extension>   
+			</view>
+		</perspectiveExtension>
+	</extension>   
 
 </plugin>
