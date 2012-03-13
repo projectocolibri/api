@@ -44,7 +44,7 @@ public class DocumentosExample {
 			Entidades entidade=ColibriDatabase.loadEntidades(Entidades.generateKey("CL", 1));
 			//inicializa a entidade do documento
 			documento.setEntidade(entidade);
-			EntidadesPaste.process(documento, entidade);
+			EntidadesPaste.process(entidade, documento);
 
 			//cria as linhas do documento
 			createLinhasdocumento(documento, entidade);
