@@ -4,7 +4,7 @@ Informações detalhadas sobre como instalar a API.
 
 = Detalhes =
 
-   # *Instalar "Eclipse Indigo for RCP and RAP Developers".* Efectuar o download em http://www.eclipse.org/indigo/; Descompactar em /eclipse
+   # *Instalar "Eclipse Indigo for RCP and RAP Developers".* Efectuar o download em http://www.eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/indigosr2; Descompactar em /eclipse
    # *Instalar Plugins da API.* Efectuar o download do ficheiro DROPINS.RAR em http://code.google.com/p/projectocolibri/downloads/list; Descompactar para a pasta dropins do Eclipse (/eclipse/dropins)
    # *Executar o Eclipse*; Criar o Workspace (Sugestão: colibri)
    # *Instalar Plugin "SVN Subclipse".* Abrir menu "Help"; Selecionar a opção "Install New Software"; Adicionar o link http://subclipse.tigris.org/update_1.6.x
