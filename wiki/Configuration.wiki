@@ -5,7 +5,7 @@ Informação detalhada de como configurar os projectos.
 = Projecto de Exemplo =
 
   # Existe um projecto de EXEMPLO incluido que deve ser usado como base para desenvolver qualquer produto sobre a API
-  # Este projeto inclui código relativo ás funcionalidades básicas da API, e está mínimamente comentado
+  # Este projecto inclui código relativo ás funcionalidades básicas da API, e está mínimamente comentado
   # Para testar o projecto, consultar a secção seguinte
 
 = Correr um projecto =
