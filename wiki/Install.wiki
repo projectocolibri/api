@@ -1,6 +1,6 @@
 = Introdução =
 
-Informações detalhadas sobre como instalar a API.
+Informação detalhada sobre como instalar a API.
 
 = Detalhes =
 
