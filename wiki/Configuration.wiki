@@ -1,6 +1,6 @@
 = Introdução =
 
-Informação detalhada de como configurar os projectos.
+Informação detalhada sobre como configurar os projectos.
 
 = Projecto de Exemplo =
 
