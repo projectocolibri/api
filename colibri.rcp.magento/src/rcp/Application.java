@@ -14,6 +14,7 @@ import org.eclipse.ui.PlatformUI;
 import rcp.colibri.core.login.ColibriLogin;
 import rcp.colibri.core.security.LicenceManager;
 import rcp.colibri.core.vars.rcp.FileVARS;
+import rcp.colibri.dao.database.connection.ConnectionManager;
 import rcp.colibri.dao.xmlbeans.EmpresasXml;
 import rcp.colibri.workbench.shells.login.LoginShell;
 
@@ -112,7 +113,10 @@ public class Application implements IApplication {
 
 			if (LicenceManager.instance.load(
 				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0") &&
-				login.process(EmpresasXml.instance.load(0), "admin", "admin"))
+				login.process(//EmpresasXml.instance.load(0),
+					EmpresasXml.instance.create(ConnectionManager.DRIVER_H2, "",
+					"/colibri/colibri7", "sa", ""),
+					"admin", "admin"))
 				return true;
 
 		} catch (Exception e){
