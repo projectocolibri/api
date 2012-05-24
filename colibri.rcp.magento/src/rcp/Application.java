@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2011 Projecto Colibri
+ * 2008-2012 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp;
@@ -34,15 +34,8 @@ public class Application implements IApplication {
 			/*
 			 * LOGIN
 			 * Existem duas formas de efectuar login
-			 * 1) De forma manual, atraves do ecra de login
-			 * 2) De forma automatica, sem intervencao do utilizador
-			 *
-			 * NOTAS
-			 * O metodo 1 permite editar as configuracoes de
-			 * a) Empresas e base de dados
-			 * b) Licenca a utilizar por defeito
-			 * c) LINGUA (nao acessivel por via interna)
-			 *
+			 * 1) Atraves do ecra de login
+			 * 2) Atraves do metodo de login
 			 */
 			//if (login(display)==LoginShell.ACTION_LOGIN){ // 1
 			if (login()){ // 2
@@ -83,6 +76,9 @@ public class Application implements IApplication {
 	}
 
 
+	/**
+	 * Shell de login
+	 */
 	private int login(Display display) {
 
 		try{
@@ -105,15 +101,18 @@ public class Application implements IApplication {
 	}
 
 
+	/**
+	 * Login automatico
+	 */
 	public static boolean login() {
 
 		ColibriLogin login=new ColibriLogin();
 
 		try{
 
-			if (LicenceManager.loadLicence(
+			if (LicenceManager.instance.load(
 				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0") &&
-				login.process(EmpresasXml.load(0), "admin", "admin"))
+				login.process(EmpresasXml.instance.load(0), "admin", "admin"))
 				return true;
 
 		} catch (Exception e){
