@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2011 Projecto Colibri
+ * 2008-2011 Projecto Colibri
  * Sergio Gomes (sergiogomes@projectocolibri.com)
  *******************************************************************************/
 package rcp.importador.ui;
@@ -7,8 +7,7 @@ package rcp.importador.ui;
 import java.io.File;
 
 import org.dma.utils.eclipse.swt.file.FileImport;
-import org.dma.utils.eclipse.swt.image.ImageUtils;
-import org.dma.utils.java.Debug;
+import org.dma.utils.eclipse.swt.image.SWTImageUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -24,6 +23,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
+import rcp.colibri.core.vars.database.PopulateVARS;
 import rcp.importador.xml.SaftPTImport;
 
 public class ImportadorView extends ViewPart {
@@ -81,26 +81,25 @@ public class ImportadorView extends ViewPart {
 		Composite container = new Composite(parent, SWT.NONE);
 		container.setLayout(new GridLayout(1, false));
 		new Label(container, SWT.NONE);
-		{
-			// Group 1
-			groupChooseXml = new Group(container, SWT.NONE);
-			groupChooseXml.setLayout(new GridLayout(3, false));
-			groupChooseXml.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-			groupChooseXml.setText("Choose XML");
 
-			labelFile = new Label(groupChooseXml, SWT.NONE);
-			labelFile.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-			labelFile.setText("File");
+		// Group 1
+		groupChooseXml = new Group(container, SWT.NONE);
+		groupChooseXml.setLayout(new GridLayout(3, false));
+		groupChooseXml.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+		groupChooseXml.setText("Choose XML");
 
-			textFile = new Text(groupChooseXml, SWT.BORDER);
-			textFile.setEnabled(false);
-			textFile.setEditable(false);
-			textFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+		labelFile = new Label(groupChooseXml, SWT.NONE);
+		labelFile.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		labelFile.setText("File");
 
-			buttonFile = new Button(groupChooseXml, SWT.NONE);
-			buttonFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-			buttonFile.setText("[...]");
-		}
+		textFile = new Text(groupChooseXml, SWT.BORDER);
+		textFile.setEnabled(false);
+		textFile.setEditable(false);
+		textFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+
+		buttonFile = new Button(groupChooseXml, SWT.NONE);
+		buttonFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		buttonFile.setText("[...]");
 
 		new Label(container, SWT.NONE);
 
@@ -133,7 +132,7 @@ public class ImportadorView extends ViewPart {
 		groupLogInfo.setText("Log Info");
 
 		labelConsole = new Label(groupLogInfo, SWT.NONE);
-		labelConsole.setBackground(ImageUtils.getColor(SWT.COLOR_WHITE));
+		labelConsole.setBackground(SWTImageUtils.getColor(SWT.COLOR_WHITE));
 		labelConsole.setText("Waiting for XML file.");
 
 	}
@@ -161,9 +160,10 @@ public class ImportadorView extends ViewPart {
 			if(checkCustomer.getSelection() || checkArticles.getSelection() || checkTax.getSelection()){
 
 				buttonStart.setEnabled(false);
-				SaftPTImport saftImport = new SaftPTImport(false, checkCustomer.getSelection(), checkArticles.getSelection(), checkTax.getSelection(), "CL");
+				SaftPTImport saftImport = new SaftPTImport(false,
+					checkCustomer.getSelection(), checkArticles.getSelection(), checkTax.getSelection(),
+					PopulateVARS.ENTIDADESTIPOS.cliente.codigo, labelConsole);
 				saftImport.loadFile(file);
-				saftImport.setLabelConsole(labelConsole);
 				if(saftImport.process())
 					labelConsole.setText("Finished.");
 				else
@@ -180,8 +180,6 @@ public class ImportadorView extends ViewPart {
 	private void actionChooseFile(){
 
 		try {
-			Debug.info();
-
 			file=new FileImport("*.xml").filePicker(Display.getCurrent().getActiveShell());
 			labelConsole.setText("File loaded. Choose the items to Import and press Start.");
 			textFile.setText(file.getAbsolutePath());
