@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2011 Projecto Colibri
+ * 2008-2012 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp;
@@ -52,15 +52,8 @@ public class Application implements IApplication {
 			/*
 			 * LOGIN
 			 * Existem duas formas de efectuar login
-			 * 1) De forma manual, atraves do ecra de login
-			 * 2) De forma automatica, sem intervencao do utilizador
-			 *
-			 * NOTAS
-			 * O metodo 1 permite editar as configuracoes de
-			 * a) Empresas e base de dados
-			 * b) Licenca a utilizar por defeito
-			 * c) LINGUA (nao acessivel por via interna)
-			 *
+			 * 1) Atraves do ecra de login
+			 * 2) Atraves do metodo de login
 			 */
 			//if (login(display)==LoginShell.ACTION_LOGIN){ // 1
 			if (login()){ // 2
@@ -113,7 +106,7 @@ public class Application implements IApplication {
 
 
 	/**
-	 * Processa login de forma manual
+	 * Shell de login
 	 */
 	private int login(Display display) {
 
@@ -138,7 +131,7 @@ public class Application implements IApplication {
 
 
 	/**
-	 * Processa login de forma automatica
+	 * Login automatico
 	 */
 	public static boolean login() {
 
@@ -146,7 +139,7 @@ public class Application implements IApplication {
 
 		try{
 
-			if (LicenceManager.loadLicence(
+			if (LicenceManager.instance.load(
 				/*
 				 * LICENCA
 				 * A licenca deve ser carregada antes do login ser efectuado
@@ -162,8 +155,8 @@ public class Application implements IApplication {
 				 * 1) Atraves do carregamento de uma empresa existente
 				 * 2) Atraves da criacao de um objecto empresa
 				 */
-				//EmpresasXml.load(0), // 1
-				EmpresasXml.create(ConnectionManager.DRIVER_H2, "",
+				//EmpresasXml.instance.load(0), // 1
+				EmpresasXml.instance.create(ConnectionManager.DRIVER_H2, "",
 					"/colibri/colibri7", "sa", ""), // 2
 				/*
 				 * UTILIZADOR

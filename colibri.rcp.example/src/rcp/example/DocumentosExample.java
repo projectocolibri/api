@@ -13,8 +13,8 @@ import rcp.colibri.core.business.paste.EntidadesPaste;
 import rcp.colibri.core.business.process.EntidadesdocumentosProcess;
 import rcp.colibri.core.business.process.EntidadesdocumentoslinhasProcess;
 import rcp.colibri.core.business.rules.EntidadesdocumentoslinhasRules;
+import rcp.colibri.core.vars.database.PopulateVARS;
 import rcp.colibri.dao.database.ColibriDatabase;
-import rcp.colibri.dao.model.classes.Documentosseries;
 import rcp.colibri.dao.model.classes.Entidades;
 import rcp.colibri.dao.model.classes.Entidadesdocumentos;
 import rcp.colibri.dao.model.classes.Entidadesdocumentoslinhas;
@@ -28,32 +28,26 @@ public class DocumentosExample {
 	/**
 	 * Cria um novo documento
 	 */
-	public void createDocumento(String codigo, String serie) {
+	public void createDocumento(String codigo) {
 		try{
-
 			//cria objecto documento
 			Entidadesdocumentos documento=new Entidadesdocumentos(ColibriDatabase.loadDocumentostipos(codigo));
 
-			if (serie!=null){
-				//altera a serie do documento
-				documento.setSeriedocumento(ColibriDatabase.loadDocumentosseries(
-					Documentosseries.generateKey(documento.getTipodocumento().getCodigo(), serie)));
-			}
-
 			//carrega uma entidade do tipo CLIENTE
-			Entidades entidade=ColibriDatabase.loadEntidades(Entidades.generateKey("CL", 1));
+			Entidades entidade=ColibriDatabase.loadEntidades(
+				Entidades.generateKey(PopulateVARS.ENTIDADESTIPOS.cliente.codigo, 1));
 			//inicializa a entidade do documento
 			documento.setEntidade(entidade);
-			EntidadesPaste.process(entidade, documento);
+			EntidadesPaste.process(documento, entidade);
 
 			//cria as linhas do documento
 			createLinhasdocumento(documento, entidade);
 
-			//processa totais e tabela de iva
-			EntidadesdocumentosProcess.process(documento, documento.getLinhasdocumento());
+			//processa regras
+			EntidadesdocumentosProcess.rules(documento, documento.getLinhasdocumento());
 
-			//efectua processamentos adicionais
-			EntidadesdocumentosProcess.postProcess(documento, documento.getLinhasdocumento(), false);
+			//finaliza processamento
+			EntidadesdocumentosProcess.finish(documento, documento.getLinhasdocumento(), false);
 
 			//grava o documento na base de dados
 			ErrorList error=ColibriDatabase.storeEntidadesdocumentos(documento, false);
@@ -73,12 +67,11 @@ public class DocumentosExample {
 	 */
 	public void createLinhasdocumento(Entidadesdocumentos documento, Entidades entidade) {
 		try{
-
 			//cria objecto linha
 			Entidadesdocumentoslinhas linha=documento.createLinhasdocumento();
 
-			//inicializa artigo
-			EntidadesdocumentoslinhasRules.artigo(linha, entidade, ColibriDatabase.loadArtigos("1"));
+			//inicializa a linha
+			EntidadesdocumentoslinhasRules.init(linha, entidade, ColibriDatabase.loadArtigos("1"));
 
 			//actualiza a quantidade
 			linha.setQuantidade(BigDecimal.valueOf(5));
@@ -87,7 +80,7 @@ public class DocumentosExample {
 			linha.setPreco(BigDecimal.valueOf(100));
 
 			//processa a linha
-			EntidadesdocumentoslinhasProcess.process(documento, linha);
+			EntidadesdocumentoslinhasProcess.rules(documento, linha);
 
 			//adiciona a linha ao documento
 			documento.addLinhasdocumento(linha);

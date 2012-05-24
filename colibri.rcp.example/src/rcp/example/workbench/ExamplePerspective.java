@@ -7,7 +7,6 @@ package rcp.example.workbench;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dma.utils.eclipse.ui.WorkbenchHelper;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -19,11 +18,12 @@ import rcp.colibri.workbench.support.actions.OpenPreferencesAction;
 import rcp.colibri.workbench.support.actions.ResetPerspectiveAction;
 import rcp.colibri.workbench.support.bars.coolbar.ColibriCoolbarItem;
 import rcp.colibri.workbench.support.bars.menubar.ColibriMenubarItem;
+import rcp.colibri.workbench.support.helpers.WorkbenchHelper;
 import rcp.example.workbench.actions.DatabaseExampleAction;
 import rcp.example.workbench.actions.OpenExampleViewAction;
 import rcp.example.workbench.actions.ReportExampleAction;
 
-public class ExamplePerspective implements IColibriPerspective {
+public class ExamplePerspective extends WorkbenchHelper implements IColibriPerspective {
 
 	public static final String ID = "ExamplePerspective";
 
@@ -37,7 +37,7 @@ public class ExamplePerspective implements IColibriPerspective {
 		layout.getViewLayout(PerspectiveView.ID).setCloseable(false);
 
 		//layout.addPerspectiveShortcut(ID);
-		WorkbenchHelper.addOtherPerspectiveShortcuts(ID,layout);
+		addOtherPerspectiveShortcuts(ID,layout);
 
 	}
 

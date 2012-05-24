@@ -4,7 +4,7 @@
  *******************************************************************************/
 package rcp.example.workbench.actions;
 
-import org.dma.utils.eclipse.swt.image.ImageUtils;
+import org.dma.utils.eclipse.swt.image.SWTImageUtils;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
@@ -16,7 +16,7 @@ public class OpenExampleViewAction extends Action implements IWorkbenchAction {
 
 	public OpenExampleViewAction() {
 		setText("#view");
-		setImageDescriptor(ImageUtils.getImageDescriptor(IconVARS.COOLBAR_AJUDA));
+		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.COOLBAR_AJUDA));
 	}
 
 

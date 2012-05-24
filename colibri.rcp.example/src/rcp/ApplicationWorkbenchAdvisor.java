@@ -61,7 +61,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#postStartup()
 	 */
 	public void postStartup() {
-		Debug.info(Activator.PLUGIN_ID);
+		Debug.out(Activator.PLUGIN_ID);
 		/*
 		 * Inicializa o UI
 		 * Devem ser passadas as perspectivas implementadas
@@ -77,7 +77,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#preShutdown()
 	 */
 	public final boolean preShutdown() {
-		Debug.info(Activator.PLUGIN_ID);
+		Debug.out(Activator.PLUGIN_ID);
 		JobManager.debug();
 		/*
 		 * Termina o UI
@@ -89,7 +89,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 
 	public final void postShutdown() {
-		Debug.info(Activator.PLUGIN_ID);
+		Debug.out(Activator.PLUGIN_ID);
 		ColibriUI.dispose();
 	}
 
