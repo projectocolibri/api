@@ -25,7 +25,6 @@ public class ArtigosExample {
 	 */
 	public void createArtigo(String codigo, String descricao) {
 		try{
-
 			//cria objecto artigo
 			Artigos artigo=new Artigos(codigo);
 			artigo.setDescricao(descricao);
@@ -54,13 +53,12 @@ public class ArtigosExample {
 	 */
 	public void showArtigos() {
 		try{
-
 			/*
 			 * Carrega todos os artigos da base de dados
 			 * Apenas o campo CODIGO e' devolvido por defeito na coleccao
 			 * E' necessario carregar o artigo para aceder aos outros campos
 			 */
-			Collection<Artigos> artigos=ColibriDatabase.getArtigosCollection();
+			Collection<Artigos> artigos=ColibriDatabase.getCollectionArtigos();
 
 			//itera a coleccao de artigos
 			Iterator<Artigos> iterator=artigos.iterator();
