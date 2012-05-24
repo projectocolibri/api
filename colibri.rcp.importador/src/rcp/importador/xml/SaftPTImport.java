@@ -1,6 +1,5 @@
 /*******************************************************************************
- * 2011 Projecto Colibri
- * Sergio Gomes (sergiogomes@projectocolibri.com)
+ * 2008-2012 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.importador.xml;
@@ -12,27 +11,32 @@ import org.dma.utils.java.Debug;
 import org.dma.utils.java.string.StringUtils;
 import org.eclipse.swt.widgets.Label;
 
-import rcp.colibri.core.handlers.ExceptionHandler;
 import rcp.colibri.core.vars.database.ComboVARS;
+import rcp.colibri.core.vars.database.DefaultVARS;
 import rcp.colibri.dao.database.ColibriDatabase;
 import rcp.colibri.dao.model.classes.Artigos;
 import rcp.colibri.dao.model.classes.Codigosiva;
 import rcp.colibri.dao.model.classes.Codigospostais;
+import rcp.colibri.dao.model.classes.Empresa;
 import rcp.colibri.dao.model.classes.Entidades;
 import rcp.colibri.dao.model.classes.Entidadestipos;
 import rcp.colibri.dao.model.classes.Familias;
 import rcp.colibri.dao.model.classes.Paises;
 import rcp.colibri.workbench.support.textinput.RegexSupport;
 import x0101.oecdStandardAuditFileTaxPT1.AddressStructure;
+import x0101.oecdStandardAuditFileTaxPT1.AddressStructurePT;
 import x0101.oecdStandardAuditFileTaxPT1.AuditFileDocument;
 import x0101.oecdStandardAuditFileTaxPT1.AuditFileDocument.AuditFile;
 import x0101.oecdStandardAuditFileTaxPT1.AuditFileDocument.AuditFile.MasterFiles;
 import x0101.oecdStandardAuditFileTaxPT1.CustomerDocument.Customer;
+import x0101.oecdStandardAuditFileTaxPT1.HeaderDocument.Header;
 import x0101.oecdStandardAuditFileTaxPT1.ProductDocument.Product;
 import x0101.oecdStandardAuditFileTaxPT1.TaxTableDocument.TaxTable;
 import x0101.oecdStandardAuditFileTaxPT1.TaxTableEntryDocument.TaxTableEntry;
 
 public class SaftPTImport {
+
+	private final Label labelConsole;
 
 	//Parametros
 	private final boolean importHeader;
@@ -43,43 +47,64 @@ public class SaftPTImport {
 
 	//Documento principal
 	private AuditFile auditFile;
+
+	/*
+	 * Grupos obrigatorios do Audit File
+	 *
+	 * 	- Header
+	 *
+	 * 	- Master Files
+	 * 		-> Customer
+	 * 		-> Tax Table
+	 * 		-> Product
+	 *
+	 * 	- Source Documents
+	 * 		-> Sales Invoices
+	 */
+	private Header header;
 	private MasterFiles masterFiles;
 
-	private Label labelConsole;
-
 	public SaftPTImport(boolean importHeader, boolean importCustomers,
-			boolean importArticles, boolean importTaxes, String tipoentidade) {
+			boolean importArticles, boolean importTaxes, String tipoentidade,
+			Label labelConsole) {
 
 		this.importHeader = importHeader;
 		this.importCustomers = importCustomers;
 		this.importArticles = importArticles;
 		this.importTaxes = importTaxes;
 		this.tipoentidade = ColibriDatabase.loadEntidadestipos(tipoentidade);
+		this.labelConsole = labelConsole;
 
 	}
 
 
-	public void loadFile(File file){
+	public Boolean loadFile(File file){
 
-		Debug.info();
 		try{
-			if(file!=null){
-				AuditFileDocument auditFileDocument = AuditFileDocument.Factory.parse(file);
-				auditFile = auditFileDocument.getAuditFile();
-			}
+			AuditFileDocument auditFileDocument = AuditFileDocument.Factory.parse(file);
+			auditFile = auditFileDocument.getAuditFile();
+
+			Debug.out("VALID", isValid());
+
+			return isValid();
+
 		}catch(Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
+
+		return null;
 
 	}
 
 
 	public boolean process(){
 
-		Debug.info();
-
 		try{
+			header = auditFile.getHeader();
 			masterFiles = auditFile.getMasterFiles();
+
+			if(importHeader)
+				populateEmpresa();
 
 			if(importCustomers)
 				populateClientes();
@@ -93,7 +118,7 @@ public class SaftPTImport {
 			return true;
 
 		}catch(Exception e){
-			ExceptionHandler.error(e);
+			e.printStackTrace();
 		}
 
 		return false;
@@ -102,10 +127,9 @@ public class SaftPTImport {
 
 	private Codigospostais createCodigopostal(String codigo, String descricao){
 
-		Debug.info("codigo", codigo);
-
 		if (!ColibriDatabase.existsCodigospostais(codigo)){
 			Codigospostais codigopostal = new Codigospostais(filter(codigo),filter(descricao),"");
+			Debug.out(codigopostal);
 			ColibriDatabase.storeCodigospostais(codigopostal);
 		}
 
@@ -116,10 +140,9 @@ public class SaftPTImport {
 
 	private Paises createPais(String codigo, String descricao){
 
-		Debug.info("codigo", codigo);
-
 		if (!ColibriDatabase.existsPaises(codigo)){
 			Paises pais = new Paises(filter(codigo),filter(descricao));
+			Debug.out(pais);
 			ColibriDatabase.storePaises(pais);
 		}
 
@@ -130,10 +153,9 @@ public class SaftPTImport {
 
 	private Familias createFamilia(String codigo, String descricao){
 
-		Debug.info("codigo", codigo);
-
 		if (!ColibriDatabase.existsFamilias(codigo)){
 			Familias familia = new Familias(filter(codigo),filter(descricao));
+			Debug.out(familia);
 			ColibriDatabase.storeFamilias(familia);
 		}
 
@@ -144,10 +166,9 @@ public class SaftPTImport {
 
 	private Codigosiva createCodigoiva(String codigo, String descricao, BigDecimal taxa, int tipotaxa, int espacofiscal) {
 
-		Debug.info("codigo", codigo);
-
 		if (!ColibriDatabase.existsCodigosiva(codigo)){
 			Codigosiva codigoiva = new Codigosiva(filter(codigo),filter(descricao),taxa,tipotaxa,espacofiscal);
+			Debug.out(codigoiva);
 			ColibriDatabase.storeCodigosiva(codigoiva);
 		}
 
@@ -156,13 +177,53 @@ public class SaftPTImport {
 	}
 
 
+	private void populateEmpresa() throws Exception {
+
+		Empresa empresa = ColibriDatabase.loadEmpresa(DefaultVARS.EMPRESA);
+
+		//conservatoria e registo comercial
+		if(header.getCompanyID().length()>0 && header.getCompanyID().contains(" ")){
+			String[] companyId = header.getCompanyID().split(" ");
+			empresa.setConservatoria(filter(companyId[0]));
+			empresa.setRegistocomercial(filter(companyId[1]));
+		}
+
+		empresa.setNif(String.valueOf(header.getTaxRegistrationNumber()));
+		empresa.setNome(filter(header.getCompanyName()));
+
+		AddressStructurePT companyAddress = header.getCompanyAddress();
+		empresa.setMorada(filter(companyAddress.getAddressDetail()));
+		empresa.setLocalidade(filter(companyAddress.getCity()));
+		empresa.setCodigopostal(createCodigopostal(companyAddress.getPostalCode(), companyAddress.getCity()));
+
+		//TODO SAFT: Como sacar o PAIS da estrutura AddressStructurePT?
+		/*
+		empresa.setPais(createPais(
+			((Country)companyAddress.getCountry()).getStringValue(),
+			((Country)companyAddress.getCountry()).getStringValue()));
+		*/
+
+		empresa.setTelefone(filter(header.getTelephone()));
+		empresa.setFax(filter(header.getFax()));
+		empresa.setEmail(filter(header.getEmail()));
+		empresa.setUrl(filter(header.getWebsite()));
+
+		Debug.out(empresa);
+
+		ColibriDatabase.storeEmpresa(empresa);
+	}
+
+
 	private void populateClientes() throws Exception {
 
 		Customer[] customer = masterFiles.getCustomerArray();
 
+		Integer numero=ColibriDatabase.getNextNumeroEntidades(tipoentidade.getCodigo());
+
 		for (int i=0; i<customer.length; i++) {
 
-			Entidades entidade = new Entidades(new Integer(customer[i].getCustomerID()), tipoentidade);
+			Entidades entidade = new Entidades(numero, tipoentidade);
+			numero++;
 
 			entidade.setNif(filter(customer[i].getCustomerTaxID()));
 			entidade.setNome(filter(customer[i].getCompanyName()));
@@ -181,6 +242,8 @@ public class SaftPTImport {
 			entidade.setEmail(filter(customer[i].getEmail()));
 			entidade.setUrl(filter(customer[i].getWebsite()));
 
+			Debug.out(entidade);
+
 			ColibriDatabase.storeEntidades(entidade);
 			labelConsole.setText("Cliente: " + entidade.getNome().toUpperCase() + " gravado.");
 		}
@@ -196,7 +259,8 @@ public class SaftPTImport {
 			if(!ColibriDatabase.existsArtigos(product[i].getProductCode())){
 
 				Artigos artigo = new Artigos(filter(product[i].getProductCode()));
-				Debug.info("ARTIGO", artigo.getCodigo());
+				artigo.addUnidades(artigo.createUnidades());
+				artigo.addPrecos(artigo.createPrecos());
 
 				if(product[i].getProductType().equals("P")){
 					artigo.setTipo(ComboVARS.artigos_tipo_produto);
@@ -214,16 +278,17 @@ public class SaftPTImport {
 					artigo.getUnidades().iterator().next().setCodigobarras(
 						filter(product[i].getProductNumberCode()));
 
+				Debug.out(artigo);
+
 				ColibriDatabase.storeArtigos(artigo);
 				labelConsole.setText("Artigo: " + artigo.getDescricao().toUpperCase() + " gravado.");
 			}
+
 		}
 	}
 
 
 	private void populateIVA() throws Exception {
-
-		Debug.info();
 
 		TaxTable[] taxTable = masterFiles.getTaxTableArray();
 
@@ -275,19 +340,33 @@ public class SaftPTImport {
 	}
 
 
+
+
 	private String filter(String string){
 
 		if(string==null)
+			//evita strings a null
 			string="";
 		else
+			//remove caracteres nao permitidos
 			StringUtils.removeChars(string, RegexSupport.EXCLUDE_CHARS);
 
 		return string;
 	}
 
 
-	public void setLabelConsole(Label labelConsole){
-		this.labelConsole=labelConsole;
+
+
+
+	/*
+	 * Getters and setters
+	 */
+	public boolean isFileValid() {
+		return auditFile!=null;
+	}
+
+	public boolean isValid() {
+		return isFileValid() && auditFile.validate();
 	}
 
 

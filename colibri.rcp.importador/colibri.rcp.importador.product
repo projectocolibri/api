@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Importador SAFT" uid="colibri.rcp.importador.product" id="colibri.rcp.importador.product" application="colibri.rcp.importador.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
+<product name="Importador SAFT" uid="colibri.rcp.importador.product" id="colibri.rcp.importador.product" application="colibri.rcp.importador.application" version="1.1.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -40,7 +40,8 @@
       <plugin id="org.datanucleus.enhancer"/>
       <plugin id="org.datanucleus.store.rdbms"/>
       <plugin id="org.datanucleus.store.rdbms.connectionpool"/>
-      <plugin id="org.dma.utils"/>
+      <plugin id="org.dma.utils.eclipse"/>
+      <plugin id="org.dma.utils.java"/>
       <plugin id="org.eclipse.birt"/>
       <plugin id="org.eclipse.birt.chart.device.extension"/>
       <plugin id="org.eclipse.birt.chart.device.pdf"/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2011 Projecto Colibri
+ * 2008-2011 Projecto Colibri
  * Sergio Gomes (sergiogomes@projectocolibri.com)
  *******************************************************************************/
 package rcp.importador.ui;
@@ -7,7 +7,6 @@ package rcp.importador.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dma.utils.eclipse.ui.WorkbenchHelper;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -19,8 +18,9 @@ import rcp.colibri.workbench.support.actions.OpenPreferencesAction;
 import rcp.colibri.workbench.support.actions.ResetPerspectiveAction;
 import rcp.colibri.workbench.support.bars.coolbar.ColibriCoolbarItem;
 import rcp.colibri.workbench.support.bars.menubar.ColibriMenubarItem;
+import rcp.colibri.workbench.support.helpers.WorkbenchHelper;
 
-public class ImportadorPerspective implements IColibriPerspective {
+public class ImportadorPerspective extends WorkbenchHelper implements IColibriPerspective {
 
 	public static final String ID = "ImportadorPerspective";
 
@@ -34,7 +34,7 @@ public class ImportadorPerspective implements IColibriPerspective {
 		layout.getViewLayout(ImportadorView.ID).setCloseable(false);
 
 		//layout.addPerspectiveShortcut(ID);
-		WorkbenchHelper.addOtherPerspectiveShortcuts(ID,layout);
+		addOtherPerspectiveShortcuts(ID,layout);
 
 	}
 
