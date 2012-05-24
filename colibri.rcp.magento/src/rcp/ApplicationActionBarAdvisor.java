@@ -21,19 +21,19 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 
 	protected void fillMenuBar(IMenuManager menuBar) {
-		Debug.info();
+		Debug.out();
 		ColibriUI.initMenubar(getActionBarConfigurer());
 	}
 
 
 	protected void fillCoolBar(ICoolBarManager coolbar) {
-		Debug.info();
+		Debug.out();
 		ColibriUI.initCoolbar(getActionBarConfigurer());
 	}
 
 
 	protected void fillStatusLine(IStatusLineManager statusline) {
-		Debug.info();
+		Debug.out();
 		ColibriUI.initStatusbar(statusline);
 	}
 

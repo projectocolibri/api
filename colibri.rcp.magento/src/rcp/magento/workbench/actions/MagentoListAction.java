@@ -4,7 +4,7 @@
  *******************************************************************************/
 package rcp.magento.workbench.actions;
 
-import org.dma.utils.eclipse.swt.image.ImageUtils;
+import org.dma.utils.eclipse.swt.image.SWTImageUtils;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
@@ -15,7 +15,7 @@ public class MagentoListAction extends Action implements IWorkbenchAction {
 
 	public MagentoListAction() {
 		setText("List");
-		setImageDescriptor(ImageUtils.getImageDescriptor(IconVARS.TOOLBAR_ABRIR));
+		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.TOOLBAR_ABRIR));
 	}
 
 

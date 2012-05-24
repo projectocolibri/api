@@ -7,7 +7,6 @@ package rcp.magento.workbench;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dma.utils.eclipse.ui.WorkbenchHelper;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -20,11 +19,12 @@ import rcp.colibri.workbench.support.actions.OpenPreferencesAction;
 import rcp.colibri.workbench.support.actions.ResetPerspectiveAction;
 import rcp.colibri.workbench.support.bars.coolbar.ColibriCoolbarItem;
 import rcp.colibri.workbench.support.bars.menubar.ColibriMenubarItem;
+import rcp.colibri.workbench.support.helpers.WorkbenchHelper;
 import rcp.magento.workbench.actions.MagentoCreateAction;
 import rcp.magento.workbench.actions.MagentoListAction;
 import rcp.magento.workbench.actions.MagentoLoginAction;
 
-public class MagentoPerspective implements IColibriPerspective {
+public class MagentoPerspective extends WorkbenchHelper implements IColibriPerspective {
 
 	public static final String ID = "MagentoPerspective";
 
@@ -38,7 +38,7 @@ public class MagentoPerspective implements IColibriPerspective {
 		layout.getViewLayout(PerspectiveView.ID).setCloseable(false);
 
 		//layout.addPerspectiveShortcut(ID);
-		WorkbenchHelper.addOtherPerspectiveShortcuts(ID,layout);
+		addOtherPerspectiveShortcuts(ID,layout);
 
 	}
 

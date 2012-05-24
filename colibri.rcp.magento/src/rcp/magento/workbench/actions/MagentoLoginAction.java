@@ -4,7 +4,7 @@
  *******************************************************************************/
 package rcp.magento.workbench.actions;
 
-import org.dma.utils.eclipse.swt.image.ImageUtils;
+import org.dma.utils.eclipse.swt.image.SWTImageUtils;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
@@ -18,7 +18,7 @@ public class MagentoLoginAction extends Action implements IWorkbenchAction {
 
 	public MagentoLoginAction() {
 		setText("Login");
-		setImageDescriptor(ImageUtils.getImageDescriptor(IconVARS.TOOLBAR_VALIDAR));
+		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.TOOLBAR_VALIDAR));
 	}
 
 

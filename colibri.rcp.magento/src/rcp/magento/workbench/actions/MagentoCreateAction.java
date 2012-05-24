@@ -4,7 +4,7 @@
  *******************************************************************************/
 package rcp.magento.workbench.actions;
 
-import org.dma.utils.eclipse.swt.image.ImageUtils;
+import org.dma.utils.eclipse.swt.image.SWTImageUtils;
 import org.dma.utils.java.numeric.IntegerUtils;
 import org.dma.utils.java.string.StringUtils;
 import org.eclipse.jface.action.Action;
@@ -17,7 +17,7 @@ public class MagentoCreateAction extends Action implements IWorkbenchAction {
 
 	public MagentoCreateAction() {
 		setText("Create");
-		setImageDescriptor(ImageUtils.getImageDescriptor(IconVARS.TOOLBAR_GRAVAR));
+		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.TOOLBAR_GRAVAR));
 	}
 
 
