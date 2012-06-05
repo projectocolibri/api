@@ -57,7 +57,7 @@ public class ImportadorPerspective extends WorkbenchHelper implements IColibriPe
 
 		List<ColibriMenubarItem> items=new ArrayList();
 
-		items.add(new ColibriMenubarItem(LabelVARS.menubar_ficheiro, new IAction[]{
+		items.add(new ColibriMenubarItem(LabelVARS.menubar_ficheiro.name(0), new IAction[]{
 				new OpenPreferencesAction(window),
 				new ResetPerspectiveAction(),
 				new ClosePerspectiveAction(ID)}));

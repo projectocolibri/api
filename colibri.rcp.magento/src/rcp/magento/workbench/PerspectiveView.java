@@ -1,12 +1,12 @@
 /*******************************************************************************
- * 2008-2011 Projecto Colibri
+ * 2008-2012 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.magento.workbench;
 
+import org.dma.utils.eclipse.swt.custom.CustomBrowser;
 import org.dma.utils.eclipse.swt.image.ImageManager;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
@@ -22,13 +22,13 @@ public class PerspectiveView extends ViewPart implements IStateSupportView {
 
 	public void createPartControl(Composite parent) {
 
-		setPartName(LabelVARS.desktop_browser);
+		setPartName(LabelVARS.desktop_browser.name(0));
 		setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_BROWSER));
 
-		Composite container=new Composite(parent, SWT.NONE);
-		container.setLayout(new FillLayout());
+		Composite composite=new Composite(parent, SWT.NONE);
+		composite.setLayout(new FillLayout());
 
-		Browser browser=new Browser(container, SWT.NONE);
+		CustomBrowser browser=new CustomBrowser(composite);
 		browser.setUrl(RCPMagento.MAGENTO_ADMIN_URL);
 
 	}

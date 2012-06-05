@@ -25,8 +25,8 @@ public class ExampleView extends ViewPart {
 		setPartName("#view");
 		setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_AJUDA));
 
-		Composite container=new Composite(parent, SWT.NONE);
-		container.setLayout(new FillLayout());
+		Composite composite=new Composite(parent, SWT.NONE);
+		composite.setLayout(new FillLayout());
 
 		Label label=new Label(parent, SWT.NONE);
 		label.setText("Hello World!!!");
