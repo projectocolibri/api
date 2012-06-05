@@ -58,9 +58,9 @@ public class ReportExample {
 		final CustomJob job=new CustomJob();
 
 		switch(action){
-			case BIRTReport.ACTION_PREVIEW: job.setName(LabelVARS.operacao_preverrelatorio[0]); break;
-			case BIRTReport.ACTION_PRINT: job.setName(LabelVARS.operacao_imprimirrelatorio[0]); break;
-			case BIRTReport.ACTION_EMAIL: job.setName(LabelVARS.operacao_enviarrelatorio); break;
+			case BIRTReport.ACTION_PREVIEW: job.setName(LabelVARS.operacao_preverrelatorio.name(0)); break;
+			case BIRTReport.ACTION_PRINT: job.setName(LabelVARS.operacao_imprimirrelatorio.name(0)); break;
+			case BIRTReport.ACTION_EMAIL: job.setName(LabelVARS.operacao_enviarrelatorio.name(0)); break;
 		}
 
 		final BIRTReport report=initReport(tipodocumento, serie, numerodocumento, action);
@@ -85,7 +85,7 @@ public class ReportExample {
 			public void jobStarting() {
 			}
 			public void jobDone() {
-				DialogHandler.information(job.getName(), LabelVARS.msgwin_info_operacaoconcluida);
+				DialogHandler.information(job.getName(), LabelVARS.msgwin_info_operacaoconcluida.name(0));
 			}
 		}, job);
 

@@ -78,12 +78,12 @@ public class ImportadorView extends ViewPart {
 
 	public void createContainer(Composite parent){
 
-		Composite container = new Composite(parent, SWT.NONE);
-		container.setLayout(new GridLayout(1, false));
-		new Label(container, SWT.NONE);
+		Composite composite = new Composite(parent, SWT.NONE);
+		composite.setLayout(new GridLayout(1, false));
+		new Label(composite, SWT.NONE);
 
 		// Group 1
-		groupChooseXml = new Group(container, SWT.NONE);
+		groupChooseXml = new Group(composite, SWT.NONE);
 		groupChooseXml.setLayout(new GridLayout(3, false));
 		groupChooseXml.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		groupChooseXml.setText("Choose XML");
@@ -101,10 +101,10 @@ public class ImportadorView extends ViewPart {
 		buttonFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		buttonFile.setText("[...]");
 
-		new Label(container, SWT.NONE);
+		new Label(composite, SWT.NONE);
 
 		//Group 2
-		groupItemsToImport = new Group(container, SWT.NONE);
+		groupItemsToImport = new Group(composite, SWT.NONE);
 		groupItemsToImport.setLayout(new GridLayout(1, false));
 		groupItemsToImport.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		groupItemsToImport.setText("Items to Import");
@@ -121,12 +121,12 @@ public class ImportadorView extends ViewPart {
 		checkTax.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		checkTax.setText("Tax");
 
-		buttonStart = new Button(container, SWT.NONE);
+		buttonStart = new Button(composite, SWT.NONE);
 		buttonStart.setLayoutData(new GridData(SWT.RIGHT, SWT.FILL, false, false, 1, 1));
 		buttonStart.setText("Start");
 
 		//Group 3
-		groupLogInfo = new Group(container, SWT.NONE);
+		groupLogInfo = new Group(composite, SWT.NONE);
 		groupLogInfo.setLayout(new FillLayout(SWT.HORIZONTAL));
 		groupLogInfo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		groupLogInfo.setText("Log Info");

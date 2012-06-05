@@ -62,7 +62,7 @@ public class MagentoPerspective extends WorkbenchHelper implements IColibriPersp
 		List<ColibriMenubarItem> items=new ArrayList();
 
 		items.add(new ColibriMenubarItem(
-				LabelVARS.menubar_ficheiro,
+				LabelVARS.menubar_ficheiro.name(0),
 				new IAction[]{
 				new OpenPreferencesAction(window),
 				new ResetPerspectiveAction(),
