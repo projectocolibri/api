@@ -22,7 +22,7 @@ import rcp.colibri.core.vars.database.DatabaseVARS;
 import rcp.colibri.core.vars.database.DatabaseVARS.FIELDS;
 import rcp.colibri.core.vars.database.PopulateVARS;
 import rcp.colibri.core.vars.gui.LabelVARS;
-import rcp.colibri.dao.model.classes.Entidadesdocumentos;
+import rcp.colibri.dao.database.model.Entidadesdocumentos;
 
 public class ReportExample {
 
@@ -39,7 +39,8 @@ public class ReportExample {
 	public void process(String tipodocumento, String serie, int numerodocumento, int action) {
 
 		BIRTReport report=initReport(tipodocumento, serie, numerodocumento, action);
-		report.process();
+		String file=report.process();
+		System.out.println("Output file: "+file);
 		report.output();
 
 	}

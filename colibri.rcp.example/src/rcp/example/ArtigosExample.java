@@ -11,7 +11,7 @@ import org.dma.utils.eclipse.swt.DialogHandler;
 import org.dma.utils.java.array.ErrorList;
 
 import rcp.colibri.dao.database.ColibriDatabase;
-import rcp.colibri.dao.model.classes.Artigos;
+import rcp.colibri.dao.database.model.Artigos;
 
 public class ArtigosExample {
 
