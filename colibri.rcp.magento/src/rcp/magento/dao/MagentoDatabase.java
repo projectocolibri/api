@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2011 Projecto Colibri
+ * 2008-2012 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.magento.dao;
@@ -43,50 +43,22 @@ public class MagentoDatabase {
 
 
 	/*
-	 * Client
+	 * Managers
 	 */
 	public static MagentoSoapClient getMagentoSoapClient() {
 		return magentoSoapClient;
 	}
 
-	public static void setMagentoSoapClient(MagentoSoapClient magentoSoapClient) {
-		MagentoDatabase.magentoSoapClient=magentoSoapClient;
-	}
-
-
-	/*
-	 * Category
-	 */
 	public static CategoryManager getCategoryManager() {
 		return categoryManager;
 	}
 
-	public static void setCategoryManager(CategoryManager categoryManager) {
-		MagentoDatabase.categoryManager=categoryManager;
-	}
-
-
-	/*
-	 * Product
-	 */
 	public static ProductManager getProductManager() {
 		return productManager;
 	}
 
-	public static void setProductManager(ProductManager productManager) {
-		MagentoDatabase.productManager=productManager;
-	}
-
-
-	/*
-	 * Customer
-	 */
 	public static CustomerManager getCustomerManager() {
 		return customerManager;
-	}
-
-	public static void setCustomerManager(CustomerManager customerManager) {
-		MagentoDatabase.customerManager=customerManager;
 	}
 
 

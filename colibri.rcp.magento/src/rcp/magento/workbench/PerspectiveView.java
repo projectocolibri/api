@@ -13,10 +13,10 @@ import org.eclipse.ui.part.ViewPart;
 
 import rcp.colibri.core.vars.gui.IconVARS;
 import rcp.colibri.core.vars.gui.LabelVARS;
-import rcp.colibri.workbench.support.views.IStateSupportView;
+import rcp.colibri.workbench.support.views.IViewStateSupport;
 import rcp.magento.RCPMagento;
 
-public class PerspectiveView extends ViewPart implements IStateSupportView {
+public class PerspectiveView extends ViewPart implements IViewStateSupport {
 
 	public static final String ID = "PerspectiveView";
 
@@ -38,8 +38,8 @@ public class PerspectiveView extends ViewPart implements IStateSupportView {
 
 
 	/*
-	 * IStateSupportView(non-Javadoc)
-	 * @see rcp.colibri.workbench.support.views.IStateSupportView#isViewStateValid()
+	 * IViewStateSupport(non-Javadoc)
+	 * @see rcp.colibri.workbench.support.views.IViewStateSupport#isViewStateValid()
 	 */
 	public boolean isViewStateValid() {
 		return true;

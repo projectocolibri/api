@@ -85,7 +85,6 @@ public class Application implements IApplication {
 		try{
 			LoginShell shell = new LoginShell(display);
 			shell.open();
-			shell.setFocus();
 
 			while (!shell.isDisposed())
 				if (!display.readAndDispatch())
@@ -113,9 +112,10 @@ public class Application implements IApplication {
 
 			if (LicenceManager.instance.load(
 				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0") &&
-				login.process(//EmpresasXml.instance.load(0),
-					EmpresasXml.instance.create(ConnectionManager.DRIVER_H2, "",
-					"/colibri/colibri7", "sa", ""),
+				login.process(
+					//EmpresasXml.instance.load(0),
+					EmpresasXml.instance.create("H2 Integrado",
+					ConnectionManager.DRIVER_H2, "", "colibri7", "sa", ""),
 					"admin", "admin"))
 				return true;
 
