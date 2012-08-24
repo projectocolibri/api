@@ -113,7 +113,6 @@ public class Application implements IApplication {
 		try{
 			LoginShell shell = new LoginShell(display);
 			shell.open();
-			shell.setFocus();
 
 			while (!shell.isDisposed())
 				if (!display.readAndDispatch())
@@ -156,8 +155,8 @@ public class Application implements IApplication {
 				 * 2) Atraves da criacao de um objecto empresa
 				 */
 				//EmpresasXml.instance.load(0), // 1
-				EmpresasXml.instance.create(ConnectionManager.DRIVER_H2, "",
-					"/colibri/colibri7", "sa", ""), // 2
+				EmpresasXml.instance.create("H2 Integrado",
+					ConnectionManager.DRIVER_H2, "", "colibri7", "sa", ""), // 2
 				/*
 				 * UTILIZADOR
 				 * Por defeito e' assumido o utilizador ADMIN

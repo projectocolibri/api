@@ -9,7 +9,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import rcp.colibri.core.vars.gui.IconVARS;
-import rcp.colibri.workbench.support.views.actions.OpenViewAction;
+import rcp.colibri.workbench.support.views.OpenViewAction;
 import rcp.example.workbench.ExampleView;
 
 public class OpenExampleViewAction extends Action implements IWorkbenchAction {

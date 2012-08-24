@@ -14,9 +14,9 @@ import org.eclipse.ui.part.ViewPart;
 import rcp.colibri.core.vars.gui.IconVARS;
 import rcp.colibri.core.vars.gui.LabelVARS;
 import rcp.colibri.core.vars.rcp.FileVARS;
-import rcp.colibri.workbench.support.views.IStateSupportView;
+import rcp.colibri.workbench.support.views.IViewStateSupport;
 
-public class PerspectiveView extends ViewPart implements IStateSupportView {
+public class PerspectiveView extends ViewPart implements IViewStateSupport {
 
 	/**
 	 * O ID da vista tem de ser UNICO
@@ -42,8 +42,8 @@ public class PerspectiveView extends ViewPart implements IStateSupportView {
 
 
 	/*
-	 * IStateSupportView(non-Javadoc)
-	 * @see rcp.colibri.workbench.support.views.IStateSupportView#isViewStateValid()
+	 * IViewStateSupport(non-Javadoc)
+	 * @see rcp.colibri.workbench.support.views.IViewStateSupport#isViewStateValid()
 	 */
 	public boolean isViewStateValid() {
 		return true;

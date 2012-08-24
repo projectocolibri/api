@@ -9,15 +9,15 @@ import java.math.BigDecimal;
 import org.dma.utils.eclipse.swt.DialogHandler;
 import org.dma.utils.java.array.ErrorList;
 
-import rcp.colibri.core.business.paste.EntidadesPaste;
-import rcp.colibri.core.business.process.EntidadesdocumentosProcess;
-import rcp.colibri.core.business.process.EntidadesdocumentoslinhasProcess;
-import rcp.colibri.core.business.rules.EntidadesdocumentoslinhasRules;
 import rcp.colibri.core.vars.database.PopulateVARS;
+import rcp.colibri.dao.business.process.EntidadesdocumentosProcess;
+import rcp.colibri.dao.business.process.EntidadesdocumentoslinhasProcess;
+import rcp.colibri.dao.business.rules.EntidadesdocumentosRules;
+import rcp.colibri.dao.business.rules.EntidadesdocumentoslinhasRules;
 import rcp.colibri.dao.database.ColibriDatabase;
-import rcp.colibri.dao.model.classes.Entidades;
-import rcp.colibri.dao.model.classes.Entidadesdocumentos;
-import rcp.colibri.dao.model.classes.Entidadesdocumentoslinhas;
+import rcp.colibri.dao.database.model.Entidades;
+import rcp.colibri.dao.database.model.Entidadesdocumentos;
+import rcp.colibri.dao.database.model.Entidadesdocumentoslinhas;
 
 public class DocumentosExample {
 
@@ -37,8 +37,8 @@ public class DocumentosExample {
 			Entidades entidade=ColibriDatabase.loadEntidades(
 				Entidades.generateKey(PopulateVARS.ENTIDADESTIPOS.cliente.codigo, 1));
 			//inicializa a entidade do documento
+			EntidadesdocumentosRules.init(documento, entidade);
 			documento.setEntidade(entidade);
-			EntidadesPaste.process(documento, entidade);
 
 			//cria as linhas do documento
 			createLinhasdocumento(documento, entidade);

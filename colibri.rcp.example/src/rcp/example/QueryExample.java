@@ -15,9 +15,9 @@ import rcp.colibri.core.mappers.filters.FilterOperandMap;
 import rcp.colibri.core.vars.database.DatabaseVARS;
 import rcp.colibri.core.vars.database.DatabaseVARS.FIELDS;
 import rcp.colibri.dao.database.ColibriDatabase;
+import rcp.colibri.dao.database.model.Entidades;
 import rcp.colibri.dao.database.query.QueryDefinition;
 import rcp.colibri.dao.database.query.QueryDefinition.QUERY_ORDER;
-import rcp.colibri.dao.model.classes.Entidades;
 
 public class QueryExample {
 
