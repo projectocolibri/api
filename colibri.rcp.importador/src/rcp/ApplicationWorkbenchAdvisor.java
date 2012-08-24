@@ -11,7 +11,7 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import rcp.colibri.workbench.ColibriUI;
 import rcp.importador.RCPImportador;
-import rcp.importador.ui.ImportadorPerspective;
+import rcp.importador.workbench.ImportadorPerspective;
 
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
