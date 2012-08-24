@@ -4,8 +4,8 @@
  *******************************************************************************/
 package rcp.importador;
 
-import rcp.colibri.workbench.support.views.actions.OpenViewAction;
-import rcp.importador.ui.ImportadorView;
+import rcp.colibri.workbench.support.views.OpenViewAction;
+import rcp.importador.workbench.ImportadorView;
 
 public class RCPImportador {
 

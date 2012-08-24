@@ -37,7 +37,7 @@
       <perspective
  				id="ImportadorPerspective"
 				name="Importador"
-				class="rcp.importador.ui.ImportadorPerspective">
+				class="rcp.importador.workbench.ImportadorPerspective">
 				<!--class="rcp.colibri.workbench.perspectives.ColibriPerspective">-->
       </perspective>
    </extension>
@@ -47,7 +47,7 @@
 		<view
 				id="ImportadorView"
 				name="Importador SAFT"
-				class="rcp.importador.ui.ImportadorView"
+				class="rcp.importador.workbench.ImportadorView"
 				allowMultiple="false"
 				restorable="false">
 		</view>

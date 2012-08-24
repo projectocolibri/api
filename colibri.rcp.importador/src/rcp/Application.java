@@ -17,14 +17,12 @@ public class Application implements IApplication {
 	public static final boolean CREATE_WORKBENCH=true;
 
 	public Object start(IApplicationContext context) {
+
 		System.out.println(rcp.Activator.PLUGIN_ID+" APPLICATION <start>");
-
 		Integer exitCode = IApplication.EXIT_OK;
-
 		Display display = PlatformUI.createDisplay();
 
 		try{
-
 			if (login(display)==LoginShell.ACTION_LOGIN){
 
 				if (CREATE_WORKBENCH){
@@ -64,7 +62,6 @@ public class Application implements IApplication {
 		try{
 			LoginShell shell = new LoginShell(display);
 			shell.open();
-			shell.setFocus();
 
 			while (!shell.isDisposed())
 				if (!display.readAndDispatch())

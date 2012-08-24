@@ -11,18 +11,18 @@ import org.dma.utils.java.Debug;
 import org.dma.utils.java.string.StringUtils;
 import org.eclipse.swt.widgets.Label;
 
+import rcp.colibri.core.vars.GlobalVARS;
 import rcp.colibri.core.vars.database.ComboVARS;
 import rcp.colibri.core.vars.database.DefaultVARS;
 import rcp.colibri.dao.database.ColibriDatabase;
-import rcp.colibri.dao.model.classes.Artigos;
-import rcp.colibri.dao.model.classes.Codigosiva;
-import rcp.colibri.dao.model.classes.Codigospostais;
-import rcp.colibri.dao.model.classes.Empresa;
-import rcp.colibri.dao.model.classes.Entidades;
-import rcp.colibri.dao.model.classes.Entidadestipos;
-import rcp.colibri.dao.model.classes.Familias;
-import rcp.colibri.dao.model.classes.Paises;
-import rcp.colibri.workbench.support.textinput.RegexSupport;
+import rcp.colibri.dao.database.model.Artigos;
+import rcp.colibri.dao.database.model.Codigosiva;
+import rcp.colibri.dao.database.model.Codigospostais;
+import rcp.colibri.dao.database.model.Empresa;
+import rcp.colibri.dao.database.model.Entidades;
+import rcp.colibri.dao.database.model.Entidadestipos;
+import rcp.colibri.dao.database.model.Familias;
+import rcp.colibri.dao.database.model.Paises;
 import x0101.oecdStandardAuditFileTaxPT1.AddressStructure;
 import x0101.oecdStandardAuditFileTaxPT1.AddressStructurePT;
 import x0101.oecdStandardAuditFileTaxPT1.AuditFileDocument;
@@ -349,7 +349,7 @@ public class SaftPTImport {
 			string="";
 		else
 			//remove caracteres nao permitidos
-			StringUtils.removeChars(string, RegexSupport.EXCLUDE_CHARS);
+			StringUtils.removeChars(string, GlobalVARS.EXCLUDE_CHARS);
 
 		return string;
 	}
