@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 import org.dma.utils.java.Debug;
 import org.dma.utils.java.string.StringUtils;
-import org.eclipse.swt.widgets.Label;
 
 import rcp.colibri.core.vars.GlobalVARS;
 import rcp.colibri.core.vars.database.ComboVARS;
@@ -34,9 +33,9 @@ import x0101.oecdStandardAuditFileTaxPT1.ProductDocument.Product;
 import x0101.oecdStandardAuditFileTaxPT1.TaxTableDocument.TaxTable;
 import x0101.oecdStandardAuditFileTaxPT1.TaxTableEntryDocument.TaxTableEntry;
 
-public class SaftPTImport {
+public abstract class SaftPTImport {
 
-	private final Label labelConsole;
+	public abstract void consoleOut(String string);
 
 	//Parametros
 	private final boolean importHeader;
@@ -65,15 +64,13 @@ public class SaftPTImport {
 	private MasterFiles masterFiles;
 
 	public SaftPTImport(boolean importHeader, boolean importCustomers,
-			boolean importArticles, boolean importTaxes, String tipoentidade,
-			Label labelConsole) {
+			boolean importArticles, boolean importTaxes, String tipoentidade) {
 
 		this.importHeader = importHeader;
 		this.importCustomers = importCustomers;
 		this.importArticles = importArticles;
 		this.importTaxes = importTaxes;
 		this.tipoentidade = ColibriDatabase.loadEntidadestipos(tipoentidade);
-		this.labelConsole = labelConsole;
 
 	}
 
@@ -97,6 +94,11 @@ public class SaftPTImport {
 	}
 
 
+	/**
+	 * @return
+	 * true - caso tenha importado sem erros<br>
+	 * false - caso tenha ocorrido um erro interno
+	 */
 	public boolean process(){
 
 		try{
@@ -122,58 +124,6 @@ public class SaftPTImport {
 		}
 
 		return false;
-	}
-
-
-	private Codigospostais createCodigopostal(String codigo, String descricao){
-
-		if (!ColibriDatabase.existsCodigospostais(codigo)){
-			Codigospostais codigopostal = new Codigospostais(filter(codigo),filter(descricao),"");
-			Debug.out(codigopostal);
-			ColibriDatabase.storeCodigospostais(codigopostal);
-		}
-
-		return ColibriDatabase.loadCodigospostais(codigo);
-
-	}
-
-
-	private Paises createPais(String codigo, String descricao){
-
-		if (!ColibriDatabase.existsPaises(codigo)){
-			Paises pais = new Paises(filter(codigo),filter(descricao));
-			Debug.out(pais);
-			ColibriDatabase.storePaises(pais);
-		}
-
-		return ColibriDatabase.loadPaises(codigo);
-
-	}
-
-
-	private Familias createFamilia(String codigo, String descricao){
-
-		if (!ColibriDatabase.existsFamilias(codigo)){
-			Familias familia = new Familias(filter(codigo),filter(descricao));
-			Debug.out(familia);
-			ColibriDatabase.storeFamilias(familia);
-		}
-
-		return ColibriDatabase.loadFamilias(codigo);
-
-	}
-
-
-	private Codigosiva createCodigoiva(String codigo, String descricao, BigDecimal taxa, int tipotaxa, int espacofiscal) {
-
-		if (!ColibriDatabase.existsCodigosiva(codigo)){
-			Codigosiva codigoiva = new Codigosiva(filter(codigo),filter(descricao),taxa,tipotaxa,espacofiscal);
-			Debug.out(codigoiva);
-			ColibriDatabase.storeCodigosiva(codigoiva);
-		}
-
-		return ColibriDatabase.loadCodigosiva(codigo);
-
 	}
 
 
@@ -209,8 +159,8 @@ public class SaftPTImport {
 		empresa.setUrl(filter(header.getWebsite()));
 
 		Debug.out(empresa);
-
 		ColibriDatabase.storeEmpresa(empresa);
+		consoleOut("Empresa: " + empresa.getNome() + " criada.");
 	}
 
 
@@ -243,9 +193,8 @@ public class SaftPTImport {
 			entidade.setUrl(filter(customer[i].getWebsite()));
 
 			Debug.out(entidade);
-
 			ColibriDatabase.storeEntidades(entidade);
-			labelConsole.setText("Cliente: " + entidade.getNome().toUpperCase() + " gravado.");
+			consoleOut("Cliente: " + entidade.getNome() + " criado.");
 		}
 	}
 
@@ -279,9 +228,8 @@ public class SaftPTImport {
 						filter(product[i].getProductNumberCode()));
 
 				Debug.out(artigo);
-
 				ColibriDatabase.storeArtigos(artigo);
-				labelConsole.setText("Artigo: " + artigo.getDescricao().toUpperCase() + " gravado.");
+				consoleOut("Artigo: " + artigo.getDescricao() + " criado.");
 			}
 
 		}
@@ -342,16 +290,69 @@ public class SaftPTImport {
 
 
 
+
+	/*
+	 * Base de Dados
+	 */
+	private Codigospostais createCodigopostal(String codigo, String descricao){
+
+		if (!ColibriDatabase.existsCodigospostais(codigo)){
+			Codigospostais codigopostal = new Codigospostais(filter(codigo),filter(descricao),"");
+			Debug.out(codigopostal);
+			ColibriDatabase.storeCodigospostais(codigopostal);
+		}
+
+		return ColibriDatabase.loadCodigospostais(codigo);
+
+	}
+
+
+	private Paises createPais(String codigo, String descricao){
+
+		if (!ColibriDatabase.existsPaises(codigo)){
+			Paises pais = new Paises(filter(codigo),filter(descricao));
+			Debug.out(pais);
+			ColibriDatabase.storePaises(pais);
+		}
+
+		return ColibriDatabase.loadPaises(codigo);
+
+	}
+
+
+	private Familias createFamilia(String codigo, String descricao){
+
+		if (!ColibriDatabase.existsFamilias(codigo)){
+			Familias familia = new Familias(filter(codigo),filter(descricao));
+			Debug.out(familia);
+			ColibriDatabase.storeFamilias(familia);
+		}
+
+		return ColibriDatabase.loadFamilias(codigo);
+
+	}
+
+
+	private Codigosiva createCodigoiva(String codigo, String descricao, BigDecimal taxa, int tipotaxa, int espacofiscal) {
+
+		if (!ColibriDatabase.existsCodigosiva(codigo)){
+			Codigosiva codigoiva = new Codigosiva(filter(codigo),filter(descricao),taxa,tipotaxa,espacofiscal);
+			Debug.out(codigoiva);
+			ColibriDatabase.storeCodigosiva(codigoiva);
+		}
+
+		return ColibriDatabase.loadCodigosiva(codigo);
+
+	}
+
+
+
+	/**
+	 * Evita strings a null e remove caracteres nao permitidos
+	 */
 	private String filter(String string){
-
-		if(string==null)
-			//evita strings a null
-			string="";
-		else
-			//remove caracteres nao permitidos
-			StringUtils.removeChars(string, GlobalVARS.EXCLUDE_CHARS);
-
-		return string;
+		return string==null ?
+			"" : StringUtils.removeChars(string, GlobalVARS.EXCLUDE_CHARS);
 	}
 
 
