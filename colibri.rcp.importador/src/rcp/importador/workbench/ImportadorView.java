@@ -161,8 +161,12 @@ public class ImportadorView extends ViewPart {
 
 				buttonStart.setEnabled(false);
 				SaftPTImport saftImport = new SaftPTImport(false,
-					checkCustomer.getSelection(), checkArticles.getSelection(), checkTax.getSelection(),
-					PopulateVARS.ENTIDADESTIPOS.cliente.codigo, labelConsole);
+					checkCustomer.getSelection(), checkArticles.getSelection(),
+					checkTax.getSelection(), PopulateVARS.ENTIDADESTIPOS.cliente.codigo){
+					public void consoleOut(String string) {
+						labelConsole.setText(string);
+					}
+				};
 				saftImport.loadFile(file);
 				if(saftImport.process())
 					labelConsole.setText("Finished.");
