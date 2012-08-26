@@ -67,7 +67,7 @@ public class ArtigosExample {
 				//carrega o artigo da base de dados
 				Artigos artigo=ColibriDatabase.loadArtigos(iterator.next().getCodigo());
 
-				System.out.println(artigo.getCodigo()+" - "+artigo.getDescricao());
+				System.out.println(artigo);
 				//saca a primeira unidade de medida
 				System.out.println(artigo.getUnidades().iterator().next().getUnidademedida());
 				//saca o primeiro preco
