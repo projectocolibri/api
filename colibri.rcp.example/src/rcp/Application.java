@@ -13,6 +13,7 @@ import org.eclipse.ui.PlatformUI;
 
 import rcp.colibri.core.login.ColibriLogin;
 import rcp.colibri.core.security.LicenceManager;
+import rcp.colibri.core.vars.rcp.FileVARS;
 import rcp.colibri.dao.database.connection.ConnectionManager;
 import rcp.colibri.dao.xmlbeans.EmpresasXml;
 import rcp.colibri.workbench.shells.login.LoginShell;
@@ -144,8 +145,7 @@ public class Application implements IApplication {
 				 * A licenca deve ser carregada antes do login ser efectuado
 				 * Por defeito e' carregada a licenca FREE (certificada)
 				 */
-				//FileVARS.LICENCE_FOLDER+"PORTUGAL.rcplicence", "0") &&
-				"/colibri/licencas/PRO.rcplicence", "0") &&
+				FileVARS.LICENCE_FOLDER+"PORTUGAL.rcplicence", "0") &&
 
 				login.process(
 				/*
