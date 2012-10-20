@@ -13,7 +13,7 @@ import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import rcp.colibri.workbench.ColibriUI;
-import rcp.colibri.workbench.perspectives.IColibriPerspective;
+import rcp.colibri.workbench.IColibriPerspective;
 import rcp.example.workbench.ExamplePerspective;
 /*
  * Metodos por ordem de execucao
