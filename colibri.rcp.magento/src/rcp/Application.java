@@ -111,7 +111,7 @@ public class Application implements IApplication {
 		try{
 
 			if (LicenceManager.instance.load(
-				FileVARS.LICENCE_FOLDER+"INTERNACIONAL.rcplicence", "0") &&
+				FileVARS.LICENCE_FOLDER+"PORTUGAL.rcplicence", "0") &&
 				login.process(
 					//EmpresasXml.instance.load(0),
 					EmpresasXml.instance.create("H2 Integrado",
