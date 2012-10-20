@@ -12,7 +12,7 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchWindow;
 
 import rcp.colibri.core.vars.gui.LabelVARS;
-import rcp.colibri.workbench.perspectives.IColibriPerspective;
+import rcp.colibri.workbench.IColibriPerspective;
 import rcp.colibri.workbench.support.actions.ClosePerspectiveAction;
 import rcp.colibri.workbench.support.actions.OpenDebugViewAction;
 import rcp.colibri.workbench.support.actions.OpenPreferencesAction;
