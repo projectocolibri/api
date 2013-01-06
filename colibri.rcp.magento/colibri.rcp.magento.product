@@ -12,6 +12,16 @@
 
    <windowImages i16="/colibri.rcp.magento/icons/colibri_16.png" i32="/colibri.rcp.magento/icons/colibri_32.png" i48="/colibri.rcp.magento/icons/colibri_48.gif" i64="/colibri.rcp.magento/icons/colibri_64.gif" i128="/colibri.rcp.magento/icons/colibri_128.gif"/>
 
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
    <plugins>
       <plugin id="colibri.rcp"/>
       <plugin id="colibri.rcp.magento"/>
