@@ -25,6 +25,7 @@ public class QueryExample {
 	public QueryExample(){
 	}
 
+	
 	/**
 	 * Cria uma nova query
 	 */
