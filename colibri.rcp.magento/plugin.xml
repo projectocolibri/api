@@ -30,7 +30,7 @@
 			</property>
 			<property
 					name="windowImages"
-					value="platform:/plugin/colibri.rcp/icons/colibri_16.png,platform:/plugin/colibri.rcp/icons/colibri_32.png,platform:/plugin/colibri.rcp/icons/colibri_48.gif,platform:/plugin/colibri.rcp/icons/colibri_64.gif,platform:/plugin/colibri.rcp/icons/colibri_128.gif">
+					value="icons/colibri_16.png,icons/colibri_32.png,icons/colibri_48.gif,icons/colibri_64.gif,icons/colibri_128.gif">
 			</property>
 		</product>
 	</extension>
