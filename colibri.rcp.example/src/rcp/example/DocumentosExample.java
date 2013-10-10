@@ -30,16 +30,13 @@ public class DocumentosExample {
 	public Entidadesdocumentos createDocumento(String tipodocumento, String entidade, String artigo) {
 		try{
 			//cria objecto documento
-			Entidadesdocumentos documento=new Entidadesdocumentos(
-					ColibriDatabase.loadDocumentostipos(tipodocumento));
+			Entidadesdocumentos documento=new Entidadesdocumentos(ColibriDatabase.loadDocumentostipos(tipodocumento));
 
-			//insere entidade no documento
+			//insere a entidade no documento
 			documento.setEntidade(ColibriDatabase.loadEntidades(entidade));
-
-			//inicializa o documento
 			EntidadesdocumentosRules.entidade(documento, documento.getEntidade());
 			
-			//inicializa codigo postal
+			//FACULTATIVO: actualiza o codigo postal
 			createCodigopostal(documento);
 
 			//cria as linhas do documento
@@ -70,15 +67,19 @@ public class DocumentosExample {
 	 */
 	private void createCodigopostal(Entidadesdocumentos documento) {
 		try{
+			//cria um codigo aleatorio
 			String codigo=StringUtils.random(4)+"-"+StringUtils.random(3);
 			
+			//carrega o codigo postal
 			Codigospostais codigopostal=ColibriDatabase.loadCodigospostais(codigo);
-			
+
+			//codigo postal nao existe?
 			if(codigopostal==null){
-				codigopostal=new Codigospostais(codigo, 
-						StringUtils.random(FIELDS.codigospostais_descricao.size.size), "");
+				//inicializa novo codigo postal
+				codigopostal=new Codigospostais(codigo, StringUtils.random(FIELDS.codigospostais_descricao.size.size), "");
 			}
 			
+			//actualiza codigo postal no documento
 			documento.setCodigopostal(codigopostal);
 			documento.setLocalidade(codigopostal.getDescricao());
 
@@ -97,14 +98,15 @@ public class DocumentosExample {
 			//cria objecto linha
 			Entidadesdocumentoslinhas linha=documento.createLinhasdocumento();
 
-			//inicializa a linha
+			//insere o artigo na linha
 			EntidadesdocumentosRules.Facturas.Linhas.artigo(linha, 
-					documento.getEntidade(), ColibriDatabase.loadArtigos(artigo));
+					documento.getEntidade(), 
+					ColibriDatabase.loadArtigos(artigo));
 
-			//actualiza a quantidade
+			//FACULTATIVO: actualiza a quantidade
 			linha.setQuantidade(BigDecimal.valueOf(5));
 
-			//actualiza o preco
+			//FACULTATIVO: actualiza o preco
 			linha.setPreco(BigDecimal.valueOf(100));
 
 			//processa a linha
