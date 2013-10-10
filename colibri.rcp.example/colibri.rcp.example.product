@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="API Example" uid="colibri.rcp.example.product" id="colibri.rcp.example.product" application="colibri.rcp.example.application" version="0.7.1" useFeatures="false" includeLaunchers="true">
-
+<product name="API Example" uid="colibri.rcp.example.product" id="colibri.rcp.example.product" application="colibri.rcp.example.application" version="0.7.2" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -19,7 +18,6 @@
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>

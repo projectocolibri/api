@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2012 Projecto Colibri
+ * 2008-2013 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.example;
@@ -19,11 +19,10 @@ public class EntidadesExample {
 	}
 
 
-
 	/**
 	 * Cria uma nova entidade
 	 */
-	public void createCliente(String tipoentidade, String nome) {
+	public Entidades createCliente(String tipoentidade, String nome) {
 		try{
 			//cria objecto entidade
 			Entidades entidade=new Entidades(
@@ -37,10 +36,14 @@ public class EntidadesExample {
 
 			//apresenta possiveis erros
 			ErrorDialog.open(error.getErrors());
+			
+			return entidade;
 
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+		
+		return null;
 
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2011 Projecto Colibri
+ * 2008-2013 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.example;
@@ -17,19 +17,19 @@ public class ArtigosExample {
 
 	public ArtigosExample(){
 	}
-
-
+	
 
 	/**
 	 * Cria um novo artigo
 	 */
-	public void createArtigo(String codigo, String descricao) {
+	public Artigos createArtigo(String codigo, String descricao) {
 		try{
 			//cria objecto artigo
 			Artigos artigo=new Artigos(codigo,descricao);
 
 			//adiciona uma unidade de medida
 			artigo.addUnidades(artigo.createUnidades("PK"));
+			
 			//adiciona um preco
 			artigo.addPrecos(artigo.createPrecos("001"));
 
@@ -38,10 +38,14 @@ public class ArtigosExample {
 
 			//apresenta possiveis erros
 			ErrorDialog.open(error.getErrors());
+			
+			return artigo;
 
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+		
+		return null;
 
 	}
 

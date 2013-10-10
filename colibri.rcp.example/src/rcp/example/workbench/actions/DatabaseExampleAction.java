@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2012 Projecto Colibri
+ * 2008-2013 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package rcp.example.workbench.actions;
@@ -8,6 +8,9 @@ import org.dma.java.utils.string.StringUtils;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
+import rcp.colibri.dao.model.classes.Artigos;
+import rcp.colibri.dao.model.classes.Entidades;
+import rcp.colibri.dao.model.classes.Entidadesdocumentos;
 import rcp.colibri.vars.database.DatabaseVARS.FIELDS;
 import rcp.colibri.vars.database.PopulateVARS.DOCUMENTOSTIPOS;
 import rcp.colibri.vars.database.PopulateVARS.ENTIDADESTIPOS;
@@ -35,7 +38,8 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 		 * Artigos
 		 */
 		ArtigosExample artigosExample=new ArtigosExample();
-		artigosExample.createArtigo(StringUtils.random(FIELDS.artigos_codigo.size.size),
+		Artigos artigo=artigosExample.createArtigo(
+				StringUtils.random(FIELDS.artigos_codigo.size.size),
 				StringUtils.random(FIELDS.artigos_descricao.size.size/2));
 		artigosExample.showArtigos();
 
@@ -43,7 +47,8 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 		 * Entidades
 		 */
 		EntidadesExample entidadesExample=new EntidadesExample();
-		entidadesExample.createCliente(ENTIDADESTIPOS.cliente.codigo,
+		Entidades entidade=entidadesExample.createCliente(
+				ENTIDADESTIPOS.cliente.codigo,
 				StringUtils.random(FIELDS.entidades_nome.size.size/2));
 		entidadesExample.showEntidades(ENTIDADESTIPOS.cliente.codigo);
 
@@ -51,7 +56,9 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 		 * Documentos
 		 */
 		DocumentosExample documentosExample=new DocumentosExample();
-		documentosExample.createDocumento(DOCUMENTOSTIPOS.clientes_factura.codigo);
+		Entidadesdocumentos documento=documentosExample.createDocumento(
+				DOCUMENTOSTIPOS.clientes_factura.codigo, 
+				entidade.getKey(), artigo.getCodigo());
 
 	}
 

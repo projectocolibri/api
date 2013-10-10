@@ -8,13 +8,15 @@ import java.math.BigDecimal;
 
 import org.dma.eclipse.swt.dialogs.message.ErrorDialog;
 import org.dma.java.utils.array.ErrorList;
+import org.dma.java.utils.string.StringUtils;
 
 import rcp.colibri.dao.database.ColibriDatabase;
-import rcp.colibri.dao.model.classes.Entidades;
+import rcp.colibri.dao.model.classes.Codigospostais;
 import rcp.colibri.dao.model.classes.Entidadesdocumentos;
 import rcp.colibri.dao.model.classes.Entidadesdocumentoslinhas;
 import rcp.colibri.dao.model.process.EntidadesdocumentosProcess;
 import rcp.colibri.dao.model.rules.EntidadesdocumentosRules;
+import rcp.colibri.vars.database.DatabaseVARS.FIELDS;
 
 public class DocumentosExample {
 
@@ -25,22 +27,23 @@ public class DocumentosExample {
 	/**
 	 * Cria um novo documento
 	 */
-	public void createDocumento(String tipoentidade) {
+	public Entidadesdocumentos createDocumento(String tipodocumento, String entidade, String artigo) {
 		try{
 			//cria objecto documento
-			Entidadesdocumentos documento=new Entidadesdocumentos(ColibriDatabase.loadDocumentostipos(tipoentidade));
-
-			//carrega a entidade
-			Entidades entidade=ColibriDatabase.loadEntidades(documento.getTipoentidade().getCodigo(), 1);
+			Entidadesdocumentos documento=new Entidadesdocumentos(
+					ColibriDatabase.loadDocumentostipos(tipodocumento));
 
 			//insere entidade no documento
-			documento.setEntidade(entidade);
+			documento.setEntidade(ColibriDatabase.loadEntidades(entidade));
 
 			//inicializa o documento
-			EntidadesdocumentosRules.entidade(documento, entidade);
+			EntidadesdocumentosRules.entidade(documento, documento.getEntidade());
+			
+			//inicializa codigo postal
+			createCodigopostal(documento);
 
 			//cria as linhas do documento
-			createLinhasdocumento(documento, entidade);
+			createLinhasdocumento(documento, artigo);
 
 			//processa regras do documento
 			EntidadesdocumentosProcess.rules(documento, documento.getLinhasdocumento());
@@ -50,6 +53,34 @@ public class DocumentosExample {
 
 			//apresenta possiveis erros
 			ErrorDialog.open(error.getErrors());
+			
+			return documento;
+
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return null;
+
+	}
+
+
+	/**
+	 * Cria um novo codigo postal
+	 */
+	private void createCodigopostal(Entidadesdocumentos documento) {
+		try{
+			String codigo=StringUtils.random(4)+"-"+StringUtils.random(3);
+			
+			Codigospostais codigopostal=ColibriDatabase.loadCodigospostais(codigo);
+			
+			if(codigopostal==null){
+				codigopostal=new Codigospostais(codigo, 
+						StringUtils.random(FIELDS.codigospostais_descricao.size.size), "");
+			}
+			
+			documento.setCodigopostal(codigopostal);
+			documento.setLocalidade(codigopostal.getDescricao());
 
 		} catch (Exception e){
 			e.printStackTrace();
@@ -61,13 +92,14 @@ public class DocumentosExample {
 	/**
 	 * Cria as linhas do documento
 	 */
-	public void createLinhasdocumento(Entidadesdocumentos documento, Entidades entidade) {
+	private void createLinhasdocumento(Entidadesdocumentos documento, String artigo) {
 		try{
 			//cria objecto linha
 			Entidadesdocumentoslinhas linha=documento.createLinhasdocumento();
 
 			//inicializa a linha
-			EntidadesdocumentosRules.Facturas.Linhas.artigo(linha, entidade, ColibriDatabase.loadArtigos("1"));
+			EntidadesdocumentosRules.Facturas.Linhas.artigo(linha, 
+					documento.getEntidade(), ColibriDatabase.loadArtigos(artigo));
 
 			//actualiza a quantidade
 			linha.setQuantidade(BigDecimal.valueOf(5));
