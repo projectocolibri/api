@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Eclipse-BundleShape: jar
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: colibri.rcp.example;singleton:=true
-Bundle-Version: 0.8.0
+Bundle-Version: 0.9.0
 Bundle-Name: API Example
 Bundle-Vendor: suporte@projectocolibri.com
 Bundle-Activator: rcp.Activator

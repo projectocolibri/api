@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Eclipse-BundleShape: jar
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: colibri.rcp.importador;singleton:=true
-Bundle-Version: 1.3.1
+Bundle-Version: 1.3.2
 Bundle-Name: Importador SAFT
 Bundle-Vendor: suporte@projectocolibri.com
 Bundle-Activator: rcp.Activator
