@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Eclipse-BundleShape: jar
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: colibri.rcp.magento;singleton:=true
-Bundle-Version: 0.1.7
+Bundle-Version: 0.1.8
 Bundle-Name: Magento Connector
 Bundle-Vendor: suporte@projectocolibri.com
 Bundle-Activator: rcp.Activator
