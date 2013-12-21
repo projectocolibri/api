@@ -27,4 +27,5 @@ Informação detalhada sobre como configurar os projectos.
   # *Abrir o "Package Explorer"*; Expandir a árvore do projecto; Abrir o ficheiro do "product" (ex: colibri.rcp.example.product")
   # *Seleccionar a TAB "Overview"*; Executar "Eclipse Product Export Wizard"
   # *Escolher a pasta "Root directory"* (pasta criada automáticamente com o conteúdo do export) e "Destination directory" (pasta-arquivo EXISTENTE onde irão residir todos os exports); Premir o botão "Next"
-  # *NOTAS*: Todos os projectos estão configurados para usarem o "Eclipse delta-pack target platform". Esta configuração permite exportar o projecto para diversas plataformas de uma vez. Para que tal seja possível, é necessário instalar e configurar o "Delta-pack" para o Eclipse. Mais informação brevemente.
+
+  # *NOTAS*: Os projectos podem ser configurados para usarem o "Eclipse delta-pack target platform". Esta configuração permite exportar o projecto para diversas plataformas numa única operação. Para que tal seja possível, é necessário instalar e configurar o "Delta-pack" para o Eclipse. Mais informação brevemente.
