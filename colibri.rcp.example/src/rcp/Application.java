@@ -12,6 +12,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 import rcp.colibri.dao.database.ColibriLogin;
+import rcp.colibri.dao.database.connection.ConnectionManager.DRIVERS;
 import rcp.colibri.workbench.shells.login.LoginShell;
 import rcp.colibri.workbench.shells.login.LoginShell.LOGIN_ACTION;
 import rcp.example.workbench.actions.DatabaseExampleAction;
@@ -151,10 +152,10 @@ public class Application implements IApplication {
 			if (
 			//login.loadLicence(FOLDERS.LICENCES.name+"PORTUGAL.rcplicence") &&
 			login.process(
-				//login.getEmpresa(0)
-				login.createEmpresa(
-					"H2 Integrado" /*, DRIVERS.H2.name, "", "colibri9", "sa", ""*/),
-					"admin", "admin"))
+				//login.getEmpresa(0),
+				login.createEmpresa("H2 Integrado"),
+				//login.createEmpresa("H2 Integrado", DRIVERS.H2.name, "", "colibri9", "sa", ""),
+				"admin", "admin"))
 
 			return true;
 

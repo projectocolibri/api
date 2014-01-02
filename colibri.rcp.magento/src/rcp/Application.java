@@ -110,8 +110,9 @@ public class Application implements IApplication {
 			if (
 			//login.loadLicence(FOLDERS.LICENCES.name+"PORTUGAL.rcplicence") &&
 			login.process(
-				//login.getEmpresa(0)
-				login.createEmpresa("H2 Integrado"), "admin", "admin"))
+				//login.getEmpresa(0),
+				login.createEmpresa("H2 Integrado"), 
+				"admin", "admin"))
 
 			return true;
 
