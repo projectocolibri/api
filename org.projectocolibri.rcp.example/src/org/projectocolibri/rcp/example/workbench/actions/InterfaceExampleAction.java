@@ -56,20 +56,24 @@ public class InterfaceExampleAction extends Action implements IWorkbenchAction {
 		//abre vista de FICHEIRO de ARTIGOS
 		new OpenViewAction(ArtigosFicheiroView.ID).run();
 
-		//cria ACTION para EDICAO de FACTURA
+		//carrega FACTURA da primeira SERIE
 		Documentostipos tipodocumento=ColibriDatabase.loadDocumentostipos(
 				DocumentostiposPopulate.RECORDS.clientes_factura.codigo);
 		Documentosseries serie=ColibriDatabase.loadDocumentosseries(tipodocumento.getCodigo(),0);
-		OpenViewAction action1=new OpenViewAction(EntidadesEmissaoView.ID,
-				ColibriDatabase.loadEntidadesdocumentos(tipodocumento.getCodigo(),
-						serie.getSerie(), serie.getNumero()), true);
+		Entidadesdocumentos documento=ColibriDatabase.loadEntidadesdocumentos(
+				tipodocumento.getCodigo(), serie.getSerie(), serie.getNumero());
+
+		if (documento!=null){
+			//cria ACTION para EDICAO de FACTURA
+			OpenViewAction action=new OpenViewAction(EntidadesEmissaoView.ID, documento, true);
+			//abre e personaliza a vista
+			if (action.run(false)) change((EntidadesEmissaoView)action.getView());
+		}
 
 		//cria ACTION para EMISSAO de FACTURA
-		OpenViewAction action2=new OpenViewAction(EntidadesEmissaoView.ID, tipodocumento);
-
-		//abre e personaliza as vistas
-		if (action1.run(false)) change((EntidadesEmissaoView)action1.getView());
-		if (action2.run(false)) change2((EntidadesEmissaoView)action2.getView());
+		OpenViewAction action=new OpenViewAction(EntidadesEmissaoView.ID, tipodocumento);
+		//abre e personaliza a vista
+		if (action.run(false)) change2((EntidadesEmissaoView)action.getView());
 
 	}
 
