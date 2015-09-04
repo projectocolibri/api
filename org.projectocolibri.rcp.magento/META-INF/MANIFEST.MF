@@ -5,15 +5,14 @@ Bundle-Name: Colibri Magento Connector
 Bundle-SymbolicName: org.projectocolibri.rcp.magento;singleton:=true
 Bundle-Version: 0.1.9.qualifier
 Bundle-Vendor: suporte@projectocolibri.com
-Bundle-Activator: org.projectocolibri.rcp.Activator
+Bundle-Activator: org.projectocolibri.rcp.magento.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
-Require-Bundle: org.projectocolibri.rcp;bundle-version="10.0.0",
+Require-Bundle: org.projectocolibri.rcp;bundle-version="10.1.0",
  org.eclipse.ui;bundle-version="3.7.0",
  org.eclipse.core.runtime;bundle-version="3.7.0",
  com.google.code.magja;bundle-version="0.0.4",
- org.dma.eclipse.core;bundle-version="4.0.2",
- org.dma.eclipse.swt;bundle-version="4.2.4",
- org.dma.java.utils;bundle-version="4.5.2",
+ org.dma.eclipse;bundle-version="5.0.0",
+ org.dma.java;bundle-version="5.0.0",
  javax.jdo;bundle-version="3.0.0"
