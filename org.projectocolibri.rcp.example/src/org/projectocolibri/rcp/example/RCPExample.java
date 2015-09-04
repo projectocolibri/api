@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2011 Projecto Colibri
+ * 2008-2015 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package org.projectocolibri.rcp.example;
