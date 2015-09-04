@@ -21,7 +21,8 @@ public class ReportExampleAction extends Action implements IWorkbenchAction {
 	}
 
 
-	public final void run(){
+	@Override
+	public final void run() {
 
 		ReportExample reportExample=new ReportExample();
 

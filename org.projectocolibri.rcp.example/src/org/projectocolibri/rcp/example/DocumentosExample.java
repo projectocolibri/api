@@ -1,21 +1,19 @@
 /*******************************************************************************
- * 2008-2014 Projecto Colibri
+ * 2008-2015 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package org.projectocolibri.rcp.example;
 
 import java.math.BigDecimal;
 
-import org.dma.eclipse.swt.dialogs.message.ErrorDialog;
-import org.dma.java.utils.array.ErrorList;
-import org.dma.java.utils.numeric.NumericUtils;
-import org.dma.java.utils.string.StringUtils;
+import org.dma.java.math.NumericUtils;
+import org.dma.java.util.StringUtils;
 
-import org.projectocolibri.rcp.colibri.core.vars.DatabaseVARS.FIELDS;
 import org.projectocolibri.rcp.colibri.dao.database.ColibriDatabase;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Codigospostais;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Entidadesdocumentos;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Entidadesdocumentoslinhas;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.FIELDS;
+import org.projectocolibri.rcp.colibri.dao.database.model.Codigospostais;
+import org.projectocolibri.rcp.colibri.dao.database.model.Entidadesdocumentos;
+import org.projectocolibri.rcp.colibri.dao.database.model.Entidadesdocumentoslinhas;
 
 public class DocumentosExample {
 
@@ -41,12 +39,6 @@ public class DocumentosExample {
 			//processa regras do documento
 			documento.process();
 
-			//grava o documento na base de dados
-			ErrorList error=ColibriDatabase.storeEntidadesdocumentos(documento, false);
-
-			//apresenta possiveis erros
-			ErrorDialog.open(error.getErrors());
-
 			return documento;
 
 		}catch(Exception e){
@@ -62,7 +54,7 @@ public class DocumentosExample {
 	public Codigospostais createCodigopostal() {
 		try{
 			//cria um codigo aleatorio
-			String codigo=NumericUtils.random(4)+"-"+NumericUtils.random(3);
+			String codigo=StringUtils.randomNumbers(4)+"-"+StringUtils.randomNumbers(3);
 
 			//carrega o codigo postal
 			Codigospostais codigopostal=ColibriDatabase.loadCodigospostais(codigo);
@@ -70,8 +62,8 @@ public class DocumentosExample {
 			//codigo postal nao existe?
 			return codigopostal==null ?
 				//inicializa um novo codigo postal
-				new Codigospostais(codigo, StringUtils.randomLetters(FIELDS.codigospostais_descricao.size.size)) :
-				codigopostal;
+				new Codigospostais(codigo, StringUtils.randomLetters(
+						FIELDS.codigospostais_descricao.size.size)) : codigopostal;
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -88,16 +80,22 @@ public class DocumentosExample {
 			//cria objecto linha
 			Entidadesdocumentoslinhas linha=documento.createLinhasdocumento();
 
-			//insere o artigo na linha
-			linha.setArtigo(ColibriDatabase.loadArtigos(artigo,false));
-
 			//inicializa a quantidade
 			linha.setQuantidade(BigDecimal.valueOf(NumericUtils.random(2)));
 
-			//inicializa o preco
-			linha.setPreco(BigDecimal.valueOf(NumericUtils.random(4)));
-			//ALTERNATIVO: preco automatico
-			linha.setPreco$Entidade();
+			//insere o artigo na linha
+			linha.setArtigo(ColibriDatabase.loadArtigos(artigo, false));
+
+			//artigo NAO existe?
+			if (linha.getArtigo()==null){
+				//descricao manual
+				linha.setDescricao("ARTIGO GENERICO");
+				//preco manual
+				linha.setPreco(BigDecimal.valueOf(NumericUtils.random(4)));
+			}else{
+				//preco automatico
+				linha.setPreco$Entidade();
+			}
 
 			//FACULTATIVO: inicializa o valor desconto
 			linha.setValordesconto(BigDecimal.valueOf(100));

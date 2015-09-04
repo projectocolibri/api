@@ -6,20 +6,20 @@ package org.projectocolibri.rcp.example;
 
 import java.util.Collection;
 
-import org.dma.java.utils.timedate.TimeChronograph;
+import org.dma.java.util.TimeChronograph;
 
-import org.projectocolibri.rcp.colibri.core.vars.DatabaseVARS.FIELDS;
-import org.projectocolibri.rcp.colibri.core.vars.DatabaseVARS.TABLES;
 import org.projectocolibri.rcp.colibri.dao.database.ColibriDatabase;
 import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap;
-import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap.OPERATORS;
 import org.projectocolibri.rcp.colibri.dao.database.filter.FilterOperandMap;
-import org.projectocolibri.rcp.colibri.dao.database.mapper.DatabaseFieldKey;
+import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap.OPERATORS;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableFieldKey;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.FIELDS;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.TABLES;
+import org.projectocolibri.rcp.colibri.dao.database.model.Entidades;
+import org.projectocolibri.rcp.colibri.dao.database.model.Entidadesdocumentos;
 import org.projectocolibri.rcp.colibri.dao.database.populate.tables.DocumentostiposPopulate;
-import org.projectocolibri.rcp.colibri.dao.jdo.query.QueryDefinition;
-import org.projectocolibri.rcp.colibri.dao.jdo.query.QueryDefinition.QUERY_ORDER;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Entidades;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Entidadesdocumentos;
+import org.projectocolibri.rcp.colibri.dao.database.query.QueryDefinition;
+import org.projectocolibri.rcp.colibri.dao.database.query.QueryDefinition.QUERY_ORDER;
 
 public class QueryExample {
 
@@ -28,17 +28,16 @@ public class QueryExample {
 
 	public void showEntidades(Collection<Entidades> col) {
 
-		for(Entidades entidade: col){
-			try{
-				System.out.println(entidade);
-				//carrega a entidade COMPLETA
-				Entidades entidade2=ColibriDatabase.loadEntidades(entidade.getKey());
-				//apresenta todos os campos
-				System.out.println(entidade2);
+		for(Entidades e: col) try{
 
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+			System.out.println(e);
+			//carrega a entidade COMPLETA
+			Entidades entidade=ColibriDatabase.loadEntidades(e.getKey());
+			//apresenta todos os campos
+			System.out.println(entidade);
+
+		}catch(Exception e1){
+			e1.printStackTrace();
 		}
 
 	}
@@ -52,18 +51,18 @@ public class QueryExample {
 		//filtro da query
 		query.getFilterMap().
 			//nome comecado por "a"
-			addRule(new DatabaseFieldKey(FIELDS.entidades_nome),
+			addRule(new TableFieldKey(FIELDS.entidades_nome),
 					new FilterOperandMap(OPERATORS.MATH.STARTS_WITH, "a")).
 			//OU nome comenado por "b"
-			addRule(new DatabaseFieldKey(FIELDS.entidades_nome),
+			addRule(new TableFieldKey(FIELDS.entidades_nome),
 					new FilterOperandMap(OPERATORS.MATH.STARTS_WITH, "b"),
 					OPERATORS.LOGICAL.OR).
 			//OU nome comenado por "c"
-			addRule(new DatabaseFieldKey(FIELDS.entidades_nome),
+			addRule(new TableFieldKey(FIELDS.entidades_nome),
 					new FilterOperandMap(OPERATORS.MATH.STARTS_WITH, "c"),
 					OPERATORS.LOGICAL.OR).
 			//E morada contendo "rua"
-			addRule(new DatabaseFieldKey(FIELDS.entidades_morada),
+			addRule(new TableFieldKey(FIELDS.entidades_morada),
 					new FilterOperandMap(OPERATORS.MATH.CONTAINS, "rua"));
 
 		//ENTIDADES apenas com o campo KEY
@@ -78,9 +77,9 @@ public class QueryExample {
 
 		timer.start();
 		FilterMap filterMap=new FilterMap(TABLES.entidadesdocumentos).
-				addRule(new DatabaseFieldKey(FIELDS.entidadesdocumentos_tipodocumento, FIELDS.documentostipos_codigo),
+				addRule(new TableFieldKey(FIELDS.entidadesdocumentos_tipodocumento, FIELDS.documentostipos_codigo),
 						new FilterOperandMap(OPERATORS.MATH.EQUAL, DocumentostiposPopulate.RECORDS.clientes_factura.codigo)).
-				addRule(new DatabaseFieldKey(FIELDS.entidadesdocumentos_numeroauxiliar),
+				addRule(new TableFieldKey(FIELDS.entidadesdocumentos_numeroauxiliar),
 						new FilterOperandMap(OPERATORS.MATH.EQUAL, "123"));
 		QueryDefinition query=new QueryDefinition(filterMap, QUERY_ORDER.DESCENDING);
 

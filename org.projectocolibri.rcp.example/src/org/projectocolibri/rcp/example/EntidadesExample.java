@@ -1,20 +1,17 @@
 /*******************************************************************************
- * 2008-2014 Projecto Colibri
+ * 2008-2015 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package org.projectocolibri.rcp.example;
 
 import java.util.Collection;
 
-import org.dma.eclipse.swt.dialogs.message.ErrorDialog;
-import org.dma.java.utils.array.ErrorList;
-import org.dma.java.utils.numeric.NumericUtils;
-import org.dma.java.utils.string.StringUtils;
+import org.dma.java.util.StringUtils;
 
-import org.projectocolibri.rcp.colibri.core.vars.DatabaseVARS.FIELDS;
 import org.projectocolibri.rcp.colibri.dao.database.ColibriDatabase;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Codigospostais;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Entidades;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.FIELDS;
+import org.projectocolibri.rcp.colibri.dao.database.model.Codigospostais;
+import org.projectocolibri.rcp.colibri.dao.database.model.Entidades;
 
 public class EntidadesExample {
 
@@ -25,18 +22,12 @@ public class EntidadesExample {
 	public Entidades createCliente(String tipoentidade, String nome) {
 		try{
 			//cria objecto entidade
-			Entidades entidade=new Entidades(ColibriDatabase.loadEntidadestipos(tipoentidade));
+			Entidades entidade=new Entidades(tipoentidade);
 
 			entidade.setNome(nome);
 
 			//FACULTATIVO: actualiza o codigo postal
 			entidade.setCodigopostal(createCodigopostal());
-
-			//grava a entidade na base de dados
-			ErrorList error=ColibriDatabase.storeEntidades(entidade,false);
-
-			//apresenta possiveis erros
-			ErrorDialog.open(error.getErrors());
 
 			return entidade;
 
@@ -53,7 +44,7 @@ public class EntidadesExample {
 	public Codigospostais createCodigopostal() {
 		try{
 			//cria um codigo aleatorio
-			String codigo=NumericUtils.random(4)+"-"+NumericUtils.random(3);
+			String codigo=StringUtils.randomNumbers(4)+"-"+StringUtils.randomNumbers(3);
 
 			//carrega o codigo postal
 			Codigospostais codigopostal=ColibriDatabase.loadCodigospostais(codigo);
@@ -61,8 +52,8 @@ public class EntidadesExample {
 			//codigo postal nao existe?
 			return codigopostal==null ?
 				//inicializa um novo codigo postal
-				new Codigospostais(codigo, StringUtils.randomLetters(FIELDS.codigospostais_descricao.size.size)) :
-				codigopostal;
+				new Codigospostais(codigo, StringUtils.randomLetters(
+						FIELDS.codigospostais_descricao.size.size)) : codigopostal;
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -79,13 +70,12 @@ public class EntidadesExample {
 		//ENTIDADES apenas com os campos RAIZ
 		Collection<Entidades> col=ColibriDatabase.getEntidadesCollection(tipoentidade);
 
-		for(Entidades entidade: col){
-			try{
-				System.out.println(entidade);
+		for(Entidades e: col) try{
 
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+			System.out.println(e);
+
+		}catch(Exception e1){
+			e1.printStackTrace();
 		}
 
 	}

@@ -26,7 +26,7 @@ public class ExampleView extends ViewPart {
 	public void createPartControl(Composite parent) {
 
 		setPartName("#view");
-		setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_AJUDA));
+		setTitleImage(ImageManager.createImage(IconVARS.COOLBAR_AJUDA));
 
 		Composite composite=new Composite(parent, SWT.NONE);
 		composite.setLayout(new FillLayout());
@@ -37,6 +37,7 @@ public class ExampleView extends ViewPart {
 	}
 
 
+	@Override
 	public void setFocus() {}
 
 

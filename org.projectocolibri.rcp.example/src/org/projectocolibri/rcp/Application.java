@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2014 Projecto Colibri
+ * 2008-2015 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
 package org.projectocolibri.rcp;
@@ -12,13 +12,13 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-import org.projectocolibri.rcp.colibri.core.vars.FileVARS.FOLDERS;
-import org.projectocolibri.rcp.colibri.core.vars.PreferenceVARS.PREFERENCES;
+import org.projectocolibri.rcp.colibri.RCPcolibri.PREFERENCES;
 import org.projectocolibri.rcp.colibri.dao.database.ColibriLogin;
-import org.projectocolibri.rcp.colibri.dao.database.connection.ConnectionManager.DRIVERS;
-import org.projectocolibri.rcp.colibri.dao.database.connection.DatabaseParameters;
+import org.projectocolibri.rcp.colibri.dao.database.DatabaseParameters;
+import org.projectocolibri.rcp.colibri.dao.database.DatabaseParameters.DRIVERS;
 import org.projectocolibri.rcp.colibri.workbench.shells.login.LoginShell;
 import org.projectocolibri.rcp.colibri.workbench.shells.login.LoginShell.RESULT;
+import org.projectocolibri.rcp.example.Activator;
 import org.projectocolibri.rcp.example.workbench.actions.DatabaseExampleAction;
 import org.projectocolibri.rcp.example.workbench.actions.ReportExampleAction;
 
@@ -102,6 +102,7 @@ public class Application implements IApplication {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final Display display = workbench.getDisplay();
 		display.syncExec(new Runnable() {
+			@Override
 			public void run() {
 				if (!display.isDisposed()) workbench.close();
 			}
@@ -130,11 +131,6 @@ public class Application implements IApplication {
 	public static RESULT login() {
 
 		try{
-			/*
-			 * EMPRESA
-			 * Existem duas formas de obter a empresa de login
-			 * NOTA: Comentar ou remover o metodo nao utilizado!
-			 */
 			//METODO 1: Atraves da criacao de parametros
 			ColibriLogin login1=new ColibriLogin(new DatabaseParameters(
 					DRIVERS.MySQL, "localhost", "colibri10", "root", "1234"));
@@ -142,15 +138,10 @@ public class Application implements IApplication {
 			//METODO 2: Atraves de uma empresa existente
 			ColibriLogin login2=new ColibriLogin(0);
 
-			/*
-			 * LICENCA
-			 * A licenca deve ser carregada antes do login ser efectuado
-			 * A licenca FREE (certificada) e' carregada automaticamente
-			 */
-			//FACULTATIVO: Exemplo de carregamento da licenca FREE
-			if (login2.loadLicence(FOLDERS.LICENCES.name+"/PORTUGAL.rcplicence") &&
+			//FACULTATIVO: a licenca e' carregada automaticamente
+			login2.loadLicence("colibri10.rcplicence");
 			//login do user ADMIN
-			login2.process("admin", "admin")) return RESULT.LOGIN;
+			if (login2.process("admin", "admin")) return RESULT.LOGIN;
 
 			ErrorDialog.open(login2.getErrors());
 

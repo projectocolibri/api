@@ -4,7 +4,7 @@
  *******************************************************************************/
 package org.projectocolibri.rcp;
 
-import org.dma.java.utils.Debug;
+import org.dma.java.util.Debug;
 
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;

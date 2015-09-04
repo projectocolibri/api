@@ -12,8 +12,8 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
+import org.projectocolibri.rcp.colibri.core.language.Language.LABELS;
 import org.projectocolibri.rcp.colibri.core.vars.IconVARS;
-import org.projectocolibri.rcp.colibri.core.vars.LabelVARS.LABELS;
 import org.projectocolibri.rcp.colibri.workbench.support.views.IViewStateSupport;
 
 public class PerspectiveView extends ViewPart implements IViewStateSupport {
@@ -28,7 +28,7 @@ public class PerspectiveView extends ViewPart implements IViewStateSupport {
 	public void createPartControl(Composite parent) {
 
 		setPartName(LABELS.desktop_browser.singular());
-		setTitleImage(ImageManager.getImage(IconVARS.COOLBAR_BROWSER));
+		setTitleImage(ImageManager.createImage(IconVARS.COOLBAR_BROWSER));
 
 		Composite composite=new Composite(parent, SWT.NONE);
 		composite.setLayout(new FillLayout());
@@ -39,13 +39,16 @@ public class PerspectiveView extends ViewPart implements IViewStateSupport {
 	}
 
 
+	@Override
 	public void setFocus() {}
 
 
+
 	/*
-	 * IViewStateSupport(non-Javadoc)
+	 * (non-Javadoc)
 	 * @see org.projectocolibri.rcp.colibri.workbench.support.views.IViewStateSupport#isRestorable()
 	 */
+	@Override
 	public boolean isRestorable() {
 		return true;
 	}

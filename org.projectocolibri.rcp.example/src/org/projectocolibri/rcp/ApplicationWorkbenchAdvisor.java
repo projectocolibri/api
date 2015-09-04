@@ -5,7 +5,7 @@
 package org.projectocolibri.rcp;
 
 import org.dma.eclipse.core.jobs.JobManager;
-import org.dma.java.utils.Debug;
+import org.dma.java.util.Debug;
 
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
@@ -15,6 +15,7 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import org.projectocolibri.rcp.colibri.RCPcolibri;
 import org.projectocolibri.rcp.colibri.workbench.ColibriUI;
+import org.projectocolibri.rcp.example.Activator;
 import org.projectocolibri.rcp.example.workbench.ExamplePerspective;
 
 /*

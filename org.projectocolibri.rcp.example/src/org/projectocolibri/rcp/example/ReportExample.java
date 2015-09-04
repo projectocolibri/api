@@ -6,25 +6,25 @@ package org.projectocolibri.rcp.example;
 
 import org.dma.eclipse.core.jobs.JobBatch;
 import org.dma.eclipse.core.jobs.tasks.JobTask;
-import org.dma.java.utils.email.EmailAddress;
+import org.dma.java.email.EmailAddress;
 
 import org.eclipse.jface.action.Action;
 
 import org.projectocolibri.rcp.birt.report.BIRTRender;
 import org.projectocolibri.rcp.birt.report.BIRTReport;
 import org.projectocolibri.rcp.birt.report.BIRTReport.REPORT_ACTIONS;
+import org.projectocolibri.rcp.colibri.core.language.Language.LABELS;
 import org.projectocolibri.rcp.colibri.core.support.EmailParameters;
 import org.projectocolibri.rcp.colibri.core.support.JobSupport;
-import org.projectocolibri.rcp.colibri.core.vars.DatabaseVARS.FIELDS;
-import org.projectocolibri.rcp.colibri.core.vars.DatabaseVARS.TABLES;
-import org.projectocolibri.rcp.colibri.core.vars.LabelVARS.LABELS;
 import org.projectocolibri.rcp.colibri.dao.database.ColibriDatabase;
 import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap;
-import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap.OPERATORS;
 import org.projectocolibri.rcp.colibri.dao.database.filter.FilterOperandMap;
-import org.projectocolibri.rcp.colibri.dao.database.mapper.DatabaseFieldKey;
+import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap.OPERATORS;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableFieldKey;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.FIELDS;
+import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.TABLES;
+import org.projectocolibri.rcp.colibri.dao.database.model.Entidadesdocumentos;
 import org.projectocolibri.rcp.colibri.dao.database.populate.tables.TemplatesPopulate;
-import org.projectocolibri.rcp.colibri.dao.model.classes.Entidadesdocumentos;
 
 public class ReportExample {
 
@@ -43,6 +43,7 @@ public class ReportExample {
 		final JobSupport job=new JobSupport(name);
 
 		job.addTask(new JobTask("Processamento", new Action() {
+			@Override
 			public void run() {
 				render=report.process();
 			}
@@ -50,8 +51,9 @@ public class ReportExample {
 
 		@SuppressWarnings("serial")
 		JobBatch batch=new JobBatch(){
-			public void start() {
-			}
+			@Override
+			public void start() {}
+			@Override
 			public void done() {
 				if (!job.showError(render.output().getErrors())){
 					job.showInfo(LABELS.msgwin_info_operacaoconcluida.singular());
@@ -59,7 +61,8 @@ public class ReportExample {
 			}
 		};
 		batch.add(job);
-		batch.schedule();
+		//TODO TEST: Analisar schedule imediato
+		batch.schedule(null); // imediato
 
 	}
 
@@ -75,7 +78,7 @@ public class ReportExample {
 		//FACULTATIVO: inicializa o report manualmente
 		return new BIRTReport(action, TemplatesPopulate.RECORDS.entidadesdocumentos_factura.codigo,
 				new FilterMap(TABLES.entidadesdocumentos).
-					addRule(new DatabaseFieldKey(FIELDS.entidadesdocumentos_key),
+					addRule(new TableFieldKey(FIELDS.entidadesdocumentos_key),
 						new FilterOperandMap(OPERATORS.MATH.EQUAL, Entidadesdocumentos.generateKey(tipodocumento,serie,numerodocumento))),
 				new EmailParameters("Envio de documento "+numerodocumento,
 					new EmailAddress("marcolopes@projectocolibri.com", "Marco Lopes")));
@@ -119,9 +122,9 @@ public class ReportExample {
 
 		final BIRTReport report=new BIRTReport(REPORT_ACTIONS.PREVIEW, template,
 				new FilterMap(TABLES.entidadesmovimentos).
-				addRule(new DatabaseFieldKey(FIELDS.entidadesmovimentos_tipoentidade,FIELDS.entidadestipos_codigo),
+				addRule(new TableFieldKey(FIELDS.entidadesmovimentos_tipoentidade,FIELDS.entidadestipos_codigo),
 						new FilterOperandMap(OPERATORS.MATH.EQUAL, tipoentidade)).
-				addRule(new DatabaseFieldKey(FIELDS.entidadesmovimentos_entidade,FIELDS.entidades_numero),
+				addRule(new TableFieldKey(FIELDS.entidadesmovimentos_entidade,FIELDS.entidades_numero),
 						new FilterOperandMap(OPERATORS.MATH.EQUAL, numero)));
 
 		backgroundProcess(report, LABELS.operacao_emitirrelatorio.singular());
