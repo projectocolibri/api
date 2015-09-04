@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 2008-2013 Projecto Colibri
+ * 2008-2015 Projecto Colibri
  * Sergio Gomes (sergiogomes@projectocolibri.com)
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
@@ -30,15 +30,13 @@ public class ImportadorView extends ViewPart {
 
 	public static final String ID = "ImportadorView";
 
-	private Label labelFile;
-	private Label labelConsole;
-	private Text textFile;
-
-	private Button buttonFile;
+	private Button checkTaxes;
 	private Button checkArticles;
 	private Button checkCustomer;
-	private Button checkTax;
+
+	private Text textFile;
 	private Button buttonStart;
+	private Label labelConsole;
 
 	//XML Document
 	private File file;
@@ -73,113 +71,97 @@ public class ImportadorView extends ViewPart {
 		composite.setLayout(new GridLayout(1, false));
 
 		//Group 1
-		Group groupItemsToImport = new Group(composite, SWT.NONE);
-		groupItemsToImport.setLayout(new GridLayout(1, false));
-		groupItemsToImport.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		groupItemsToImport.setText("Items to Import");
+		Group group = new Group(composite, SWT.NONE);
+		group.setLayout(new GridLayout(1, false));
+		group.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		group.setText("Tables to Import");
 
-		checkArticles = new Button(groupItemsToImport, SWT.CHECK);
+		checkTaxes = new Button(group, SWT.CHECK);
+		checkTaxes.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		checkTaxes.setText("Taxes");
+
+		checkArticles = new Button(group, SWT.CHECK);
 		checkArticles.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		checkArticles.setText("Articles");
 
-		checkCustomer = new Button(groupItemsToImport, SWT.CHECK);
+		checkCustomer = new Button(group, SWT.CHECK);
 		checkCustomer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		checkCustomer.setText("Customer");
 
-		checkTax = new Button(groupItemsToImport, SWT.CHECK);
-		checkTax.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-		checkTax.setText("Tax");
-
 		// Group 2
-		Group groupChooseXml = new Group(composite, SWT.NONE);
-		groupChooseXml.setLayout(new GridLayout(4, false));
-		groupChooseXml.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-		groupChooseXml.setText("Choose XML");
+		group = new Group(composite, SWT.NONE);
+		group.setLayout(new GridLayout(4, false));
+		group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+		group.setText("Choose XML");
 
-		labelFile = new Label(groupChooseXml, SWT.NONE);
-		labelFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-		labelFile.setText("File");
+		Label label = new Label(group, SWT.NONE);
+		label.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		label.setText("File");
 
-		textFile = new Text(groupChooseXml, SWT.BORDER);
+		textFile = new Text(group, SWT.BORDER);
 		textFile.setEnabled(false);
 		textFile.setEditable(false);
 		textFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 
-		buttonFile = new Button(groupChooseXml, SWT.NONE);
-		buttonFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-		buttonFile.setText("[...]");
-		buttonFile.addSelectionListener(new SelectionAdapter() {
+		Button button = new Button(group, SWT.NONE);
+		button.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		button.setText("[...]");
+		button.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(final SelectionEvent e) {
-				actionChooseFile();
+				file=new FileImport(getSite().getShell(), "*.xml").filePicker();
+				if (file!=null){
+					textFile.setText(file.getAbsolutePath());
+					labelConsole.setText("File loaded.");
+					buttonStart.setEnabled(true);
+				}
 			}
 		});
 
-		buttonStart = new Button(groupChooseXml, SWT.NONE);
+		buttonStart = new Button(group, SWT.NONE);
 		buttonStart.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		buttonStart.setText("Start");
 		buttonStart.setEnabled(false);
 		buttonStart.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(final SelectionEvent e) {
-				actionStart();
+				if(checkCustomer.getSelection() ||
+					checkArticles.getSelection() ||
+					checkTaxes.getSelection()) try{
+
+						buttonStart.setEnabled(false);
+
+						SAFTx0101Import saft=new SAFTx0101Import(false,
+							checkTaxes.getSelection(),
+							checkArticles.getSelection(),
+							checkCustomer.getSelection(),
+							EntidadestiposPopulate.RECORDS.cliente.codigo){
+							@Override
+							public void consoleOut(String string) {
+								labelConsole.setText(string);
+							}
+						};
+						if (saft.loadFile(file)) saft.process();
+						labelConsole.setText("Finished.");
+
+				}catch(Exception e1){
+					labelConsole.setText("Error! Please see log for details.");
+				}else{
+					labelConsole.setText("Choose the items to Import and press Start.");
+				}
+				buttonStart.setEnabled(true);
 			}
 		});
 
 		//Group 3
-		Group groupLogInfo = new Group(composite, SWT.NONE);
-		groupLogInfo.setLayout(new FillLayout(SWT.HORIZONTAL));
-		groupLogInfo.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-		groupLogInfo.setText("Log Info");
+		group = new Group(composite, SWT.NONE);
+		group.setLayout(new FillLayout(SWT.HORIZONTAL));
+		group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
+		group.setText("Log Info");
 
-		labelConsole = new Label(groupLogInfo, SWT.NONE);
+		labelConsole = new Label(group, SWT.NONE);
 		labelConsole.setBackground(SWTColorUtils.getColor(SWT.COLOR_WHITE));
 		labelConsole.setText("Waiting for XML file.");
-
-	}
-
-
-	//actions login
-	private void actionStart(){
-		try{
-			if(checkCustomer.getSelection() || checkArticles.getSelection() || checkTax.getSelection()){
-
-				buttonStart.setEnabled(false);
-
-				SAFTx0101Import saft=new SAFTx0101Import(false,
-					checkCustomer.getSelection(),
-					checkArticles.getSelection(),
-					checkTax.getSelection(),
-					EntidadestiposPopulate.RECORDS.cliente.codigo){
-					public void consoleOut(String string) {
-						labelConsole.setText(string);
-					}
-				};
-				saft.loadFile(file);
-				saft.process();
-				labelConsole.setText("Finished.");
-
-			}else{
-				labelConsole.setText("Choose the items to Import and press Start.");
-			}
-
-
-		}catch(Exception e){
-			labelConsole.setText("Error! Please see log details.");
-		}
-
-		buttonStart.setEnabled(true);
-
-	}
-
-
-	//actions choose File
-	private void actionChooseFile(){
-
-		file=new FileImport(getSite().getShell(), "*.xml").filePicker();
-		if (file!=null){
-			textFile.setText(file.getAbsolutePath());
-			labelConsole.setText("File loaded.");
-			buttonStart.setEnabled(true);
-		}
 
 	}
 

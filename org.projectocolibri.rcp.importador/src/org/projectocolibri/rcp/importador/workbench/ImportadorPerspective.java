@@ -5,12 +5,12 @@
 package org.projectocolibri.rcp.importador.workbench;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchWindow;
 
-import org.projectocolibri.rcp.colibri.core.vars.LabelVARS.LABELS;
+import org.projectocolibri.rcp.colibri.core.language.Language.LABELS;
 import org.projectocolibri.rcp.colibri.workbench.support.IColibriPerspective;
 import org.projectocolibri.rcp.colibri.workbench.support.WorkbenchHelper;
 import org.projectocolibri.rcp.colibri.workbench.support.actions.ClosePerspectiveAction;
@@ -40,11 +40,11 @@ public class ImportadorPerspective extends WorkbenchHelper implements IColibriPe
 
 
 	/*
-	 * IColibriPerspective(non-Javadoc)
+	 * (non-Javadoc)
 	 * @see org.projectocolibri.rcp.colibri.workbench.support.IColibriPerspective#createCoolBar(org.eclipse.ui.IWorkbenchWindow)
 	 */
 	@Override
-	public List<ColibriCoolBarItem> createCoolBar(IWorkbenchWindow window) {
+	public Collection<ColibriCoolBarItem> createCoolBar(IWorkbenchWindow window) {
 
 		return Arrays.asList(
 		new ColibriCoolBarItem("Colibri",
@@ -55,7 +55,7 @@ public class ImportadorPerspective extends WorkbenchHelper implements IColibriPe
 
 
 	@Override
-	public List<ColibriMenuBarItem> createMenuBar(IWorkbenchWindow window) {
+	public Collection<ColibriMenuBarItem> createMenuBar(IWorkbenchWindow window) {
 
 		return Arrays.asList(
 		new ColibriMenuBarItem(LABELS.menubar_ficheiro.singular(),

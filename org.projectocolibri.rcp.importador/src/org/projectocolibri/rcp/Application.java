@@ -12,6 +12,7 @@ import org.eclipse.ui.PlatformUI;
 
 import org.projectocolibri.rcp.colibri.workbench.shells.login.LoginShell;
 import org.projectocolibri.rcp.colibri.workbench.shells.login.LoginShell.RESULT;
+import org.projectocolibri.rcp.importador.Activator;
 
 /**
  * This class controls all aspects of the application's execution
@@ -54,6 +55,7 @@ public class Application implements IApplication {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final Display display = workbench.getDisplay();
 		display.syncExec(new Runnable() {
+			@Override
 			public void run() {
 				if (!display.isDisposed()) workbench.close();
 			}

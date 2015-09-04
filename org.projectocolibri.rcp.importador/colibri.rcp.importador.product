@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Colibri Importador SAFT" uid="colibri.rcp.importador.product" id="org.projectocolibri.rcp.importador.product" application="org.projectocolibri.rcp.importador.application" version="1.3.2" useFeatures="false" includeLaunchers="true">
+<product name="Colibri Importador SAFT" uid="colibri.rcp.importador.product" id="org.projectocolibri.rcp.importador.product" application="org.projectocolibri.rcp.importador.application" version="10.0.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -12,7 +12,7 @@
 
    <windowImages/>
 
-   <launcher>
+   <launcher name="RCPimportador">
       <solaris/>
       <win useIco="false">
          <bmp/>
@@ -46,8 +46,8 @@
       <plugin id="org.datanucleus.enhancer"/>
       <plugin id="org.datanucleus.store.rdbms"/>
       <plugin id="org.datanucleus.store.rdbms.connectionpool"/>
-      <plugin id="org.dma.eclipse.core"/>
-      <plugin id="org.dma.eclipse.swt"/>
+      <plugin id="org.dma.eclipse"/>
+      <plugin id="org.dma.java"/>
       <plugin id="org.dma.java.utils"/>
       <plugin id="org.dma.services.at"/>
       <plugin id="org.dma.services.vies"/>
