@@ -3,7 +3,6 @@
 
 <product name="Colibri Magento Connector" uid="colibri.rcp.magento.product" id="org.projectocolibri.rcp.magento.product" application="org.projectocolibri.rcp.magento.application" version="0.1.9" useFeatures="false" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -13,17 +12,15 @@
 
    <windowImages i16="/org.projectocolibri.rcp.magento/icons/colibri_16.png" i32="/org.projectocolibri.rcp.magento/icons/colibri_32.png" i48="/org.projectocolibri.rcp.magento/icons/colibri_48.gif" i64="/org.projectocolibri.rcp.magento/icons/colibri_64.gif" i128="/org.projectocolibri.rcp.magento/icons/colibri_128.gif"/>
 
-   <launcher>
+   <launcher name="RCPmagento">
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
       <plugin id="com.google.code.magja"/>
@@ -50,8 +47,8 @@
       <plugin id="org.datanucleus.enhancer"/>
       <plugin id="org.datanucleus.store.rdbms"/>
       <plugin id="org.datanucleus.store.rdbms.connectionpool"/>
-      <plugin id="org.dma.eclipse.core"/>
-      <plugin id="org.dma.eclipse.swt"/>
+      <plugin id="org.dma.eclipse"/>
+      <plugin id="org.dma.java"/>
       <plugin id="org.dma.java.utils"/>
       <plugin id="org.dma.services.at"/>
       <plugin id="org.dma.services.vies"/>
