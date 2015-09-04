@@ -4,25 +4,25 @@
  *******************************************************************************/
 package org.projectocolibri.rcp.magento.workbench.actions;
 
-import org.dma.eclipse.swt.graphics.SWTImageUtils;
-import org.dma.java.utils.numeric.NumericUtils;
-import org.dma.java.utils.string.StringUtils;
+import org.dma.java.math.NumericUtils;
+import org.dma.java.util.StringUtils;
 
-import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import org.projectocolibri.rcp.colibri.core.vars.IconVARS;
+import org.projectocolibri.rcp.colibri.workbench.support.ColibriAction;
 import org.projectocolibri.rcp.magento.dao.MagentoDatabase;
 
-public class MagentoCreateAction extends Action implements IWorkbenchAction {
+public class MagentoCreateAction extends ColibriAction implements IWorkbenchAction {
 
 	public MagentoCreateAction() {
 		setText("Create");
-		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.TOOLBAR_GRAVAR));
+		setImageDescriptor(IconVARS.TOOLBAR_GRAVAR);
 	}
 
 
-	public final void run(){
+	@Override
+	public final void run() {
 
 		/*
 		 * Pendente
@@ -35,6 +35,7 @@ public class MagentoCreateAction extends Action implements IWorkbenchAction {
 
 	}
 
+	@Override
 	public void dispose() {}
 
 

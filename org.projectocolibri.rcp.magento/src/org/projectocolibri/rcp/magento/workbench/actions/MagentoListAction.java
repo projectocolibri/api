@@ -4,23 +4,22 @@
  *******************************************************************************/
 package org.projectocolibri.rcp.magento.workbench.actions;
 
-import org.dma.eclipse.swt.graphics.SWTImageUtils;
-
-import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import org.projectocolibri.rcp.colibri.core.vars.IconVARS;
+import org.projectocolibri.rcp.colibri.workbench.support.ColibriAction;
 import org.projectocolibri.rcp.magento.dao.MagentoDatabase;
 
-public class MagentoListAction extends Action implements IWorkbenchAction {
+public class MagentoListAction extends ColibriAction implements IWorkbenchAction {
 
 	public MagentoListAction() {
 		setText("List");
-		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.TOOLBAR_ABRIR));
+		setImageDescriptor(IconVARS.TOOLBAR_ABRIR);
 	}
 
 
-	public final void run(){
+	@Override
+	public final void run() {
 
 		/*
 		 * Pendente
@@ -32,6 +31,7 @@ public class MagentoListAction extends Action implements IWorkbenchAction {
 
 	}
 
+	@Override
 	public void dispose() {}
 
 

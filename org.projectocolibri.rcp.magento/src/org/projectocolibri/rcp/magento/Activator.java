@@ -2,7 +2,7 @@
  * 2008-2011 Projecto Colibri
  * Marco Lopes (marcolopes@projectocolibri.com)
  *******************************************************************************/
-package org.projectocolibri.rcp;
+package org.projectocolibri.rcp.magento;
 
 import org.dma.eclipse.core.BundleUtils;
 import org.osgi.framework.BundleContext;
@@ -33,15 +33,13 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println(PLUGIN_ID+" ACTIVATOR <stop>");
 		plugin = null;
 		super.stop(context);
+		System.out.println(PLUGIN_ID+" ACTIVATOR <stop>");
 	}
 
 	/**
 	 * Returns the shared instance
-	 *
-	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
 		return plugin;
@@ -50,9 +48,6 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * Returns an image descriptor for the image file at the given
 	 * plug-in relative path
-	 *
-	 * @param path the path
-	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);

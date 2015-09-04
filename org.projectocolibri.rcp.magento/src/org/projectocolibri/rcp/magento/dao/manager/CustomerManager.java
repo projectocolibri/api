@@ -10,7 +10,7 @@ import com.google.code.magja.model.customer.Customer;
 import com.google.code.magja.service.RemoteServiceFactory;
 import com.google.code.magja.service.customer.CustomerRemoteService;
 
-import org.dma.java.utils.string.StringUtils;
+import org.dma.java.util.StringUtils;
 
 public class CustomerManager {
 

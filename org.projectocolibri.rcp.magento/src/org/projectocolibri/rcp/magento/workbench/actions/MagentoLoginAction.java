@@ -6,24 +6,23 @@ package org.projectocolibri.rcp.magento.workbench.actions;
 
 import com.google.code.magja.soap.SoapConfig;
 
-import org.dma.eclipse.swt.graphics.SWTImageUtils;
-
-import org.eclipse.jface.action.Action;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 
 import org.projectocolibri.rcp.colibri.core.vars.IconVARS;
+import org.projectocolibri.rcp.colibri.workbench.support.ColibriAction;
 import org.projectocolibri.rcp.magento.RCPMagento;
 import org.projectocolibri.rcp.magento.dao.MagentoDatabase;
 
-public class MagentoLoginAction extends Action implements IWorkbenchAction {
+public class MagentoLoginAction extends ColibriAction implements IWorkbenchAction {
 
 	public MagentoLoginAction() {
 		setText("Login");
-		setImageDescriptor(SWTImageUtils.getImageDescriptor(IconVARS.TOOLBAR_VALIDAR));
+		setImageDescriptor(IconVARS.TOOLBAR_VALIDAR);
 	}
 
 
-	public final void run(){
+	@Override
+	public final void run() {
 
 		if (MagentoDatabase.getMagentoSoapClient()!=null){
 			System.out.println("MAGENTO ALREADY LOGGED");
@@ -46,6 +45,7 @@ public class MagentoLoginAction extends Action implements IWorkbenchAction {
 
 	}
 
+	@Override
 	public void dispose() {}
 
 

@@ -11,8 +11,8 @@ import com.google.code.magja.model.product.ProductType;
 import com.google.code.magja.service.RemoteServiceFactory;
 import com.google.code.magja.service.product.ProductRemoteService;
 
-import org.dma.java.utils.numeric.NumericUtils;
-import org.dma.java.utils.string.StringUtils;
+import org.dma.java.math.NumericUtils;
+import org.dma.java.util.StringUtils;
 
 public class ProductManager {
 
@@ -75,7 +75,7 @@ public class ProductManager {
 
 			/*
 			// categories
-			List<Category> categories=new ArrayList<Category>();
+			List<Category> categories=new ArrayList();
 			categories.add(new Category("Hardware"));
 			categories.add(new Category("Computers"));
 			product.setCategories(categories);
