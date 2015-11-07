@@ -78,15 +78,12 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 		if (documento==null) return;
 
 		//cria ACTION para EDICAO de FACTURA
-		OpenViewAction viewAction=new OpenViewAction(EntidadesEmissaoView.ID, documento, true);
+		OpenViewAction viewAction=new OpenViewAction(EntidadesEmissaoView.ID, documento);
 
 		//abre e personaliza a vista
 		if (viewAction.run(false)){
 
 			final EntidadesEmissaoView view=(EntidadesEmissaoView)viewAction.getView();
-
-			//remove o separador COMUNICACAO
-			view.getTab_comunicacao().dispose();
 
 			//criacao de JOBS
 			final NovoRegistoJob novoRegistoJob=new NovoRegistoJob(view.getObjectContainer()){
@@ -113,8 +110,8 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 				}
 			};
 
-			//substitui ACTION na TOOLBAR (com validacao)
-			view.getActions().addToolItem(new ColibriViewAction(COMMANDS.Anular){
+			//criacao de ACTIONS
+			ColibriViewAction anularRegistoAction=new ColibriViewAction(COMMANDS.Anular){
 				//guarda action anterior
 				final ColibriViewAction action=view.getActions().get(COMMANDS.Anular);
 				@Override
@@ -131,10 +128,9 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 				public boolean isValid() {
 					return action.isValid();
 				}
-			});
+			};
 
-			//substitui ACTION na TOOLBAR (com validacao)
-			view.getActions().addToolItem(new ColibriViewAction(COMMANDS.Gravar){
+			ColibriViewAction gravarRegistoAction=new ColibriViewAction(COMMANDS.Gravar){
 				//guarda action anterior
 				final ColibriViewAction action=view.getActions().get(COMMANDS.Gravar);
 				@Override
@@ -154,10 +150,9 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 				public boolean isValid() {
 					return action.isValid();
 				}
-			});
+			};
 
-			//substitui ACTION na TOOLBAR (com validacao)
-			view.getActions().addToolItem(new ColibriViewAction(COMMANDS.Emitir){
+			ColibriViewAction emitirRegistoAction=new ColibriViewAction(COMMANDS.Emitir){
 				//guarda action anterior
 				final ColibriViewAction action=view.getActions().get(COMMANDS.Emitir);
 				@Override
@@ -179,9 +174,17 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 				public boolean isValid() {
 					return action.isValid();
 				}
-			});
+			};
 
-			//adiciona ACTION na TOOLBAR (sem validacao)
+			//remove o separador COMUNICACAO
+			view.getTab_comunicacao().dispose();
+
+			//substitui ACTIONS na TOOLBAR
+			view.getActions().addToolItem(anularRegistoAction);
+			view.getActions().addToolItem(gravarRegistoAction);
+			view.getActions().addToolItem(emitirRegistoAction);
+
+			//adiciona ACTIONS na TOOLBAR
 			view.getActions().addToolItem(new OpenHelpViewAction());
 
 			//actualiza a TOOLBAR
@@ -202,14 +205,15 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 				//novo documento
 				new OpenViewAction(EntidadesEmissaoView.ID, tipodocumento) :
 				//documento inicializado
-				new OpenViewAction(EntidadesEmissaoView.ID, documento, false);
+				new OpenViewAction(EntidadesEmissaoView.ID, documento);
 
 		//abre e personaliza a vista
 		if (viewAction.run(false)){
 
 			final EntidadesEmissaoView view=(EntidadesEmissaoView)viewAction.getView();
 
-			view.getActions().addToolItem(new ColibriViewAction(COMMANDS.Emitir){
+			//criacao de ACTIONS
+			ColibriViewAction emitirRegistoAction=new ColibriViewAction(COMMANDS.Emitir){
 				final ColibriViewAction action=view.getActions().get(COMMANDS.Emitir);
 				@Override
 				public void execute() {
@@ -252,7 +256,10 @@ public class InterfaceExampleAction extends ColibriAction implements IWorkbenchA
 				public boolean isValid() {
 					return action.isValid();
 				}
-			});
+			};
+
+			//substitui ACTIONS na TOOLBAR
+			view.getActions().addToolItem(emitirRegistoAction);
 
 			//actualiza a TOOLBAR
 			view.getActions().update();

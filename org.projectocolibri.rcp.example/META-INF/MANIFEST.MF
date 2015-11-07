@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Eclipse-BundleShape: jar
 Bundle-ManifestVersion: 2
-Bundle-Version: 10.1.0.qualifier
+Bundle-Version: 10.2.0.qualifier
 Bundle-SymbolicName: org.projectocolibri.rcp.example;singleton:=true
 Bundle-Name: Colibri API Example
 Bundle-Vendor: suporte@projectocolibri.com
@@ -9,9 +9,9 @@ Bundle-Activator: org.projectocolibri.rcp.example.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
-Require-Bundle: org.projectocolibri.rcp;bundle-version="10.1.0",
+Require-Bundle: org.projectocolibri.rcp;bundle-version="10.2.0",
  org.eclipse.ui;bundle-version="3.7.0",
  org.eclipse.core.runtime;bundle-version="3.7.0",
- org.dma.eclipse;bundle-version="5.0.0",
- org.dma.java;bundle-version="5.0.0",
+ org.dma.eclipse;bundle-version="5.0.3",
+ org.dma.java;bundle-version="5.3.0",
  javax.jdo;bundle-version="3.0.0"

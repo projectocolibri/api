@@ -18,8 +18,8 @@ import org.projectocolibri.rcp.colibri.core.support.EmailParameters;
 import org.projectocolibri.rcp.colibri.core.support.JobSupport;
 import org.projectocolibri.rcp.colibri.dao.database.ColibriDatabase;
 import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap;
-import org.projectocolibri.rcp.colibri.dao.database.filter.FilterOperandMap;
 import org.projectocolibri.rcp.colibri.dao.database.filter.FilterMap.OPERATORS;
+import org.projectocolibri.rcp.colibri.dao.database.filter.FilterOperandMap;
 import org.projectocolibri.rcp.colibri.dao.database.mapper.TableFieldKey;
 import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.FIELDS;
 import org.projectocolibri.rcp.colibri.dao.database.mapper.TableMap.TABLES;
@@ -61,7 +61,7 @@ public class ReportExample {
 			}
 		};
 		batch.add(job);
-		//TODO TEST: Analisar schedule imediato
+		//TODO COLIBRI: Analisar schedule imediato
 		batch.schedule(null); // imediato
 
 	}

@@ -139,7 +139,7 @@ public class Application implements IApplication {
 			ColibriLogin login2=new ColibriLogin(0);
 
 			//FACULTATIVO: a licenca e' carregada automaticamente
-			login2.loadLicence("colibri10.rcplicence");
+			login2.loadLicence("colibri11.rcplicence");
 			//login do user ADMIN
 			if (login2.process("admin", "admin")) return RESULT.LOGIN;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Colibri Importador SAFT" uid="colibri.rcp.importador.product" id="org.projectocolibri.rcp.importador.product" application="org.projectocolibri.rcp.importador.application" version="10.0.0" useFeatures="false" includeLaunchers="true">
+<product name="Colibri Importador SAFT" uid="colibri.rcp.importador.product" id="org.projectocolibri.rcp.importador.product" application="org.projectocolibri.rcp.importador.application" version="10.2.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>

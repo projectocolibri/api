@@ -51,14 +51,14 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 				StringUtils.random(FIELDS.artigos_codigo.size.size),
 				StringUtils.randomLetters(FIELDS.artigos_descricao.size.size/2));
 		//grava e apresenta possiveis erros
-		ErrorDialog.open(ColibriDatabase.storeArtigos(artigo, false).getErrors());
+		ErrorDialog.open(ColibriDatabase.storeArtigos(artigo).getErrors());
 		//cria uma copia do artigo
 		Artigos copy=artigosExample.copyArtigo(
 				ColibriDatabase.loadArtigos(artigo.getCodigo()),
 				StringUtils.random(FIELDS.artigos_codigo.size.size),
 				StringUtils.randomLetters(FIELDS.artigos_descricao.size.size/2));
 		//grava e apresenta possiveis erros
-		ErrorDialog.open(ColibriDatabase.storeArtigos(copy, false).getErrors());
+		ErrorDialog.open(ColibriDatabase.storeArtigos(copy).getErrors());
 		artigosExample.showArtigos();
 
 		/*
@@ -70,7 +70,7 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 				EntidadestiposPopulate.RECORDS.cliente.codigo,
 				StringUtils.randomLetters(FIELDS.entidades_nome.size.size/2));
 		//grava e apresenta possiveis erros
-		ErrorDialog.open(ColibriDatabase.storeEntidades(entidade,false).getErrors());
+		ErrorDialog.open(ColibriDatabase.storeEntidades(entidade).getErrors());
 		entidadesExample.showEntidades(EntidadestiposPopulate.RECORDS.cliente.codigo);
 
 		/*
@@ -82,7 +82,7 @@ public class DatabaseExampleAction extends Action implements IWorkbenchAction {
 				DocumentostiposPopulate.RECORDS.clientes_factura.codigo,
 				entidade.getKey(), artigo.getCodigo());
 		//grava e apresenta possiveis erros
-		ErrorDialog.open(ColibriDatabase.storeEntidadesdocumentos(documento, false).getErrors());
+		ErrorDialog.open(ColibriDatabase.storeEntidadesdocumentos(documento).getErrors());
 
 	}
 
