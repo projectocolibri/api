@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+/*******************************************************************************
+ * 2008-2011 Projecto Colibri
+ * Marco Lopes (marcolopes@projectocolibri.com)
+ *******************************************************************************/
+-->
+<plugin>
+
+	<extension
+			id="application"
+			point="org.eclipse.core.runtime.applications">
+		<application>
+			<run
+				class="org.projectocolibri.rcp.Application">
+			</run>
+		</application>
+	</extension>
+
+	<extension
+		id="product"
+		point="org.eclipse.core.runtime.products">
+		<product
+			application="org.projectocolibri.rcp.magento.application"
+			name="Colibri Magento Connector">
+			<property
+				name="appName"
+				value="Colibri Magento Connector">
+			</property>
+			<property
+				name="windowImages"
+				value="icons/colibri_16.png,icons/colibri_32.png,icons/colibri_48.gif,icons/colibri_64.gif,icons/colibri_128.gif">
+			</property>
+		</product>
+	</extension>
+
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+			name="Magento"
+			id="org.projectocolibri.rcp.magento.workbench.Perspective"
+			class="org.projectocolibri.rcp.magento.workbench.Perspective"
+			icon="icons/plug.png">
+		</perspective>
+	</extension>
+
+	<extension point="org.eclipse.ui.views">
+		<view
+			name="Perspective"
+			id="org.projectocolibri.rcp.magento.workbench.MagentoView"
+			class="org.projectocolibri.rcp.magento.workbench.MagentoView"
+			allowMultiple="false"
+			restorable="true">
+		</view>
+	</extension>
+
+</plugin>
