@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+/*******************************************************************************
+ * 2011 Projecto Colibri
+ * Sergio Gomes (sergiogomes@projectocolibri.com)
+ * Marco Lopes (marcolopes@projectocolibri.com)
+ *******************************************************************************/
+-->
+<plugin>
+
+	<extension
+		id="application"
+		point="org.eclipse.core.runtime.applications">
+		<application>
+			<run
+				class="org.projectocolibri.rcp.Application">
+			</run>
+		</application>
+	</extension>
+
+	<extension
+		id="product"
+		point="org.eclipse.core.runtime.products">
+		<product
+			application="org.projectocolibri.rcp.importador.application"
+			name="Colibri Importador SAFT">
+			<property
+				name="appName"
+				value="Colibri Importador SAFT">
+			</property>
+		</product>
+	</extension>
+
+	<extension
+		point="org.eclipse.ui.perspectives">
+		<perspective
+			id="Perspective"
+			name="Perspective"
+			class="org.projectocolibri.rcp.importador.workbench.Perspective">
+		</perspective>
+	</extension>
+
+	<extension
+		point="org.eclipse.ui.views">
+		<view
+			id="View"
+			name="Importador SAFT"
+			class="org.projectocolibri.rcp.importador.workbench.View"
+			allowMultiple="false"
+			restorable="false">
+		</view>
+	</extension>
+
+	<!--
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension
+			targetID="*">
+			<view
+				standalone="true"
+				minimized="false"
+				relative="org.eclipse.ui.editorss"
+				relationship="left"
+				id="ImportadorView">
+			</view>
+		</perspectiveExtension>
+	</extension>
+	-->
+	
+</plugin>
