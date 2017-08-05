@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+/*******************************************************************************
+ * 2008-2011 Projecto Colibri
+ * Marco Lopes (marcolopes@projectocolibri.com)
+ *******************************************************************************/
+-->
+<plugin>
+
+	<extension
+		id="application"
+		point="org.eclipse.core.runtime.applications">
+		<application>
+			<run
+				class="org.projectocolibri.api.Application">
+			</run>
+		</application>
+	</extension>
+
+	<extension
+		id="product"
+		point="org.eclipse.core.runtime.products">
+		<product
+			application="org.projectocolibri.api.example.application"
+			name="Colibri API Example">
+			<property
+				name="appName"
+				value="Colibri API Example">
+			</property>
+			<property
+				name="windowImages"
+				value="platform:/plugin/org.projectocolibri.rcp.example/icons/colibri_16.png,platform:/plugin/org.projectocolibri.rcp.example/icons/colibri_32.png,platform:/plugin/org.projectocolibri.rcp.example/icons/colibri_48.gif,platform:/plugin/org.projectocolibri.rcp.example/icons/colibri_64.gif,platform:/plugin/org.projectocolibri.rcp.example/icons/colibri_128.gif">
+			</property>
+		</product>
+	</extension>
+
+</plugin>
