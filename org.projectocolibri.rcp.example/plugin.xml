@@ -37,7 +37,7 @@
 
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective
-			name="#perspective"
+			name="#example"
 			id="org.projectocolibri.rcp.example.workbench.ExamplePerspective"
 			class="org.projectocolibri.rcp.example.workbench.ExamplePerspective"
 			icon="icons/plug.png">
